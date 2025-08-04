@@ -1,0 +1,54 @@
+identifier: team
+title: Team
+icon: Team
+schema:
+  properties:
+    description:
+      type: string
+      title: Description
+      description: Team description and responsibilities
+    lead:
+      type: string
+      title: Team Lead
+      description: Team lead name
+    members_count:
+      type: number
+      title: Members Count
+      description: Number of team members
+    email:
+      type: string
+      title: Team Email
+      description: Team contact email
+      format: email
+    slack_channel:
+      type: string
+      title: Slack Channel
+      description: Team Slack channel
+    focus_area:
+      type: string
+      title: Focus Area
+      description: Primary area of responsibility
+      enum:
+        - Frontend Development
+        - Backend Development
+        - DevOps & Infrastructure
+        - Quality Assurance
+        - Data & Analytics
+        - Product Management
+    technologies:
+      type: array
+      title: Technologies
+      description: Technologies used by the team
+      items:
+        type: string
+  required:
+    - description
+    - lead
+    - members_count
+    - focus_area
+relations:
+  services:
+    title: Services
+    target: service
+    required: false
+    many: true

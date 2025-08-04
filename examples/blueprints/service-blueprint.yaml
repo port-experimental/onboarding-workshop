@@ -1,0 +1,86 @@
+identifier: service
+title: Service
+icon: Microservice
+schema:
+  properties:
+    description:
+      type: string
+      title: Description
+      description: Service description
+    language:
+      type: string
+      title: Language
+      description: Primary programming language
+      enum:
+        - Python
+        - JavaScript
+        - Java
+        - Go
+        - C#
+        - TypeScript
+        - Ruby
+    framework:
+      type: string
+      title: Framework
+      description: Primary framework used
+    url:
+      type: string
+      title: Repository URL
+      description: Source code repository URL
+      format: url
+    readme:
+      type: string
+      title: README
+      description: Service README content
+      format: markdown
+    archived:
+      type: boolean
+      title: Archived
+      description: Whether the service is archived
+      default: false
+    default_branch:
+      type: string
+      title: Default Branch
+      description: Default git branch
+      default: main
+    team:
+      type: string
+      title: Team
+      description: Owning team
+      enum:
+        - Frontend Team
+        - Backend Team
+        - DevOps Team
+        - QA Team
+        - Data Team
+    environment:
+      type: string
+      title: Environment
+      description: Deployment environment
+      enum:
+        - Production
+        - Staging
+        - Development
+        - QA
+  required:
+    - description
+    - language
+    - archived
+    - default_branch
+    - team
+relations:
+  team:
+    title: Team
+    target: team
+    required: false
+    many: false
+  releases:
+    title: Releases
+    target: github_release
+    required: false
+    many: true
+  pull_requests:
+    title: Pull Requests
+    target: github_pull_request
+    required: false
+    many: true

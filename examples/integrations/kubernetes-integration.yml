@@ -1,0 +1,130 @@
+# Kubernetes Integration Template
+# This template shows how to integrate Kubernetes deployments and services
+# Note: This uses Kubernetes API structure - adapt to your cluster setup
+
+resources:
+  - kind: deployment
+    selector:
+      query: '.metadata.namespace != "kube-system" and .metadata.namespace != "kube-public"'
+    port:
+      entity:
+        mappings:
+          identifier: .metadata.namespace + "-" + .metadata.name
+          title: .metadata.name
+          blueprint: '"k8s_deployment"'
+          properties:
+            namespace: .metadata.namespace
+            replicas: .spec.replicas
+            ready_replicas: .status.readyReplicas // 0
+            available_replicas: .status.availableReplicas // 0
+            unavailable_replicas: .status.unavailableReplicas // 0
+            image: .spec.template.spec.containers[0].image
+            created_at: .metadata.creationTimestamp
+            labels: .metadata.labels
+            annotations: .metadata.annotations
+            strategy_type: .spec.strategy.type
+            health_status: |
+              if (.status.readyReplicas // 0) == (.spec.replicas // 0) then "healthy"
+              elif (.status.readyReplicas // 0) > 0 then "degraded"
+              else "unhealthy"
+              end
+            environment: |
+              if .metadata.namespace == "production" then "Production"
+              elif .metadata.namespace == "staging" then "Staging"
+              elif .metadata.namespace == "qa" then "QA"
+              else "Development"
+              end
+            service_name: |
+              if .metadata.labels."app.kubernetes.io/name" then .metadata.labels."app.kubernetes.io/name"
+              elif .metadata.labels.app then .metadata.labels.app
+              else .metadata.name
+              end
+          relations:
+            service: |
+              if .metadata.labels."app.kubernetes.io/name" then .metadata.labels."app.kubernetes.io/name"
+              elif .metadata.labels.app then .metadata.labels.app
+              else .metadata.name
+              end
+            environment: |
+              if .metadata.namespace == "production" then "production"
+              elif .metadata.namespace == "staging" then "staging"
+              elif .metadata.namespace == "qa" then "qa"
+              else "development"
+              end
+
+  - kind: service
+    selector:
+      query: '.metadata.namespace != "kube-system" and .metadata.namespace != "kube-public"'
+    port:
+      entity:
+        mappings:
+          identifier: .metadata.namespace + "-svc-" + .metadata.name
+          title: .metadata.name + " (Service)"
+          blueprint: '"k8s_service"'
+          properties:
+            namespace: .metadata.namespace
+            type: .spec.type
+            cluster_ip: .spec.clusterIP
+            external_ip: .status.loadBalancer.ingress[0].ip // null
+            ports: [.spec.ports[] | {port: .port, targetPort: .targetPort, protocol: .protocol}]
+            selector: .spec.selector
+            created_at: .metadata.creationTimestamp
+            labels: .metadata.labels
+            annotations: .metadata.annotations
+            endpoint_count: (.subsets[0].addresses | length) // 0
+            service_name: |
+              if .metadata.labels."app.kubernetes.io/name" then .metadata.labels."app.kubernetes.io/name"
+              elif .metadata.labels.app then .metadata.labels.app
+              else .metadata.name
+              end
+          relations:
+            service: |
+              if .metadata.labels."app.kubernetes.io/name" then .metadata.labels."app.kubernetes.io/name"
+              elif .metadata.labels.app then .metadata.labels.app
+              else .metadata.name
+              end
+            deployment: .metadata.namespace + "-" + (.metadata.labels.app // .metadata.name)
+
+  - kind: pod
+    selector:
+      query: '.metadata.namespace != "kube-system" and .metadata.namespace != "kube-public" and .status.phase != "Succeeded"'
+    port:
+      entity:
+        mappings:
+          identifier: .metadata.namespace + "-pod-" + .metadata.name
+          title: .metadata.name
+          blueprint: '"k8s_pod"'
+          properties:
+            namespace: .metadata.namespace
+            phase: .status.phase
+            node_name: .spec.nodeName
+            pod_ip: .status.podIP
+            host_ip: .status.hostIP
+            start_time: .status.startTime
+            restart_count: [.status.containerStatuses[]?.restartCount] | add // 0
+            ready: (.status.conditions[] | select(.type == "Ready") | .status) == "True"
+            containers: [.spec.containers[] | {name: .name, image: .image, ports: .ports}]
+            labels: .metadata.labels
+            annotations: .metadata.annotations
+            resource_requests: |
+              {
+                "cpu": [.spec.containers[].resources.requests.cpu] | map(select(. != null)) | join(","),
+                "memory": [.spec.containers[].resources.requests.memory] | map(select(. != null)) | join(",")
+              }
+            resource_limits: |
+              {
+                "cpu": [.spec.containers[].resources.limits.cpu] | map(select(. != null)) | join(","),
+                "memory": [.spec.containers[].resources.limits.memory] | map(select(. != null)) | join(",")
+              }
+            service_name: |
+              if .metadata.labels."app.kubernetes.io/name" then .metadata.labels."app.kubernetes.io/name"
+              elif .metadata.labels.app then .metadata.labels.app
+              else (.metadata.name | split("-")[0])
+              end
+          relations:
+            service: |
+              if .metadata.labels."app.kubernetes.io/name" then .metadata.labels."app.kubernetes.io/name"
+              elif .metadata.labels.app then .metadata.labels.app
+              else (.metadata.name | split("-")[0])
+              end
+            deployment: .metadata.namespace + "-" + (.metadata.ownerReferences[] | select(.kind == "ReplicaSet") | .name | split("-")[0:-1] | join("-"))

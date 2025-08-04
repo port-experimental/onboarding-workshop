@@ -1,0 +1,104 @@
+identifier: environment
+title: Environment
+icon: Environment
+schema:
+  properties:
+    description:
+      type: string
+      title: Description
+      description: Environment description and purpose
+    type:
+      type: string
+      title: Environment Type
+      description: Type of environment
+      enum:
+        - Production
+        - Staging
+        - Development
+        - QA
+        - Testing
+        - Demo
+    region:
+      type: string
+      title: Region
+      description: Cloud region or data center location
+      enum:
+        - us-east-1
+        - us-west-2
+        - eu-west-1
+        - ap-southeast-1
+        - local
+    cloud_provider:
+      type: string
+      title: Cloud Provider
+      description: Cloud infrastructure provider
+      enum:
+        - AWS
+        - Azure
+        - GCP
+        - On-Premise
+        - Local
+    kubernetes_cluster:
+      type: string
+      title: Kubernetes Cluster
+      description: Associated Kubernetes cluster name
+    namespace:
+      type: string
+      title: Namespace
+      description: Kubernetes namespace for deployments
+    monitoring_enabled:
+      type: boolean
+      title: Monitoring Enabled
+      description: Whether monitoring is configured
+      default: true
+    backup_enabled:
+      type: boolean
+      title: Backup Enabled
+      description: Whether automated backups are enabled
+      default: false
+    auto_scaling:
+      type: boolean
+      title: Auto Scaling
+      description: Whether auto-scaling is enabled
+      default: false
+    cost_center:
+      type: string
+      title: Cost Center
+      description: Cost center for billing allocation
+    responsible_team:
+      type: string
+      title: Responsible Team
+      description: Team responsible for environment maintenance
+      enum:
+        - DevOps Team
+        - Backend Team
+        - Frontend Team
+        - QA Team
+        - Data Team
+    created_at:
+      type: string
+      title: Created At
+      description: Environment creation date
+      format: date-time
+    last_deployment:
+      type: string
+      title: Last Deployment
+      description: Last deployment timestamp
+      format: date-time
+  required:
+    - description
+    - type
+    - region
+    - cloud_provider
+    - responsible_team
+relations:
+  services:
+    title: Services
+    target: service
+    required: false
+    many: true
+  team:
+    title: Responsible Team
+    target: team
+    required: false
+    many: false

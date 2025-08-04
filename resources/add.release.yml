@@ -1,0 +1,56 @@
+resources:
+  - kind: repository
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          identifier: .name
+          title: .name
+          blueprint: '"service"'
+          properties:
+            description: .description
+            readme: file://README.md
+            url: .html_url
+            language: .language
+            archived: .archived
+            default_branch: .default_branch
+  - kind: pull-request
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          identifier: .head.repo.name + (.id|tostring)
+          title: .title
+          blueprint: '"githubPullRequest"'
+          properties:
+            creator: .user.login
+            assignees: "[.assignees[].login]"
+            reviewers: "[.requested_reviewers[].login]"
+            status: .state
+            closedAt: .closed_at
+            updatedAt: .updated_at
+            mergedAt: .merged_at
+            prNumber: .number
+            link: .html_url
+            draft: .draft
+            head: .head.ref
+            base: .base.ref
+            labels: "[.labels[].name]"
+          relations:
+            service: .head.repo.name
+  - kind: release
+    selector:
+      query: "true"
+    port:
+      entity:
+        mappings:
+          blueprint: '"github_releases"'
+          identifier: .release.id | tostring
+          title: .release.name
+          properties:
+            release_notes: .release.body
+            tag_name: .release.tag_name
+          relations:
+            service: .repo.name

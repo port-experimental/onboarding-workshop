@@ -1,0 +1,55 @@
+{
+    "identifier": "update_readme_port_actions",
+    "title": "Update README - 'port-actions'",
+    "icon": "Book",
+    "description": "Update README in repository 'techcorp/port-actions'",
+    "trigger": {
+        "type": "self-service",
+        "operation": "DAY-2",
+        "userInputs": {
+            "properties": {
+                "new_readme_content": {
+                    "title": "New README content",
+                    "description": "The content to replace the current README with.",
+                    "icon": "Markdown",
+                    "type": "string",
+                    "format": "markdown"
+                },
+                "new_branch_name": {
+                    "type": "string",
+                    "title": "New branch name",
+                    "icon": "GitSubIcon"
+                },
+                "commit_message": {
+                    "type": "string",
+                    "title": "Commit message",
+                    "icon": "Edit"
+                }
+            },
+            "required": [
+                "new_readme_content",
+                "commit_message"
+            ],
+            "order": [
+                "new_readme_content",
+                "commit_message",
+                "new_branch_name"
+            ]
+        }
+    },
+    "invocationMethod": {
+        "type": "GITHUB",
+        "org": "techcorp",
+        "repo": "port-actions",
+        "workflow": "update-readme.yml",
+        "workflowInputs": {
+            "user-email": "{{ .trigger.by.user.email }}",
+            "commit-message": "{{ .inputs.commit_message }}",
+            "new-readme-text": "{{ .inputs.new_readme_content }}",
+            "{{ if (.inputs.new_branch_name != null) then \"new-branch-name\" else null end }}": "{{ .inputs.new_branch_name }}",
+            "port-run-id": "{{ .run.id }}"
+        },
+        "reportWorkflowStatus": true
+    },
+    "requiredApproval": false
+}

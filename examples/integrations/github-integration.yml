@@ -1,0 +1,139 @@
+resources:
+  - kind: repository
+    selector:
+      query: 'true'
+    port:
+      entity:
+        mappings:
+          identifier: .name
+          title: .name
+          blueprint: '"service"'
+          properties:
+            description: .description
+            url: .html_url
+            language: .language
+            readme: file://README.md
+            archived: .archived
+            default_branch: .default_branch
+            team: |
+              if .name | startswith("ecommerce") then "Backend Team"
+              elif .name | startswith("mobile") then "Frontend Team"
+              elif .name | startswith("analytics") then "Data Team"
+              elif .name | startswith("web") then "Frontend Team"
+              elif .name | startswith("notification") then "Backend Team"
+              elif .name | startswith("inventory") then "Backend Team"
+              elif .name | startswith("payment") then "Backend Team"
+              elif .name | startswith("user") then "Backend Team"
+              else "Backend Team"
+              end
+            environment: |
+              if .archived then "Archived"
+              elif (.name | contains("api") or .name | contains("service")) then "Production"
+              elif .name | contains("dashboard") then "Production"
+              elif .name | contains("mobile") then "Production"
+              else "Development"
+              end
+            framework: |
+              if .language == "Python" and (.name | contains("django") or .name | contains("ecommerce")) then "Django"
+              elif .language == "Python" then "FastAPI"
+              elif .language == "JavaScript" and (.name | contains("react") or .name | contains("web")) then "React"
+              elif .language == "JavaScript" then "Express.js"
+              elif .language == "TypeScript" and (.name | contains("react") or .name | contains("web")) then "React"
+              elif .language == "TypeScript" then "Express.js"
+              elif .language == "Java" then "Spring Boot"
+              elif .language == "Go" then "Gin"
+              elif .language == "C#" then ".NET Core"
+              else null
+              end
+
+  - kind: pull-request
+    selector:
+      query: 'true'
+    port:
+      entity:
+        mappings:
+          identifier: .head.repo.name + (.id|tostring)
+          title: .title
+          blueprint: '"github_pull_request"'
+          properties:
+            creator: .user.login
+            assignees: "[.assignees[].login]"
+            reviewers: "[.requested_reviewers[].login]"
+            status: .state
+            closedAt: .closed_at
+            updatedAt: .updated_at
+            mergedAt: .merged_at
+            prNumber: .number
+            link: .html_url
+            draft: .draft
+            head: .head.ref
+            base: .base.ref
+            labels: "[.labels[].name]"
+            size: |
+              if .additions + .deletions < 50 then "XS"
+              elif .additions + .deletions < 200 then "S"
+              elif .additions + .deletions < 500 then "M"
+              elif .additions + .deletions < 1000 then "L"
+              else "XL"
+              end
+            complexity: |
+              if (.changed_files // 0) < 3 then "Low"
+              elif (.changed_files // 0) < 8 then "Medium"
+              else "High"
+              end
+            review_status: |
+              if .state == "closed" and .merged_at then "approved"
+              elif (.requested_changes // 0) > 0 then "changes_requested"
+              elif (.approved_reviews // 0) > 0 then "approved"
+              else "pending"
+              end
+            ci_status: |
+              if .statuses then
+                if (.statuses | map(select(.state == "success")) | length) == (.statuses | length) then "success"
+                elif (.statuses | map(select(.state == "failure")) | length) > 0 then "failure"
+                elif (.statuses | map(select(.state == "error")) | length) > 0 then "error"
+                else "pending"
+                end
+              else "pending"
+              end
+          relations:
+            service: .head.repo.name
+
+  - kind: release
+    selector:
+      query: 'true'
+    port:
+      entity:
+        mappings:
+          blueprint: '"github_release"'
+          identifier: .id | tostring
+          title: .name
+          properties:
+            release_notes: .body
+            tag_name: .tag_name
+            created_at: .created_at
+            published_at: .published_at
+            draft: .draft
+            prerelease: .prerelease
+            author: .author.login
+            download_count: (.assets | map(.download_count) | add) // 0
+            assets_count: (.assets | length) // 0
+            version_type: |
+              if .prerelease then "beta"
+              elif (.tag_name | contains("hotfix")) then "hotfix"
+              elif (.tag_name | test("v?[0-9]+\\.0\\.0")) then "major"
+              elif (.tag_name | test("v?[0-9]+\\.[0-9]+\\.0")) then "minor"
+              else "patch"
+              end
+            deployment_status: |
+              if .draft then "pending"
+              elif .prerelease then "deploying"
+              else "deployed"
+              end
+            environment_deployed: |
+              if .draft then []
+              elif .prerelease then ["Development", "QA"]
+              else ["Development", "QA", "Staging", "Production"]
+              end
+          relations:
+            service: .repository.name

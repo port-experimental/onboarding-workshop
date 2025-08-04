@@ -1,0 +1,156 @@
+{
+  "pull_requests": [
+    {
+      "id": 987654321,
+      "number": 42,
+      "title": "Add user authentication endpoint",
+      "body": "This PR adds a new authentication endpoint to support OAuth2 login flow.\n\n## Changes\n- Added `/auth/oauth2` endpoint\n- Updated user model with OAuth fields\n- Added integration tests\n\n## Testing\n- [ ] Unit tests pass\n- [ ] Integration tests pass\n- [ ] Manual testing completed",
+      "state": "open",
+      "html_url": "https://github.com/techcorp/ecommerce-api/pull/42",
+      "created_at": "2024-01-10T09:30:00Z",
+      "updated_at": "2024-01-10T14:22:00Z",
+      "closed_at": null,
+      "merged_at": null,
+      "head": {
+        "ref": "feature/oauth2-auth",
+        "sha": "abc123def456"
+      },
+      "base": {
+        "ref": "main",
+        "sha": "def456abc123"
+      },
+      "user": {
+        "login": "alice-dev",
+        "type": "User"
+      },
+      "assignees": [
+        {
+          "login": "bob-reviewer",
+          "type": "User"
+        }
+      ],
+      "labels": [
+        {
+          "name": "enhancement",
+          "color": "84b6eb"
+        },
+        {
+          "name": "security",
+          "color": "d73a4a"
+        }
+      ],
+      "milestone": {
+        "title": "v2.1.0",
+        "state": "open"
+      },
+      "repository": {
+        "name": "ecommerce-api",
+        "full_name": "techcorp/ecommerce-api"
+      }
+    },
+    {
+      "id": 987654322,
+      "number": 38,
+      "title": "Fix mobile app crash on iOS 17",
+      "body": "Resolves issue #156 where the app crashes on iOS 17 devices.\n\n## Root Cause\nThe crash was caused by deprecated API usage in the navigation component.\n\n## Solution\n- Updated React Navigation to v6.x\n- Replaced deprecated navigation methods\n- Added iOS 17 compatibility checks\n\n## Testing\n- Tested on iOS 17.0, 17.1, 17.2\n- Regression testing on iOS 15, 16\n- All automated tests passing",
+      "state": "closed",
+      "html_url": "https://github.com/techcorp/mobile-app/pull/38",
+      "created_at": "2024-01-08T11:15:00Z",
+      "updated_at": "2024-01-08T16:45:00Z",
+      "closed_at": "2024-01-08T16:45:00Z",
+      "merged_at": "2024-01-08T16:45:00Z",
+      "head": {
+        "ref": "bugfix/ios17-crash",
+        "sha": "xyz789abc123"
+      },
+      "base": {
+        "ref": "main",
+        "sha": "abc123xyz789"
+      },
+      "user": {
+        "login": "charlie-mobile",
+        "type": "User"
+      },
+      "assignees": [
+        {
+          "login": "diana-lead",
+          "type": "User"
+        }
+      ],
+      "labels": [
+        {
+          "name": "bug",
+          "color": "d73a4a"
+        },
+        {
+          "name": "mobile",
+          "color": "0075ca"
+        },
+        {
+          "name": "high-priority",
+          "color": "b60205"
+        }
+      ],
+      "milestone": {
+        "title": "v1.8.2",
+        "state": "closed"
+      },
+      "repository": {
+        "name": "mobile-app",
+        "full_name": "techcorp/mobile-app"
+      }
+    },
+    {
+      "id": 987654323,
+      "number": 15,
+      "title": "Implement real-time analytics dashboard",
+      "body": "Adds real-time analytics capabilities to the dashboard.\n\n## Features\n- WebSocket connection for live data\n- Real-time charts and metrics\n- Configurable refresh intervals\n- Performance optimizations\n\n## Technical Details\n- Uses Spring WebSocket for backend\n- Chart.js for frontend visualizations\n- Redis for caching frequently accessed data\n\n## Performance Impact\n- Minimal CPU overhead\n- Memory usage increased by ~50MB\n- Network traffic: ~1KB/sec per active user",
+      "state": "open",
+      "html_url": "https://github.com/techcorp/analytics-service/pull/15",
+      "created_at": "2024-01-09T08:20:00Z",
+      "updated_at": "2024-01-09T13:30:00Z",
+      "closed_at": null,
+      "merged_at": null,
+      "head": {
+        "ref": "feature/realtime-dashboard",
+        "sha": "def456xyz789"
+      },
+      "base": {
+        "ref": "main",
+        "sha": "xyz789def456"
+      },
+      "user": {
+        "login": "eve-analytics",
+        "type": "User"
+      },
+      "assignees": [
+        {
+          "login": "frank-architect",
+          "type": "User"
+        }
+      ],
+      "labels": [
+        {
+          "name": "enhancement",
+          "color": "84b6eb"
+        },
+        {
+          "name": "analytics",
+          "color": "0e8a16"
+        },
+        {
+          "name": "performance",
+          "color": "fbca04"
+        }
+      ],
+      "milestone": {
+        "title": "Q1 2024",
+        "state": "open"
+      },
+      "repository": {
+        "name": "analytics-service",
+        "full_name": "techcorp/analytics-service"
+      }
+    }
+  ]
+}

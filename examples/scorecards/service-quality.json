@@ -1,0 +1,114 @@
+{
+    "identifier": "service_quality",
+    "title": "Service Quality",
+    "description": "Measures the overall quality and maintainability of services",
+    "blueprint": "service",
+    "filter": {
+        "combinator": "and",
+        "conditions": [
+            {
+                "operator": "=",
+                "property": "archived",
+                "value": false
+            }
+        ]
+    },
+    "levels": [
+        {
+            "color": "red",
+            "title": "Basic"
+        },
+        {
+            "color": "yellow", 
+            "title": "Good"
+        },
+        {
+            "color": "green",
+            "title": "Excellent"
+        }
+    ],
+    "rules": [
+        {
+            "identifier": "has_readme",
+            "title": "Has README Documentation",
+            "description": "Service has comprehensive README documentation",
+            "level": "Good",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "readme"
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "uses_supported_language",
+            "title": "Uses Supported Language",
+            "description": "Service uses one of the organization's supported programming languages",
+            "level": "Good", 
+            "query": {
+                "combinator": "or",
+                "conditions": [
+                    {
+                        "operator": "=",
+                        "property": "language",
+                        "value": "Python"
+                    },
+                    {
+                        "operator": "=",
+                        "property": "language", 
+                        "value": "JavaScript"
+                    },
+                    {
+                        "operator": "=",
+                        "property": "language",
+                        "value": "Java"
+                    },
+                    {
+                        "operator": "=",
+                        "property": "language",
+                        "value": "Go"
+                    },
+                    {
+                        "operator": "=",
+                        "property": "language",
+                        "value": "TypeScript"
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "has_team_ownership",
+            "title": "Has Team Ownership",
+            "description": "Service has a clearly defined owning team",
+            "level": "Excellent",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "team"
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "production_ready",
+            "title": "Production Ready",
+            "description": "Service is deployed to production environment",
+            "level": "Excellent",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "=",
+                        "property": "environment",
+                        "value": "Production"
+                    }
+                ]
+            }
+        }
+    ]
+}

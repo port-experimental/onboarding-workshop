@@ -1,0 +1,98 @@
+{
+    "identifier": "update_readme",
+    "title": "Update Service README",
+    "icon": "FileText",
+    "description": "Update service README with standardized template and current information",
+    "trigger": {
+        "type": "self-service",
+        "operation": "DAY-2",
+        "userInputs": {
+            "properties": {
+                "service_identifier": {
+                    "title": "Service",
+                    "description": "Select the service to update",
+                    "type": "string",
+                    "blueprint": "service",
+                    "format": "entity"
+                },
+                "update_type": {
+                    "title": "Update Type",
+                    "description": "Type of README update to perform",
+                    "type": "string",
+                    "enum": [
+                        "full_refresh",
+                        "add_sections",
+                        "update_badges",
+                        "fix_formatting"
+                    ],
+                    "enumNames": [
+                        "Full Refresh - Complete rewrite with template",
+                        "Add Missing Sections - Add standard sections",
+                        "Update Badges - Refresh CI/CD and quality badges",
+                        "Fix Formatting - Standardize markdown formatting"
+                    ]
+                },
+                "include_api_docs": {
+                    "title": "Include API Documentation",
+                    "description": "Generate API documentation section",
+                    "type": "boolean",
+                    "default": true
+                },
+                "include_deployment": {
+                    "title": "Include Deployment Guide",
+                    "description": "Add deployment and setup instructions",
+                    "type": "boolean",
+                    "default": true
+                },
+                "include_contributing": {
+                    "title": "Include Contributing Guidelines",
+                    "description": "Add contributing and development guidelines",
+                    "type": "boolean",
+                    "default": true
+                },
+                "custom_sections": {
+                    "title": "Custom Sections",
+                    "description": "Additional sections to include (comma-separated)",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "service_identifier",
+                "update_type"
+            ],
+            "order": [
+                "service_identifier",
+                "update_type",
+                "include_api_docs",
+                "include_deployment",
+                "include_contributing",
+                "custom_sections"
+            ]
+        }
+    },
+    "invocationMethod": {
+        "type": "GITHUB",
+        "org": "techcorp",
+        "repo": "documentation-automation",
+        "workflow": "update-readme.yml",
+        "workflowInputs": {
+            "service-name": "{{ .inputs.service_identifier }}",
+            "update-type": "{{ .inputs.update_type }}",
+            "include-api-docs": "{{ .inputs.include_api_docs }}",
+            "include-deployment": "{{ .inputs.include_deployment }}",
+            "include-contributing": "{{ .inputs.include_contributing }}",
+            "custom-sections": "{{ .inputs.custom_sections }}",
+            "triggered-by": "{{ .trigger.by.user.email }}",
+            "port-run-id": "{{ .run.id }}"
+        },
+        "reportWorkflowStatus": true
+    },
+    "requiredApproval": false,
+    "permissions": {
+        "execute": {
+            "roles": ["Admin", "Developer"],
+            "users": [],
+            "teams": ["Backend Team", "Frontend Team", "DevOps Team", "QA Team"]
+        }
+    }
+}

@@ -1,0 +1,111 @@
+identifier: k8s_deployment
+title: Kubernetes Deployment
+icon: Deployment
+schema:
+  properties:
+    namespace:
+      type: string
+      title: Namespace
+      description: Kubernetes namespace
+    replicas:
+      type: number
+      title: Desired Replicas
+      description: Number of desired pod replicas
+    ready_replicas:
+      type: number
+      title: Ready Replicas
+      description: Number of ready pod replicas
+      default: 0
+    available_replicas:
+      type: number
+      title: Available Replicas
+      description: Number of available pod replicas
+      default: 0
+    unavailable_replicas:
+      type: number
+      title: Unavailable Replicas
+      description: Number of unavailable pod replicas
+      default: 0
+    image:
+      type: string
+      title: Container Image
+      description: Primary container image
+    created_at:
+      type: string
+      title: Created At
+      description: Deployment creation timestamp
+      format: date-time
+    labels:
+      type: object
+      title: Labels
+      description: Kubernetes labels
+    annotations:
+      type: object
+      title: Annotations
+      description: Kubernetes annotations
+    strategy_type:
+      type: string
+      title: Strategy Type
+      description: Deployment strategy
+      enum:
+        - RollingUpdate
+        - Recreate
+    health_status:
+      type: string
+      title: Health Status
+      description: Overall deployment health
+      enum:
+        - healthy
+        - degraded
+        - unhealthy
+    environment:
+      type: string
+      title: Environment
+      description: Deployment environment
+      enum:
+        - Production
+        - Staging
+        - QA
+        - Development
+    service_name:
+      type: string
+      title: Service Name
+      description: Associated service name
+    cpu_requests:
+      type: string
+      title: CPU Requests
+      description: Total CPU requests
+    memory_requests:
+      type: string
+      title: Memory Requests
+      description: Total memory requests
+    cpu_limits:
+      type: string
+      title: CPU Limits
+      description: Total CPU limits
+    memory_limits:
+      type: string
+      title: Memory Limits
+      description: Total memory limits
+  required:
+    - namespace
+    - replicas
+    - image
+    - created_at
+    - health_status
+relations:
+  service:
+    title: Service
+    target: service
+    required: false
+    many: false
+  environment:
+    title: Environment
+    target: environment
+    required: false
+    many: false
+  pods:
+    title: Pods
+    target: k8s_pod
+    required: false
+    many: true

@@ -1,0 +1,97 @@
+identifier: github_release
+title: GitHub Release
+icon: GitVersion
+schema:
+  properties:
+    tag_name:
+      type: string
+      title: Tag Name
+      description: Git tag name for the release
+    release_notes:
+      type: string
+      title: Release Notes
+      description: Release notes and changelog
+      format: markdown
+    created_at:
+      type: string
+      title: Created At
+      description: Release creation timestamp
+      format: date-time
+    published_at:
+      type: string
+      title: Published At
+      description: Release publication timestamp
+      format: date-time
+    draft:
+      type: boolean
+      title: Draft
+      description: Whether the release is a draft
+      default: false
+    prerelease:
+      type: boolean
+      title: Pre-release
+      description: Whether this is a pre-release version
+      default: false
+    author:
+      type: string
+      title: Author
+      description: Release author username
+    download_count:
+      type: number
+      title: Download Count
+      description: Number of downloads for this release
+      default: 0
+    assets_count:
+      type: number
+      title: Assets Count
+      description: Number of release assets
+      default: 0
+    version_type:
+      type: string
+      title: Version Type
+      description: Type of version release
+      enum:
+        - major
+        - minor
+        - patch
+        - hotfix
+        - beta
+        - alpha
+    deployment_status:
+      type: string
+      title: Deployment Status
+      description: Current deployment status
+      enum:
+        - pending
+        - deploying
+        - deployed
+        - failed
+        - rolled_back
+      default: pending
+    environment_deployed:
+      type: array
+      title: Environments Deployed
+      description: Environments where this release is deployed
+      items:
+        type: string
+        enum:
+          - Development
+          - QA
+          - Staging
+          - Production
+  required:
+    - tag_name
+    - created_at
+    - draft
+    - prerelease
+relations:
+  service:
+    title: Service
+    target: service
+    required: true
+    many: false
+  pull_requests:
+    title: Pull Requests
+    target: github_pull_request
+    required: false
+    many: true

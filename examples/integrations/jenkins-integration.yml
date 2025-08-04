@@ -1,0 +1,101 @@
+# Jenkins CI/CD Integration Template
+# This template shows how to integrate Jenkins builds and deployments
+# Note: This uses mock data structure - adapt to your Jenkins API format
+
+resources:
+  - kind: job
+    selector:
+      query: 'true'
+    port:
+      entity:
+        mappings:
+          identifier: .name
+          title: .displayName
+          blueprint: '"jenkins_job"'
+          properties:
+            description: .description
+            url: .url
+            buildable: .buildable
+            color: .color
+            last_build_number: .lastBuild.number
+            last_build_status: |
+              if .lastBuild.result == "SUCCESS" then "success"
+              elif .lastBuild.result == "FAILURE" then "failure"
+              elif .lastBuild.result == "UNSTABLE" then "unstable"
+              elif .lastBuild.result == "ABORTED" then "aborted"
+              else "unknown"
+              end
+            last_build_timestamp: .lastBuild.timestamp
+            last_successful_build: .lastSuccessfulBuild.number
+            last_failed_build: .lastFailedBuild.number
+            job_type: |
+              if .name | contains("deploy") then "deployment"
+              elif .name | contains("test") then "testing"
+              elif .name | contains("build") then "build"
+              else "pipeline"
+              end
+            service_name: |
+              if .name | startswith("ecommerce") then "ecommerce-api"
+              elif .name | startswith("mobile") then "mobile-app"
+              elif .name | startswith("analytics") then "analytics-service"
+              elif .name | startswith("payment") then "payment-gateway"
+              elif .name | startswith("user") then "user-management"
+              else (.name | split("-")[0])
+              end
+          relations:
+            service: |
+              if .name | startswith("ecommerce") then "ecommerce-api"
+              elif .name | startswith("mobile") then "mobile-app"
+              elif .name | startswith("analytics") then "analytics-service"
+              elif .name | startswith("payment") then "payment-gateway"
+              elif .name | startswith("user") then "user-management"
+              else (.name | split("-")[0])
+              end
+
+  - kind: build
+    selector:
+      query: 'true'
+    port:
+      entity:
+        mappings:
+          identifier: .job.name + "-" + (.number | tostring)
+          title: .job.displayName + " #" + (.number | tostring)
+          blueprint: '"jenkins_build"'
+          properties:
+            build_number: .number
+            status: |
+              if .result == "SUCCESS" then "success"
+              elif .result == "FAILURE" then "failure"
+              elif .result == "UNSTABLE" then "unstable"
+              elif .result == "ABORTED" then "aborted"
+              elif .building then "running"
+              else "pending"
+              end
+            duration: .duration
+            timestamp: .timestamp
+            url: .url
+            executor: .executor
+            node: .builtOn
+            commit_id: .changeSet.items[0].commitId // null
+            commit_message: .changeSet.items[0].msg // null
+            commit_author: .changeSet.items[0].author.fullName // null
+            test_results: |
+              if .testResults then
+                {
+                  "total": .testResults.totalCount,
+                  "passed": .testResults.passCount,
+                  "failed": .testResults.failCount,
+                  "skipped": .testResults.skipCount
+                }
+              else null
+              end
+          relations:
+            job: .job.name
+            service: |
+              if .job.name | startswith("ecommerce") then "ecommerce-api"
+              elif .job.name | startswith("mobile") then "mobile-app"
+              elif .job.name | startswith("analytics") then "analytics-service"
+              elif .job.name | startswith("payment") then "payment-gateway"
+              elif .job.name | startswith("user") then "user-management"
+              else (.job.name | split("-")[0])
+              end

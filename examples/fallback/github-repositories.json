@@ -1,0 +1,144 @@
+{
+  "repositories": [
+    {
+      "id": 123456789,
+      "name": "ecommerce-api",
+      "full_name": "techcorp/ecommerce-api",
+      "description": "Core e-commerce API service for TechCorp platform",
+      "private": false,
+      "html_url": "https://github.com/techcorp/ecommerce-api",
+      "clone_url": "https://github.com/techcorp/ecommerce-api.git",
+      "language": "Python",
+      "default_branch": "main",
+      "created_at": "2023-01-15T10:30:00Z",
+      "updated_at": "2024-01-10T14:22:00Z",
+      "pushed_at": "2024-01-10T14:22:00Z",
+      "size": 2048,
+      "stargazers_count": 45,
+      "watchers_count": 12,
+      "forks_count": 8,
+      "open_issues_count": 3,
+      "topics": ["api", "ecommerce", "python", "flask", "microservice"],
+      "owner": {
+        "login": "techcorp",
+        "type": "Organization"
+      },
+      "license": {
+        "key": "mit",
+        "name": "MIT License"
+      }
+    },
+    {
+      "id": 123456790,
+      "name": "mobile-app",
+      "full_name": "techcorp/mobile-app",
+      "description": "React Native mobile application for TechCorp customers",
+      "private": false,
+      "html_url": "https://github.com/techcorp/mobile-app",
+      "clone_url": "https://github.com/techcorp/mobile-app.git",
+      "language": "JavaScript",
+      "default_branch": "main",
+      "created_at": "2023-02-20T09:15:00Z",
+      "updated_at": "2024-01-08T16:45:00Z",
+      "pushed_at": "2024-01-08T16:45:00Z",
+      "size": 15360,
+      "stargazers_count": 23,
+      "watchers_count": 8,
+      "forks_count": 4,
+      "open_issues_count": 7,
+      "topics": ["mobile", "react-native", "javascript", "ios", "android"],
+      "owner": {
+        "login": "techcorp",
+        "type": "Organization"
+      },
+      "license": {
+        "key": "mit",
+        "name": "MIT License"
+      }
+    },
+    {
+      "id": 123456791,
+      "name": "analytics-service",
+      "full_name": "techcorp/analytics-service",
+      "description": "Data analytics and reporting service built with Java Spring Boot",
+      "private": false,
+      "html_url": "https://github.com/techcorp/analytics-service",
+      "clone_url": "https://github.com/techcorp/analytics-service.git",
+      "language": "Java",
+      "default_branch": "main",
+      "created_at": "2023-03-10T11:20:00Z",
+      "updated_at": "2024-01-09T13:30:00Z",
+      "pushed_at": "2024-01-09T13:30:00Z",
+      "size": 8192,
+      "stargazers_count": 18,
+      "watchers_count": 6,
+      "forks_count": 3,
+      "open_issues_count": 2,
+      "topics": ["analytics", "java", "spring-boot", "data", "reporting"],
+      "owner": {
+        "login": "techcorp",
+        "type": "Organization"
+      },
+      "license": {
+        "key": "apache-2.0",
+        "name": "Apache License 2.0"
+      }
+    },
+    {
+      "id": 123456792,
+      "name": "frontend-web",
+      "full_name": "techcorp/frontend-web",
+      "description": "Main web frontend application built with React and TypeScript",
+      "private": false,
+      "html_url": "https://github.com/techcorp/frontend-web",
+      "clone_url": "https://github.com/techcorp/frontend-web.git",
+      "language": "TypeScript",
+      "default_branch": "main",
+      "created_at": "2023-01-25T14:45:00Z",
+      "updated_at": "2024-01-11T10:15:00Z",
+      "pushed_at": "2024-01-11T10:15:00Z",
+      "size": 25600,
+      "stargazers_count": 67,
+      "watchers_count": 15,
+      "forks_count": 12,
+      "open_issues_count": 5,
+      "topics": ["frontend", "react", "typescript", "web", "ui"],
+      "owner": {
+        "login": "techcorp",
+        "type": "Organization"
+      },
+      "license": {
+        "key": "mit",
+        "name": "MIT License"
+      }
+    },
+    {
+      "id": 123456793,
+      "name": "infrastructure",
+      "full_name": "techcorp/infrastructure",
+      "description": "Infrastructure as Code using Terraform and Kubernetes configurations",
+      "private": true,
+      "html_url": "https://github.com/techcorp/infrastructure",
+      "clone_url": "https://github.com/techcorp/infrastructure.git",
+      "language": "HCL",
+      "default_branch": "main",
+      "created_at": "2023-01-05T08:00:00Z",
+      "updated_at": "2024-01-11T12:00:00Z",
+      "pushed_at": "2024-01-11T12:00:00Z",
+      "size": 4096,
+      "stargazers_count": 12,
+      "watchers_count": 8,
+      "forks_count": 2,
+      "open_issues_count": 1,
+      "topics": ["infrastructure", "terraform", "kubernetes", "devops", "iac"],
+      "owner": {
+        "login": "techcorp",
+        "type": "Organization"
+      },
+      "license": {
+        "key": "apache-2.0",
+        "name": "Apache License 2.0"
+      }
+    }
+  ]
+}

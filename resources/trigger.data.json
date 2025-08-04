@@ -1,0 +1,41 @@
+{
+    "inputs": {
+        "service_name": "payment-gateway",
+        "service_description": "Payment processing service for TechCorp e-commerce platform",
+        "language": "Node.js",
+        "version": "2.1.0",
+        "team": "Backend Team",
+        "environment": "Production"
+    },
+    "trigger": {
+        "by": {
+            "orgId": "techcorp-org-123",
+            "userId": "user-mike-rodriguez-456",
+            "user": {
+                "email": "mike.rodriguez@techcorp.com",
+                "firstName": "Mike",
+                "lastName": "Rodriguez",
+                "phoneNumber": "+1-555-0123",
+                "picture": "",
+                "providers": [],
+                "status": "ACTIVE",
+                "id": "user-mike-rodriguez-456",
+                "createdAt": "2024-06-06T05:21:00.565Z",
+                "updatedAt": "2024-06-06T05:21:00.565Z"
+            }
+        },
+        "origin": "UI",
+        "at": "2024-06-06T05:21:00.565Z",
+        "operation": "CREATE"
+    },
+    "event": null,
+    "entity": {},
+    "action": {
+        "identifier": "service_scaffold_new_service",
+        "blueprint": "Service",
+        "encryptedProperties": []
+    },
+    "run": {
+        "id": "<The current run's id>"
+    }
+}

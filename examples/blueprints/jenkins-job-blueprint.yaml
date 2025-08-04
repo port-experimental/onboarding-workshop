@@ -1,0 +1,85 @@
+identifier: jenkins_job
+title: Jenkins Job
+icon: Jenkins
+schema:
+  properties:
+    description:
+      type: string
+      title: Description
+      description: Job description and purpose
+    url:
+      type: string
+      title: URL
+      description: Jenkins job URL
+      format: url
+    buildable:
+      type: boolean
+      title: Buildable
+      description: Whether the job can be built
+      default: true
+    color:
+      type: string
+      title: Status Color
+      description: Jenkins status color indicator
+      enum:
+        - blue
+        - red
+        - yellow
+        - grey
+        - disabled
+        - aborted
+    last_build_number:
+      type: number
+      title: Last Build Number
+      description: Number of the last build
+    last_build_status:
+      type: string
+      title: Last Build Status
+      description: Status of the last build
+      enum:
+        - success
+        - failure
+        - unstable
+        - aborted
+        - unknown
+    last_build_timestamp:
+      type: string
+      title: Last Build Timestamp
+      description: Timestamp of the last build
+      format: date-time
+    last_successful_build:
+      type: number
+      title: Last Successful Build
+      description: Number of the last successful build
+    last_failed_build:
+      type: number
+      title: Last Failed Build
+      description: Number of the last failed build
+    job_type:
+      type: string
+      title: Job Type
+      description: Type of Jenkins job
+      enum:
+        - build
+        - deployment
+        - testing
+        - pipeline
+    service_name:
+      type: string
+      title: Service Name
+      description: Associated service name
+  required:
+    - url
+    - buildable
+    - job_type
+relations:
+  service:
+    title: Service
+    target: service
+    required: false
+    many: false
+  builds:
+    title: Builds
+    target: jenkins_build
+    required: false
+    many: true

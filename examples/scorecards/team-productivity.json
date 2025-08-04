@@ -1,0 +1,122 @@
+{
+    "identifier": "team_productivity",
+    "title": "Team Productivity",
+    "description": "Measures team productivity and collaboration effectiveness",
+    "blueprint": "team",
+    "filter": {
+        "combinator": "and",
+        "conditions": [
+            {
+                "operator": ">",
+                "property": "members_count",
+                "value": 0
+            }
+        ]
+    },
+    "levels": [
+        {
+            "color": "red",
+            "title": "Needs Improvement"
+        },
+        {
+            "color": "yellow", 
+            "title": "Good"
+        },
+        {
+            "color": "green",
+            "title": "Excellent"
+        }
+    ],
+    "rules": [
+        {
+            "identifier": "has_team_lead",
+            "title": "Has Designated Team Lead",
+            "description": "Team has a clearly identified team lead",
+            "level": "Good",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "lead"
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "has_contact_info",
+            "title": "Has Contact Information",
+            "description": "Team has email and Slack channel configured",
+            "level": "Good", 
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "email"
+                    },
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "slack_channel"
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "optimal_team_size",
+            "title": "Optimal Team Size",
+            "description": "Team has an optimal size (3-8 members) for productivity",
+            "level": "Excellent",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": ">=",
+                        "property": "members_count",
+                        "value": 3
+                    },
+                    {
+                        "operator": "<=",
+                        "property": "members_count",
+                        "value": 8
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "owns_services",
+            "title": "Owns Services",
+            "description": "Team has ownership of at least one service",
+            "level": "Excellent",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": ">",
+                        "property": "$count_relations.services",
+                        "value": 0
+                    }
+                ]
+            }
+        },
+        {
+            "identifier": "technology_focus",
+            "title": "Clear Technology Focus",
+            "description": "Team has defined technology stack and focus area",
+            "level": "Good",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "focus_area"
+                    },
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "technologies"
+                    }
+                ]
+            }
+        }
+    ]
+}

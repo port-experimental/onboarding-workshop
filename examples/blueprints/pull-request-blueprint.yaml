@@ -1,0 +1,122 @@
+identifier: github_pull_request
+title: GitHub Pull Request
+icon: GitPullRequest
+schema:
+  properties:
+    creator:
+      type: string
+      title: Creator
+      description: Pull request creator username
+    assignees:
+      type: array
+      title: Assignees
+      description: List of assigned users
+      items:
+        type: string
+    reviewers:
+      type: array
+      title: Reviewers
+      description: List of requested reviewers
+      items:
+        type: string
+    status:
+      type: string
+      title: Status
+      description: Pull request status
+      enum:
+        - open
+        - closed
+        - merged
+        - draft
+    closedAt:
+      type: string
+      title: Closed At
+      description: When the PR was closed
+      format: date-time
+    updatedAt:
+      type: string
+      title: Updated At
+      description: Last update timestamp
+      format: date-time
+    mergedAt:
+      type: string
+      title: Merged At
+      description: When the PR was merged
+      format: date-time
+    prNumber:
+      type: number
+      title: PR Number
+      description: Pull request number
+    link:
+      type: string
+      title: Link
+      description: URL to the pull request
+      format: url
+    draft:
+      type: boolean
+      title: Draft
+      description: Whether this is a draft PR
+      default: false
+    head:
+      type: string
+      title: Head Branch
+      description: Source branch name
+    base:
+      type: string
+      title: Base Branch
+      description: Target branch name
+    labels:
+      type: array
+      title: Labels
+      description: PR labels
+      items:
+        type: string
+    size:
+      type: string
+      title: Size
+      description: Estimated size of the PR
+      enum:
+        - XS
+        - S
+        - M
+        - L
+        - XL
+    complexity:
+      type: string
+      title: Complexity
+      description: Estimated complexity level
+      enum:
+        - Low
+        - Medium
+        - High
+    review_status:
+      type: string
+      title: Review Status
+      description: Current review status
+      enum:
+        - pending
+        - approved
+        - changes_requested
+        - dismissed
+    ci_status:
+      type: string
+      title: CI Status
+      description: Continuous integration status
+      enum:
+        - pending
+        - success
+        - failure
+        - error
+  required:
+    - creator
+    - status
+    - prNumber
+    - link
+    - head
+    - base
+relations:
+  service:
+    title: Service
+    target: service
+    required: true
+    many: false

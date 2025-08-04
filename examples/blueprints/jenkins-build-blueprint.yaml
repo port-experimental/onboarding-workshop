@@ -1,0 +1,96 @@
+identifier: jenkins_build
+title: Jenkins Build
+icon: Build
+schema:
+  properties:
+    build_number:
+      type: number
+      title: Build Number
+      description: Sequential build number
+    status:
+      type: string
+      title: Status
+      description: Build execution status
+      enum:
+        - success
+        - failure
+        - unstable
+        - aborted
+        - running
+        - pending
+    duration:
+      type: number
+      title: Duration
+      description: Build duration in milliseconds
+    timestamp:
+      type: string
+      title: Timestamp
+      description: Build start timestamp
+      format: date-time
+    url:
+      type: string
+      title: URL
+      description: Build details URL
+      format: url
+    executor:
+      type: string
+      title: Executor
+      description: Build executor identifier
+    node:
+      type: string
+      title: Node
+      description: Jenkins node where build executed
+    commit_id:
+      type: string
+      title: Commit ID
+      description: Git commit SHA that triggered the build
+    commit_message:
+      type: string
+      title: Commit Message
+      description: Git commit message
+    commit_author:
+      type: string
+      title: Commit Author
+      description: Git commit author name
+    test_results:
+      type: object
+      title: Test Results
+      description: Test execution summary
+      properties:
+        total:
+          type: number
+          title: Total Tests
+        passed:
+          type: number
+          title: Passed Tests
+        failed:
+          type: number
+          title: Failed Tests
+        skipped:
+          type: number
+          title: Skipped Tests
+    artifacts_count:
+      type: number
+      title: Artifacts Count
+      description: Number of build artifacts generated
+      default: 0
+    console_output_size:
+      type: number
+      title: Console Output Size
+      description: Size of console output in bytes
+      default: 0
+  required:
+    - build_number
+    - status
+    - timestamp
+relations:
+  job:
+    title: Jenkins Job
+    target: jenkins_job
+    required: true
+    many: false
+  service:
+    title: Service
+    target: service
+    required: false
+    many: false

@@ -1,0 +1,166 @@
+{
+  "entities": [
+    {
+      "identifier": "ecommerce-api",
+      "title": "E-commerce API",
+      "blueprint": "service",
+      "properties": {
+        "name": "ecommerce-api",
+        "description": "Core e-commerce API service for TechCorp platform",
+        "language": "Python",
+        "framework": "Flask",
+        "repository": "https://github.com/techcorp/ecommerce-api",
+        "status": "Active",
+        "version": "2.1.0",
+        "owner": "alice-dev",
+        "team": "backend-team",
+        "environment": ["development", "staging", "production"],
+        "dependencies": ["user-service", "payment-service", "inventory-service"],
+        "health_check_url": "https://api.techcorp.com/health",
+        "documentation_url": "https://docs.techcorp.com/api/ecommerce"
+      },
+      "relations": {
+        "team": "backend-team",
+        "environments": ["prod-env", "staging-env", "dev-env"]
+      }
+    },
+    {
+      "identifier": "mobile-app",
+      "title": "Mobile App",
+      "blueprint": "service",
+      "properties": {
+        "name": "mobile-app",
+        "description": "React Native mobile application for TechCorp customers",
+        "language": "JavaScript",
+        "framework": "React Native",
+        "repository": "https://github.com/techcorp/mobile-app",
+        "status": "Active",
+        "version": "1.8.2",
+        "owner": "charlie-mobile",
+        "team": "frontend-team",
+        "environment": ["development", "staging", "production"],
+        "dependencies": ["ecommerce-api", "analytics-service"],
+        "health_check_url": "https://mobile.techcorp.com/health",
+        "documentation_url": "https://docs.techcorp.com/mobile"
+      },
+      "relations": {
+        "team": "frontend-team",
+        "environments": ["prod-env", "staging-env", "dev-env"]
+      }
+    },
+    {
+      "identifier": "analytics-service",
+      "title": "Analytics Service",
+      "blueprint": "service",
+      "properties": {
+        "name": "analytics-service",
+        "description": "Data analytics and reporting service built with Java Spring Boot",
+        "language": "Java",
+        "framework": "Spring Boot",
+        "repository": "https://github.com/techcorp/analytics-service",
+        "status": "Active",
+        "version": "3.0.1",
+        "owner": "eve-analytics",
+        "team": "data-team",
+        "environment": ["development", "staging", "production"],
+        "dependencies": ["data-warehouse", "redis-cache"],
+        "health_check_url": "https://analytics.techcorp.com/actuator/health",
+        "documentation_url": "https://docs.techcorp.com/analytics"
+      },
+      "relations": {
+        "team": "data-team",
+        "environments": ["prod-env", "staging-env", "dev-env"]
+      }
+    },
+    {
+      "identifier": "backend-team",
+      "title": "Backend Team",
+      "blueprint": "team",
+      "properties": {
+        "name": "Backend Team",
+        "description": "Responsible for core API services and backend infrastructure",
+        "lead": "alice-dev",
+        "members": ["alice-dev", "bob-reviewer", "david-backend"],
+        "focus_area": "Backend",
+        "slack_channel": "#backend-team",
+        "email": "backend-team@techcorp.com",
+        "oncall_schedule": "https://pagerduty.com/schedules/backend"
+      }
+    },
+    {
+      "identifier": "frontend-team",
+      "title": "Frontend Team",
+      "blueprint": "team",
+      "properties": {
+        "name": "Frontend Team",
+        "description": "Develops user-facing applications and interfaces",
+        "lead": "diana-lead",
+        "members": ["charlie-mobile", "diana-lead", "frank-ui"],
+        "focus_area": "Frontend",
+        "slack_channel": "#frontend-team",
+        "email": "frontend-team@techcorp.com",
+        "oncall_schedule": "https://pagerduty.com/schedules/frontend"
+      }
+    },
+    {
+      "identifier": "data-team",
+      "title": "Data Team",
+      "blueprint": "team",
+      "properties": {
+        "name": "Data Team",
+        "description": "Analytics, data engineering, and machine learning",
+        "lead": "frank-architect",
+        "members": ["eve-analytics", "frank-architect", "grace-data"],
+        "focus_area": "Data",
+        "slack_channel": "#data-team",
+        "email": "data-team@techcorp.com",
+        "oncall_schedule": "https://pagerduty.com/schedules/data"
+      }
+    },
+    {
+      "identifier": "prod-env",
+      "title": "Production",
+      "blueprint": "environment",
+      "properties": {
+        "name": "Production",
+        "type": "production",
+        "region": "us-east-1",
+        "cluster": "prod-cluster",
+        "namespace": "production",
+        "url": "https://app.techcorp.com",
+        "monitoring_url": "https://monitoring.techcorp.com/prod",
+        "status": "Healthy"
+      }
+    },
+    {
+      "identifier": "staging-env",
+      "title": "Staging",
+      "blueprint": "environment",
+      "properties": {
+        "name": "Staging",
+        "type": "staging",
+        "region": "us-east-1",
+        "cluster": "staging-cluster",
+        "namespace": "staging",
+        "url": "https://staging.techcorp.com",
+        "monitoring_url": "https://monitoring.techcorp.com/staging",
+        "status": "Healthy"
+      }
+    },
+    {
+      "identifier": "dev-env",
+      "title": "Development",
+      "blueprint": "environment",
+      "properties": {
+        "name": "Development",
+        "type": "development",
+        "region": "us-west-2",
+        "cluster": "dev-cluster",
+        "namespace": "development",
+        "url": "https://dev.techcorp.com",
+        "monitoring_url": "https://monitoring.techcorp.com/dev",
+        "status": "Healthy"
+      }
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+[
+  {
+    "identifier": "service",
+      "title": "Service",
+      "icon": "Microservice",
+      "description": "A software service in our architecture",
+      "schema": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Service Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "language": {
+            "type": "string",
+            "title": "Programming Language",
+            "enum": ["Python", "JavaScript", "Java", "Go", "TypeScript", "C#"]
+          },
+          "framework": {
+            "type": "string",
+            "title": "Framework"
+          },
+          "repository": {
+            "type": "string",
+            "title": "Repository URL",
+            "format": "url"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "enum": ["Active", "Deprecated", "Development", "Maintenance"],
+            "default": "Active"
+          },
+          "version": {
+            "type": "string",
+            "title": "Current Version"
+          },
+          "owner": {
+            "type": "string",
+            "title": "Service Owner"
+          },
+          "team": {
+            "type": "string",
+            "title": "Owning Team"
+          },
+          "environment": {
+            "type": "array",
+            "title": "Deployed Environments",
+            "items": {
+              "type": "string",
+              "enum": ["development", "staging", "production"]
+            }
+          },
+          "dependencies": {
+            "type": "array",
+            "title": "Service Dependencies",
+            "items": {
+              "type": "string"
+            }
+          },
+          "health_check_url": {
+            "type": "string",
+            "title": "Health Check URL",
+            "format": "url"
+          },
+          "documentation_url": {
+            "type": "string",
+            "title": "Documentation URL",
+            "format": "url"
+          }
+        },
+        "required": ["name", "language", "team", "status"]
+      }
+    },
+    {
+      "identifier": "team",
+      "title": "Team",
+      "icon": "Team",
+      "description": "Development teams in our organization",
+      "schema": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Team Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Team Description"
+          },
+          "lead": {
+            "type": "string",
+            "title": "Team Lead"
+          },
+          "members": {
+            "type": "array",
+            "title": "Team Members",
+            "items": {
+              "type": "string"
+            }
+          },
+          "focus_area": {
+            "type": "string",
+            "title": "Focus Area",
+            "enum": ["Frontend", "Backend", "Data", "DevOps", "Mobile", "QA"]
+          },
+          "slack_channel": {
+            "type": "string",
+            "title": "Slack Channel"
+          },
+          "email": {
+            "type": "string",
+            "title": "Team Email",
+            "format": "email"
+          },
+          "oncall_schedule": {
+            "type": "string",
+            "title": "On-call Schedule URL",
+            "format": "url"
+          }
+        },
+        "required": ["name", "lead", "focus_area"]
+      }
+    },
+    {
+      "identifier": "environment",
+      "title": "Environment",
+      "icon": "Environment",
+      "description": "Deployment environments",
+      "schema": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Environment Name"
+          },
+          "type": {
+            "type": "string",
+            "title": "Environment Type",
+            "enum": ["development", "staging", "production", "testing"]
+          },
+          "region": {
+            "type": "string",
+            "title": "AWS Region",
+            "enum": ["us-east-1", "us-west-2", "eu-west-1", "ap-southeast-1"]
+          },
+          "cluster": {
+            "type": "string",
+            "title": "Kubernetes Cluster"
+          },
+          "namespace": {
+            "type": "string",
+            "title": "Kubernetes Namespace"
+          },
+          "url": {
+            "type": "string",
+            "title": "Environment URL",
+            "format": "url"
+          },
+          "monitoring_url": {
+            "type": "string",
+            "title": "Monitoring Dashboard",
+            "format": "url"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "enum": ["Healthy", "Degraded", "Down", "Maintenance"],
+            "default": "Healthy"
+          }
+        },
+        "required": ["name", "type", "region"]
+      }
+    }
+  ]

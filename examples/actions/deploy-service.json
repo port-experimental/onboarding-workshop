@@ -1,0 +1,83 @@
+{
+    "identifier": "deploy_service",
+    "title": "Deploy Service",
+    "icon": "Deployment",
+    "description": "Deploy a service to specified environment",
+    "trigger": {
+        "type": "self-service",
+        "operation": "DAY-2",
+        "userInputs": {
+            "properties": {
+                "service_name": {
+                    "title": "Service Name",
+                    "description": "Name of the service to deploy",
+                    "type": "string"
+                },
+                "environment": {
+                    "title": "Environment",
+                    "description": "Target deployment environment",
+                    "type": "string",
+                    "enum": [
+                        "Development",
+                        "Staging",
+                        "Production"
+                    ]
+                },
+                "version": {
+                    "title": "Version",
+                    "description": "Version/tag to deploy",
+                    "type": "string",
+                    "default": "latest"
+                },
+                "rollback_enabled": {
+                    "title": "Enable Rollback",
+                    "description": "Enable automatic rollback on failure",
+                    "type": "boolean",
+                    "default": true
+                },
+                "notification_channel": {
+                    "title": "Notification Channel",
+                    "description": "Slack channel for deployment notifications",
+                    "type": "string",
+                    "default": "#deployments"
+                }
+            },
+            "required": [
+                "service_name",
+                "environment",
+                "version"
+            ],
+            "order": [
+                "service_name",
+                "environment", 
+                "version",
+                "rollback_enabled",
+                "notification_channel"
+            ]
+        }
+    },
+    "invocationMethod": {
+        "type": "GITHUB",
+        "org": "techcorp",
+        "repo": "deployment-workflows",
+        "workflow": "deploy-service.yml",
+        "workflowInputs": {
+            "service-name": "{{ .inputs.service_name }}",
+            "environment": "{{ .inputs.environment }}",
+            "version": "{{ .inputs.version }}",
+            "rollback-enabled": "{{ .inputs.rollback_enabled }}",
+            "notification-channel": "{{ .inputs.notification_channel }}",
+            "triggered-by": "{{ .trigger.by.user.email }}",
+            "port-run-id": "{{ .run.id }}"
+        },
+        "reportWorkflowStatus": true
+    },
+    "requiredApproval": false,
+    "permissions": {
+        "execute": {
+            "roles": ["Admin", "Developer"],
+            "users": [],
+            "teams": ["Backend Team", "DevOps Team"]
+        }
+    }
+}

@@ -1,0 +1,27 @@
+identifier: user_story
+title: User Story
+icon: Port
+schema:
+  properties:
+    description:
+      type: string
+      title: Description
+      description: Detailed description of the user story
+    source:
+      type: string
+      title: Source
+      description: Origin or source of the user story
+    link:
+      type: string
+      title: Link
+      description: URL reference for the user story
+      format: uri
+    tested:
+      type: boolean
+      title: Tested
+      description: Whether the user story has been tested
+  required:
+    - description
+    - source
+    - link
+    - tested 

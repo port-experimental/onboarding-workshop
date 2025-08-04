@@ -1,0 +1,147 @@
+{
+    "identifier": "create_service",
+    "title": "Create New Service",
+    "icon": "Plus",
+    "description": "Create a new service with repository, CI/CD pipeline, and initial configuration",
+    "trigger": {
+        "type": "self-service",
+        "operation": "CREATE",
+        "userInputs": {
+            "properties": {
+                "service_name": {
+                    "title": "Service Name",
+                    "description": "Name of the new service (lowercase, hyphen-separated)",
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$"
+                },
+                "description": {
+                    "title": "Description",
+                    "description": "Brief description of the service purpose",
+                    "type": "string"
+                },
+                "language": {
+                    "title": "Programming Language",
+                    "description": "Primary programming language",
+                    "type": "string",
+                    "enum": [
+                        "Python",
+                        "JavaScript",
+                        "TypeScript",
+                        "Java",
+                        "Go",
+                        "C#"
+                    ]
+                },
+                "framework": {
+                    "title": "Framework",
+                    "description": "Framework or runtime to use",
+                    "type": "string",
+                    "enum": [
+                        "Django",
+                        "FastAPI",
+                        "Express.js",
+                        "React",
+                        "Spring Boot",
+                        "Gin",
+                        ".NET Core"
+                    ]
+                },
+                "team": {
+                    "title": "Owning Team",
+                    "description": "Team that will own this service",
+                    "type": "string",
+                    "enum": [
+                        "Frontend Team",
+                        "Backend Team",
+                        "DevOps Team",
+                        "Data Team"
+                    ]
+                },
+                "database_required": {
+                    "title": "Database Required",
+                    "description": "Does this service need a database?",
+                    "type": "boolean",
+                    "default": false
+                },
+                "database_type": {
+                    "title": "Database Type",
+                    "description": "Type of database needed",
+                    "type": "string",
+                    "enum": [
+                        "PostgreSQL",
+                        "MongoDB",
+                        "Redis",
+                        "MySQL"
+                    ],
+                    "dependsOn": ["database_required"]
+                },
+                "monitoring_enabled": {
+                    "title": "Enable Monitoring",
+                    "description": "Set up monitoring and alerting",
+                    "type": "boolean",
+                    "default": true
+                },
+                "public_api": {
+                    "title": "Public API",
+                    "description": "Will this service expose a public API?",
+                    "type": "boolean",
+                    "default": false
+                }
+            },
+            "required": [
+                "service_name",
+                "description",
+                "language",
+                "framework",
+                "team"
+            ],
+            "order": [
+                "service_name",
+                "description",
+                "language",
+                "framework",
+                "team",
+                "database_required",
+                "database_type",
+                "monitoring_enabled",
+                "public_api"
+            ]
+        }
+    },
+    "invocationMethod": {
+        "type": "GITHUB",
+        "org": "techcorp",
+        "repo": "service-templates",
+        "workflow": "create-service.yml",
+        "workflowInputs": {
+            "service-name": "{{ .inputs.service_name }}",
+            "description": "{{ .inputs.description }}",
+            "language": "{{ .inputs.language }}",
+            "framework": "{{ .inputs.framework }}",
+            "team": "{{ .inputs.team }}",
+            "database-required": "{{ .inputs.database_required }}",
+            "database-type": "{{ .inputs.database_type }}",
+            "monitoring-enabled": "{{ .inputs.monitoring_enabled }}",
+            "public-api": "{{ .inputs.public_api }}",
+            "created-by": "{{ .trigger.by.user.email }}",
+            "port-run-id": "{{ .run.id }}"
+        },
+        "reportWorkflowStatus": true
+    },
+    "requiredApproval": true,
+    "approvalNotification": {
+        "type": "email"
+    },
+    "permissions": {
+        "execute": {
+            "roles": ["Admin", "Developer"],
+            "users": [],
+            "teams": ["Backend Team", "Frontend Team", "DevOps Team"]
+        },
+        "approve": {
+            "roles": ["Admin"],
+            "users": [],
+            "teams": ["DevOps Team"]
+        }
+    }
+}

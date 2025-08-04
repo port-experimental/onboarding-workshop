@@ -1,0 +1,24 @@
+{
+  "name": "workshop-validation",
+  "version": "1.0.0",
+  "description": "Content validation and testing framework for Port workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "node validate-all.js",
+    "validate:syntax": "node validate-syntax.js",
+    "validate:links": "node validate-links.js",
+    "validate:templates": "node validate-templates.js",
+    "validate:challenges": "node validate-challenges.js",
+    "validate:environment": "node environment-check.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "axios": "^1.6.0",
+    "chalk": "^4.1.2",
+    "glob": "^10.3.0"
+  },
+  "devDependencies": {},
+  "keywords": ["validation", "testing", "port", "workshop"],
+  "author": "Port Workshop Team",
+  "license": "MIT"
+}
