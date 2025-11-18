@@ -34,7 +34,7 @@ By the end of this module, you will be able to:
 ## Key Concepts
 
 ### Why Infrastructure as Code for Port?
-Managing Port configurations through Terraform provides:
+Managing Port configurations through [Terraform](../../resources/glossary.md#terraform) provides:
 - **Version Control**: Track all changes to Port configurations
 - **Reproducibility**: Recreate environments consistently
 - **Collaboration**: Team-based configuration management
@@ -60,12 +60,15 @@ The Port Terraform provider supports:
 Create a new directory for your Terraform configuration:
 
 ```bash
+# In your terminal, create and enter the Terraform project directory
 mkdir port-terraform
 cd port-terraform
 ```
 
 ### Step 3: Configure Provider
-Create `main.tf`:
+Create `main.tf`.
+
+Paste location: **`port-terraform/main.tf`** (new file; paste the following HCL into it):
 
 ```hcl
 terraform {
@@ -85,7 +88,9 @@ provider "port" {
 ```
 
 ### Step 4: Define Variables
-Create `variables.tf`:
+Create `variables.tf`.
+
+Paste location: **`port-terraform/variables.tf`** (new file; paste the variable definitions below):
 
 ```hcl
 variable "port_client_id" {
@@ -108,7 +113,9 @@ variable "port_base_url" {
 ```
 
 ### Step 5: Create Environment Variables
-Create `.env` file (don't commit this):
+Create `.env` file (don't commit this).
+
+Paste location: **`port-terraform/.env`** (new file; paste and then update the credential values):
 
 ```bash
 export TF_VAR_port_client_id="your_client_id"
@@ -129,7 +136,9 @@ terraform init
 ## Creating Blueprints with Terraform
 
 ### Step 7: Define Service Blueprint
-Create `blueprints.tf`:
+Create `blueprints.tf`.
+
+Paste location: **`port-terraform/blueprints.tf`** (new file; paste this resource configuration):
 
 ```hcl
 resource "port_blueprint" "service" {
@@ -177,6 +186,7 @@ resource "port_blueprint" "service" {
 ```
 
 ### Step 8: Define Team Blueprint with Relationships
+Paste location: continue editing **`port-terraform/blueprints.tf`** (append this second blueprint resource and relationship block below the previous one):
 ```hcl
 resource "port_blueprint" "team" {
   title      = "Team"
@@ -252,14 +262,19 @@ resource "port_blueprint" "service_with_team" {
 
 ### Step 9: Apply Configuration
 ```bash
+# From inside `port-terraform/`
 terraform plan
 terraform apply
 ```
 
+> The HCL snippets in this module are designed to be copy-paste ready. You can also use the full TechCorp data model description in `examples/techcorp-data-model.md` together with the blueprints in `examples/blueprints/` as a reference when expanding your Terraform resources.
+
 ## Managing Actions with Terraform
 
 ### Step 10: Create Action Configuration
-Create `actions.tf`:
+Create `actions.tf`.
+
+Paste location: **`port-terraform/actions.tf`** (new file; paste this action resource and adjust as needed):
 
 ```hcl
 resource "port_action" "deploy_service" {
@@ -319,7 +334,9 @@ port-terraform/
 ```
 
 ### Environment-Specific Configurations
-Create `environments/dev/main.tf`:
+Create `environments/dev/main.tf`.
+
+Paste location: **`port-terraform/environments/dev/main.tf`** (new file; paste this module wiring configuration):
 
 ```hcl
 module "blueprints" {
@@ -486,6 +503,15 @@ You've successfully completed this module when you can:
 - [ ] Implement proper security practices for Terraform and Port
 - [ ] Create reusable modules for common Port configuration patterns
 
+## End State & Further Reading
+
+By the end of this module, your environment should:
+- Include a working Terraform project that can `terraform plan` and `terraform apply` Port resources without errors
+- Manage at least one Port blueprint and one action via Terraform instead of only through the UI
+- Give you a clear idea of how you would extend this structure to multiple environments (dev/staging/prod)
+
+To explore the latest capabilities of the Port Terraform provider, visit `https://docs.port.io` and search for **Terraform provider** or **Infrastructure as code**.
+
 
 
 
@@ -515,6 +541,8 @@ You've successfully completed this module when you can:
 
 **Problem**: State file conflicts  
 **Solution**: Use remote state backend and proper locking
+
+**Still stuck or think you've found a bug (for example, errors from the Port provider that don’t match the examples)?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
 

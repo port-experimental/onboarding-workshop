@@ -335,7 +335,7 @@ A comprehensive guide to resolving common issues encountered during the Port Wor
 ### Self-Service Resources
 
 1. **Documentation**
-   - [Port Documentation](https://docs.getport.io/)
+   - [Port Documentation](https://docs.port.io/)
    - [Workshop Setup Guide](setup-guide.md)
    - [Fallback Examples](examples/fallback/)
 

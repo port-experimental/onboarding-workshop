@@ -129,9 +129,9 @@ After this quick start, you should be able to:
 
 ## Support Resources
 
-- 📚 [Port Documentation](https://docs.getport.io/)
+- 📚 [Port Documentation](https://docs.port.io/)
 - 🎥 [Port YouTube Channel](https://www.youtube.com/@getport/videos)
-- 💬 [Community Support](https://docs.getport.io/support)
+- 💬 [Community Support](https://docs.port.io/support)
 - 📧 [Contact Sales](https://www.getport.io/contact)
 
 ---

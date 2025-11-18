@@ -1,11 +1,18 @@
 # Port Glossary and Concept Reference
 
+> Quick navigation: [Workshop Home](../README.md) · [Setup Guide](../setup-guide.md) · [Learning Paths](../README.md#learning-paths) · [Troubleshooting Guide](../troubleshooting.md)
+
 ## Core Concepts
 
 ### **Action**
 A self-service operation that users can trigger from the Port interface. Actions can automate workflows like deployments, creating resources, or updating configurations.
 
 **Example**: A "Deploy Service" action that triggers a GitHub workflow to deploy a service to staging or production.
+
+### **Automation**
+An event-driven workflow that executes automatically when specific conditions or triggers are met in Port. Unlike actions, automations run without user intervention and are designed to maintain system consistency and handle routine tasks.
+
+**Example**: An automation that automatically assigns new services to the correct team based on repository ownership, or one that updates deployment status when a CI/CD pipeline completes.
 
 ### **Blueprint**
 A schema that defines the structure and properties of entities in Port. Blueprints act as templates that specify what data can be stored for each entity type.
@@ -17,6 +24,16 @@ An instance of a blueprint that represents a real-world resource or concept. Ent
 
 **Example**: An entity called "ecommerce-api" based on the "Service" blueprint, with specific values for team, language, etc.
 
+### **Developer Portal**
+A centralized platform that provides developers with unified access to tools, documentation, services, and workflows.
+
+**Example**: A developer portal that shows all services, their health status, deployment options, and documentation in one place, eliminating the need to switch between GitHub, monitoring tools, and documentation sites.
+
+### **Infrastructure as Code (IaC)**
+The practice of managing and provisioning infrastructure through machine-readable configuration files rather than manual processes.
+
+**Example**: Using Terraform to define Port blueprints and actions in version-controlled `.tf` files that can be deployed consistently across environments.
+
 ### **Integration**
 A connection between Port and external systems that automatically syncs data. Integrations keep Port's catalog up-to-date with real-world resources.
 
@@ -26,6 +43,11 @@ A connection between Port and external systems that automatically syncs data. In
 A set of rules that evaluate entities against quality, compliance, or maturity criteria. Scorecards provide automated assessment and improvement tracking.
 
 **Example**: A "Service Maturity" scorecard that checks if services have documentation, tests, and monitoring.
+
+### **Dashboard**
+A customizable view that organizes widgets to display specific aspects of your software catalog data. Dashboards can be tailored for different audiences.
+
+**Example**: A "TechCorp Engineering Dashboard" with widgets showing active services table, programming language distribution chart, total service count, and team contact information.
 
 ### **Widget**
 A visual component on dashboards that displays data in various formats like charts, tables, or metrics. Widgets help users understand their software catalog at a glance.
@@ -40,6 +62,8 @@ The Port interface section where administrators configure blueprints, integratio
 ### **Catalog**
 The main view in Port that displays all entities organized by their blueprints. Users can search, filter, and interact with entities from the catalog.
 
+**Example**: The TechCorp catalog shows a "Services" page with all microservices, a "Teams" page with team information, and a "Releases" page with deployment history.
+
 ### **Data Source**
 Any external system that provides data to Port through integrations. Common data sources include Git repositories, CI/CD systems, and cloud providers.
 
@@ -49,14 +73,44 @@ A detailed view of a specific entity showing all its properties, related entitie
 ### **Mapping**
 The configuration that defines how data from external systems is transformed and stored as Port entities. Uses JQ language for data transformation.
 
+### **Page**
+A customizable view in Port's catalog that displays entities organized by blueprint or custom criteria.
+
+**Example**: A "Services" page showing all service entities with filtering options by team, language, or environment status.
+
 ### **Property**
 A field within a blueprint that defines what data can be stored for entities. Properties have types (string, number, boolean, etc.) and validation rules.
+
+### **Identifier (Blueprint / Entity Identifier)**
+The unique key for an entity, used to distinguish it from all other entities of the same blueprint. In the UI this is configured via the blueprint's identifier/meta properties and is often backed by a specific property (for example, `tag_name` for releases or `name` for services).
+
+**Example**: In the Service blueprint, the `name` property is commonly used as the identifier; in the GitHub Release blueprint, a combination based on the GitHub release `id` might be used.
+
+### **Primary Property / Primary Element**
+The property chosen as the main identifier or \"primary\" field for a blueprint. Many UI messages and integrations refer to this when they say something is \"not a primary element\"—it usually means the mapping or data does not match the blueprint's configured primary property.
+
+**Example**: If a release blueprint uses `tag_name` as its primary property, integrations must map a stable value (for example, `.tag_name`) into that property; mapping to a different field may cause validation errors.
 
 ### **Relation**
 A connection between blueprints that defines how entities can be linked together. Relations help model real-world relationships between resources.
 
 ### **Run**
 An execution instance of an action. Each time a user triggers an action, it creates a run that tracks the execution status and results.
+
+### **Self Service Actions**
+User-facing actions that enable developers to perform operations independently through Port's interface with forms, validation, and approval workflows.
+
+**Example**: A "Create New Service" action with input forms for service name, technology stack, and team ownership that automatically sets up repositories, CI/CD pipelines, and monitoring.
+
+### **Template**
+A reusable configuration pattern or starting point for creating similar resources. Templates can be action configurations, service scaffolds, or blueprint patterns.
+
+**Example**: A service template that creates a new microservice with predefined structure, CI/CD pipeline, monitoring setup, and documentation when triggered through a Port action.
+
+### **Terraform**
+An infrastructure-as-code tool that uses declarative configuration files. Port provides a Terraform provider for managing Port configurations as code.
+
+**Example**: Using Terraform to define a Port blueprint for services, ensuring consistent configuration across development, staging, and production environments.
 
 ## Technical Terms
 

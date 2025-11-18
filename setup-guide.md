@@ -12,6 +12,13 @@ Complete step-by-step instructions for preparing your environment for the Port W
 
 **Total Preparation Time**: 30-60 minutes
 
+## ✅ Prerequisites & Versions
+
+- Port instance with **Builder** permissions (trial, demo, or existing instance)
+- Modern browser (Chrome, Edge, or Firefox – latest two versions)
+- **Terraform** (only if you plan to do Module 7): version **1.5.0 or later** (1.6.x recommended)
+- **Git** (optional but recommended): version **2.30.0 or later**
+
 ## 🌐 Port Instance Setup
 
 ### Option 1: Port Trial Account (Recommended)
@@ -64,6 +71,15 @@ Complete step-by-step instructions for preparing your environment for the Port W
 
 ## 🛠️ Tool Installation
 
+> When these instructions mention the **\"workshop directory\"**, they refer to the local clone of this repository (typically a folder named `onboarding-workshop`).
+
+To get the workshop locally:
+
+```bash
+git clone https://github.com/port-experimental/onboarding-workshop.git
+cd onboarding-workshop  # this is your \"workshop directory\"
+```
+
 ### Required Tools
 
 #### 1. Text Editor
@@ -90,26 +106,14 @@ Complete step-by-step instructions for preparing your environment for the Port W
 #### 3. Terraform (for Module 7)
 
 **Install Terraform**:
-```bash
-# macOS
-brew install terraform
 
-# Windows (Chocolatey)
-choco install terraform
-
-# Windows (Winget)
-winget install Hashicorp.Terraform
-
-# Linux (Ubuntu/Debian)
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install terraform
-```
+Follow the official HashiCorp install guide for your operating system:  
+[Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
 **Verify Installation**:
 ```bash
 terraform --version
-# Should output: Terraform v1.6.0 or later
+# Should output: Terraform v1.5.0 or later (1.6.x recommended)
 ```
 
 #### 4. Git (for Examples and Challenges)
@@ -141,8 +145,8 @@ Run our validation scripts to check your setup:
 #### Bash Script (Linux/macOS/Windows Git Bash)
 
 ```bash
-# Navigate to workshop directory
-cd /path/to/CS\ Chatter\ Workshop
+# Navigate to workshop directory (local clone of this repo)
+cd /path/to/onboarding-workshop
 
 # Run validation script
 chmod +x validation/validate-environment.sh
@@ -275,12 +279,17 @@ git --version
 1. **Self-Service Resources**:
    - This setup guide
    - [Troubleshooting Guide](troubleshooting.md)
-   - [Port Documentation](https://docs.getport.io/)
+   - [Port Documentation](https://docs.port.io/)
 
 2. **Community Support**:
    - Port community forums
    - Workshop discussion channels
-   - GitHub repository issues
+   - GitHub repository issues (for workshop content)
+
+3. **Bug Reporting**:
+   - For issues with this workshop’s instructions or examples, open an issue in the [onboarding workshop GitHub repository](https://github.com/port-experimental/onboarding-workshop/issues) and include the module, step, and what you were trying to do.
+   - For suspected Port product or UI bugs (for example, valid mappings not saving or blueprints disappearing), use the in-app support widget or [Port Support](https://docs.port.io/support) and include your workspace URL and a short reproduction.
+   - You can also refer to the main workshop [Bug Reporting & Support](README.md#bug-reporting--support) section for a checklist of what to include.
 
 ### Workshop Day Support
 
@@ -314,9 +323,10 @@ You're ready for the workshop when:
 
 ### Essential URLs
 - **Your Port Instance**: `https://your-org.getport.io`
-- **Port Documentation**: `https://docs.getport.io/`
-- **Workshop Repository**: Location of this workshop content
+- **Port Documentation**: `https://docs.port.io/`
+- **Workshop Repository**: [Onboarding Workshop (GitHub)](https://github.com/port-experimental/onboarding-workshop)
 - **Validation Scripts**: `./validation/` directory
+ - **Concept Glossary**: [Port Workshop Glossary](resources/glossary.md)
 
 ### Key Credentials
 - **Port Login**: Your Port username/password or SSO

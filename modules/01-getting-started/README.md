@@ -75,10 +75,10 @@ Port is an internal developer portal that allows organizations to create custom,
 
 | Component | Description | Example |
 |-----------|-------------|---------|
-| **Blueprints** | Data models that define entity structure | Service, Team, Environment |
-| **Entities** | Individual instances of blueprints | "user-service", "frontend-team" |
-| **Actions** | Self-service workflows | Deploy service, Create environment |
-| **Integrations** | Connections to external systems | GitHub, Jenkins, Kubernetes |
+| **[Blueprints](../../resources/glossary.md#blueprint)** | Data models that define entity structure | Service, Team, Environment |
+| **[Entities](../../resources/glossary.md#entity)** | Individual instances of blueprints | "user-service", "frontend-team" |
+| **[Actions](../../resources/glossary.md#action)** | Self-service workflows | Deploy service, Create environment |
+| **[Integrations](../../resources/glossary.md#integration)** | Connections to external systems | GitHub, Jenkins, Kubernetes |
 
 ## Hands-On Exercise: Port Navigation
 
@@ -179,6 +179,15 @@ You've successfully completed this module when you can:
 - [ ] Plan which sections you'll use most frequently
 - [ ] Understand prerequisites for the next module
 
+## End State & Further Reading
+
+By the end of this module, your Port environment should:
+- Have a working instance you can log into (trial, demo, or existing)
+- Allow you to navigate between **Home**, **Catalog**, **Self-Service**, and **Builder** without getting lost
+- Expose the **Builder → ... → Credentials** area so you know where to get API access for later modules
+
+To deepen your understanding of Port basics, see the general Port documentation at `https://docs.port.io` and search for **Getting started** and **Overview** topics.
+
 
 
 ## Common Issues & Solutions
@@ -191,6 +200,8 @@ You've successfully completed this module when you can:
 
 **Problem**: Missing permissions for Builder section  
 **Solution**: Ensure you have admin access or are using the correct workshop environment
+
+**Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
 

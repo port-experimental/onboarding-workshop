@@ -214,7 +214,7 @@ Use this template for leadership presentations:
 ## Support for Managers
 
 - 📊 [ROI Calculator](https://www.getport.io/roi-calculator)
-- 📋 [Business Case Template](https://docs.getport.io/business-case)
+- 📋 [Business Case Template](https://docs.port.io/business-case)
 - 🎯 [Success Stories](https://www.getport.io/customers)
 - 📞 [Executive Briefing](https://www.getport.io/executive-briefing)
 

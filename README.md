@@ -123,6 +123,17 @@ node validation/environment-check.js https://app.port.io
 - 🎥 [Port YouTube Channel](https://www.youtube.com/@getport/videos)
 - 💬 [Community Support](https://docs.port.io/support)
 
+## Bug Reporting & Support
+
+- **Workshop content or examples**: Open an issue in the [onboarding workshop GitHub repository](https://github.com/port-experimental/onboarding-workshop/issues). Include:
+  - Module number and exact step
+  - What you did, what you expected, and what actually happened (including error messages or screenshots)
+  - Your Port instance type (trial/demo/existing), browser, and OS
+- **Port product or UI behavior**: If something in the Port app itself looks broken (for example, valid mappings not saving, blueprints disappearing, or UI errors), contact Port via the in-app support widget or [Port Support](https://docs.port.io/support) and include:
+  - Your workspace URL
+  - A short description of the issue and how to reproduce it
+  - A link or reference to the relevant workshop module/step, if applicable
+
 ## Contributing
 
 This workshop is designed to be continuously improved. If you find issues or have suggestions, please contribute back to help others learn Port effectively.

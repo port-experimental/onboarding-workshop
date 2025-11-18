@@ -32,10 +32,10 @@ By the end of this module, you will be able to:
 ## Key Concepts
 
 ### What are Dashboards?
-Dashboards in Port provide customizable views of your software catalog data through:
+[Dashboards](../../resources/glossary.md#dashboard) in Port provide customizable views of your software catalog data through:
 - **Pages**: Containers for related widgets
-- **Widgets**: Individual visualizations (tables, charts, etc.)
-- **Filters**: Ways to focus on specific data subsets
+- **[Widgets](../../resources/glossary.md#widget)**: Individual visualizations (tables, charts, etc.)
+- **[Filters](../../resources/glossary.md#filter)**: Ways to focus on specific data subsets
 - **Layouts**: Arrangements of widgets on pages
 
 ### Widget Types Available
@@ -110,6 +110,7 @@ Our first widget will show all active services:
    - Reorder: `Title` → `Language` → `Team` → `URL`
 
 5. Add filters to show only active services:
+   Paste location: **Catalog → &lt;Your dashboard&gt; → Edit “Active Services” widget → Filters → JSON editor** (start from an empty filter and paste this JSON):
    ```json
    {
      "combinator": "and",
@@ -224,6 +225,7 @@ Create a dashboard focused on the Backend team:
 4. **Quality Metrics**: Scorecard performance (if available)
 
 ### Filter Configuration for Backend Services
+Paste location: **Catalog → Backend Team Dashboard → Edit relevant widget → Filters → JSON editor** (existing filter JSON; replace or merge with the structure below):
 ```json
 {
   "combinator": "and",
@@ -308,6 +310,15 @@ You've successfully completed this module when you can:
 - [ ] Apply filters strategically to focus on relevant information
 - [ ] Plan dashboard layouts that follow visual hierarchy principles
 
+## End State & Further Reading
+
+By the end of this module, your Port instance should:
+- Have at least one dashboard page (for example, `TechCorp Engineering Dashboard`) visible in the **Catalog**
+- Contain multiple widgets (table, chart, markdown) that show real data from your blueprints
+- Use filters so you can explain why each widget shows the entities it does
+
+To explore more advanced dashboard capabilities, visit `https://docs.port.io` and search for **Dashboards** or **Pages** in the documentation.
+
 
 
 
@@ -325,6 +336,8 @@ You've successfully completed this module when you can:
 
 **Problem**: Filters not working as expected  
 **Solution**: Verify property names match blueprint exactly, check data types
+
+**Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
 

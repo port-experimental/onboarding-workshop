@@ -32,7 +32,7 @@ By the end of this module, you will be able to:
 ## Key Concepts
 
 ### What are Data Sources?
-Data Sources are integrations that automatically import data from external systems into Port. They:
+[Data Sources](../../resources/glossary.md#data-source) are integrations that automatically import data from external systems into Port. They:
 - **Connect** to external APIs (GitHub, Jenkins, Kubernetes, etc.)
 - **Extract** relevant data from those systems
 - **Transform** the data to match your blueprint structure
@@ -69,7 +69,7 @@ The integration editor has three sections:
 
 #### Mapping Configuration
 - YAML configuration that defines how data is imported
-- Uses JQ syntax for data transformation
+- Uses [JQ](../../resources/glossary.md#jq-language) syntax for data transformation
 - Defines which blueprints receive which data
 
 #### Test Results
@@ -77,7 +77,8 @@ The integration editor has three sections:
 - Helps validate your mapping before saving
 
 ### Step 3: Add Release Mapping
-Add this configuration to map GitHub releases to your blueprint:
+
+Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (existing mapping; add this block under the existing `resources:` list, do **not** add another `resources:` key).
 
 ```yaml
 - kind: release
@@ -86,7 +87,7 @@ Add this configuration to map GitHub releases to your blueprint:
   port:
     entity:
       mappings:
-        blueprint: 'github_release'
+        blueprint: '"github_release"'
         identifier: .id | tostring
         title: .name
         properties:
@@ -95,6 +96,28 @@ Add this configuration to map GitHub releases to your blueprint:
           release_date: .published_at
         relations:
           service: .repository.name
+```
+
+If your mapping panel is completely empty, you can use this minimal configuration instead.
+
+Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (empty mapping; start with this root `resources:` key):
+```yaml
+resources:
+  - kind: release
+    selector:
+      query: 'true'  # Import all releases
+    port:
+      entity:
+        mappings:
+          blueprint: '"github_release"'
+          identifier: .id | tostring
+          title: .name
+          properties:
+            tag_name: .tag_name
+            release_notes: .body
+            release_date: .published_at
+          relations:
+            service: .repository.name
 ```
 
 ### Step 4: Test the Mapping
@@ -124,6 +147,8 @@ Expected test result:
 1. Click **Save & Resync**
 2. Wait for the integration to process
 3. Check **Catalog** → **GitHub Releases** to see imported data
+
+> You can also compare your configuration with the full GitHub example in `examples/integrations/github-integration.yml` or the simpler release-only mapping in `resources/add.release.yml`.
 
 ## Understanding Data Mapping
 
@@ -178,6 +203,8 @@ Update the GitHub integration to include:
 - **topics** (array) - repository topics/tags
 
 ### Updated Mapping Configuration
+
+Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (existing mapping; update or replace the `- kind: repository` block with the one below):
 ```yaml
 - kind: repository
   selector:
@@ -265,6 +292,15 @@ You've successfully completed this module when you can:
 - [ ] Design appropriate data mappings for real scenarios
 - [ ] Identify when to use different JQ expressions
 
+## End State & Further Reading
+
+By the end of this module, your Port instance should:
+- Have a `GitHub Release` blueprint populated via a GitHub integration mapping
+- Show GitHub repositories and releases as entities in the **Catalog** (for the TechCorp example org or your own)
+- Include at least one working mapping configuration you understand and can modify confidently
+
+To learn more about integrations and data sources, visit `https://docs.port.io` and search for **Integrations** or **Data sources** for the most up-to-date provider and mapping documentation.
+
 
 
 ## Troubleshooting Common Issues
@@ -281,11 +317,18 @@ You've successfully completed this module when you can:
 3. Verify data types match blueprint definitions
 4. Test with sample data first
 
+#### Release Mapping Not Saving
+- Make sure your YAML starts with a single `resources:` key (or a list of `- kind:` entries provided by the UI), not multiple roots.
+- Add the `- kind: release` block **inside** the existing `resources:` list, under the current repository mapping.
+- Confirm the `github_release` blueprint was created in [Module 2](../02-blueprints/) and that its identifier property matches the value you map from `.id | tostring`.
+
 ### Relationship Issues
 1. Ensure related entities exist
 2. Check relationship identifier mapping
 3. Verify relationship cardinality settings
 4. Test relationship mapping separately
+
+**Still stuck or think you've found a bug (for example, mappings that won’t save even when YAML is valid)?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
 

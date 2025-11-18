@@ -33,7 +33,7 @@ By the end of this module, you will be able to:
 ## Key Concepts
 
 ### What are Actions?
-Actions in Port enable self-service workflows that developers can trigger themselves. They consist of:
+[Actions](../../resources/glossary.md#action) in Port enable self-service workflows that developers can trigger themselves. They consist of:
 - **User Interface**: Forms with inputs for users to fill out
 - **Backend Integration**: Systems that execute the actual work
 - **Payload Generation**: Data transformation from inputs to backend format
@@ -87,6 +87,7 @@ Click **Next** and add these inputs:
 - **Title**: `Target Environment`
 - **Type**: `Select`
 - **Options**: 
+  Paste location: **Self-Service → Deploy Service action → Inputs step → “Target Environment” input → Options (JSON mode)** (use this array as the options definition):
   ```json
   [
     {"label": "Staging", "value": "staging"},
@@ -111,7 +112,9 @@ Click **Next** and set up the backend:
 4. **Workflow File**: `deploy-service.yml`
 
 ### Step 5: Create Payload
-Configure the payload sent to GitHub Actions:
+Configure the payload sent to GitHub Actions.
+
+Paste location: **Self-Service → Deploy Service action → Backend step → Workflow inputs / payload JSON editor** (replace any existing JSON with the following payload structure):
 
 ```json
 {
@@ -134,6 +137,8 @@ Click **Next** to configure permissions:
 2. Navigate back to **Self-Service**
 3. Click on your new "Deploy Service" action
 4. Fill out the form and test execution
+
+> For additional ready-made action definitions, see the JSON examples in `examples/actions/` (for example, `deploy-service.json`, `create-service.json`, and `update-readme.json`).
 
 ## Understanding Action Payloads
 
@@ -187,6 +192,7 @@ Create an action for setting up new development environments:
 4. **Permissions**: Developers only
 
 ### Webhook Payload Example
+Paste location: **Self-Service → Create Development Environment action → Backend step → Webhook body JSON** (start from this payload and adjust fields as needed):
 ```json
 {
   "action": "create_environment",
@@ -301,6 +307,15 @@ You've successfully completed this module when you can:
 - [ ] Plan action permissions and security considerations
 - [ ] Create user-friendly action interfaces with clear descriptions
 
+## End State & Further Reading
+
+By the end of this module, your Port instance should:
+- Expose at least one working action in **Self-Service** (for example, `Deploy Service`)
+- Successfully trigger a backend (GitHub workflow or webhook) with a payload you can inspect and understand
+- Have action permissions configured so you know who can see and run the action
+
+To learn more about self-service actions and backends, visit `https://docs.port.io` and search for **Self-service actions** or **Actions backend**.
+
 
 
 
@@ -318,6 +333,8 @@ You've successfully completed this module when you can:
 
 **Problem**: Action fails with validation errors  
 **Solution**: Verify required inputs are provided, check input types match expectations
+
+**Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
 

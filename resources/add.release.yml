@@ -46,11 +46,11 @@ resources:
     port:
       entity:
         mappings:
-          blueprint: '"github_releases"'
-          identifier: .release.id | tostring
-          title: .release.name
+          blueprint: '"github_release"'
+          identifier: .id | tostring
+          title: .name
           properties:
-            release_notes: .release.body
-            tag_name: .release.tag_name
+          release_notes: .body
+          tag_name: .tag_name
           relations:
-            service: .repo.name
+          service: .repository.name

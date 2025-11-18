@@ -32,7 +32,7 @@ By the end of this module, you will be able to:
 ## Key Concepts
 
 ### What are Scorecards?
-Scorecards in Port provide a framework for measuring and tracking quality across your software catalog. They enable:
+[Scorecards](../../resources/glossary.md#scorecard) in Port provide a framework for measuring and tracking quality across your software catalog. They enable:
 - **Quality Measurement**: Define what "good" looks like for your services
 - **Compliance Tracking**: Monitor adherence to organizational standards
 - **Improvement Guidance**: Show teams what they need to improve
@@ -64,6 +64,8 @@ Let's create a scorecard to track production readiness for TechCorp services.
 4. Click **+ Scorecard**
 
 ### Step 2: Configure Basic Information
+
+Paste location: **Builder → Data Model → Service blueprint → Scorecards tab → JSON editor** (empty scorecard JSON; start with this basic information block):
 ```json
 {
   "identifier": "production_readiness",
@@ -73,6 +75,8 @@ Let's create a scorecard to track production readiness for TechCorp services.
 ```
 
 ### Step 3: Define Quality Levels
+
+Paste location: same scorecard JSON editor as above (existing JSON; merge this `levels` definition into your configuration):
 ```json
 {
   "levels": [
@@ -100,6 +104,8 @@ Let's create a scorecard to track production readiness for TechCorp services.
 Add rules that define what each level requires:
 
 #### Bronze Level Rule: Has Documentation
+
+Paste location: same scorecard JSON editor (existing `rules` array; add this rule object into the array):
 ```json
 {
   "identifier": "has_documentation",
@@ -118,6 +124,8 @@ Add rules that define what each level requires:
 ```
 
 #### Silver Level Rule: Uses Supported Language
+
+Paste location: same scorecard JSON editor (existing `rules` array; append this rule object):
 ```json
 {
   "identifier": "supported_language",
@@ -147,6 +155,8 @@ Add rules that define what each level requires:
 ```
 
 #### Gold Level Rule: Not Archived
+
+Paste location: same scorecard JSON editor (existing `rules` array; append this rule object):
 ```json
 {
   "identifier": "active_service",
@@ -166,6 +176,8 @@ Add rules that define what each level requires:
 ```
 
 ### Step 5: Add Filters (Optional)
+
+Paste location: same scorecard JSON editor (existing JSON; add or update the top-level `filter` field with this object):
 Only apply scorecard to relevant services:
 
 ```json
@@ -184,6 +196,8 @@ Only apply scorecard to relevant services:
 ```
 
 ### Step 6: Complete Scorecard Configuration
+
+Paste location: same scorecard JSON editor (empty or existing configuration; you can replace everything with this complete example to match the module):
 Here's the complete scorecard JSON:
 
 ```json
@@ -267,6 +281,8 @@ Here's the complete scorecard JSON:
   ]
 }
 ```
+
+> You can compare your scorecard with the more comprehensive examples in `examples/scorecards/` (for example, `service-quality.json` and `team-productivity.json`), which build on the same TechCorp model used in this module.
 
 ## Understanding Scorecard Logic
 
@@ -452,6 +468,15 @@ You've successfully completed this module when you can:
 - [ ] Create actionable rules that teams can understand and follow
 - [ ] Identify appropriate quality metrics for different contexts
 
+## End State & Further Reading
+
+By the end of this module, your Port instance should:
+- Contain at least one scorecard (for example, `Production Readiness`) attached to the `Service` blueprint
+- Show colored scorecard levels on service entities in the **Catalog**
+- Help you explain why a given service is at a particular level based on its rules
+
+To go deeper on scorecards and quality frameworks, visit `https://docs.port.io` and search for **Scorecards** or **Quality tracking**.
+
 
 
 
@@ -469,6 +494,8 @@ You've successfully completed this module when you can:
 
 **Problem**: Level logic seems wrong  
 **Solution**: Remember: entity must pass ALL rules at a level AND all lower levels
+
+**Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
 

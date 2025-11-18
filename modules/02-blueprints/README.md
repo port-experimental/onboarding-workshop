@@ -31,8 +31,8 @@ By the end of this module, you will be able to:
 ## Key Concepts
 
 ### What are Blueprints?
-Blueprints are the foundation of Port's data model. They define:
-- **Structure**: What properties entities can have
+[Blueprints](../../resources/glossary.md#blueprint) are the foundation of Port's data model. They define:
+- **Structure**: What [properties](../../resources/glossary.md#property) entities can have
 - **Relationships**: How entities connect to each other
 - **Validation**: Rules for data integrity
 - **Visualization**: How entities appear in the catalog
@@ -102,6 +102,8 @@ Releases belong to specific services, so we need a relationship:
 1. Click **Create** to save your blueprint
 2. Navigate back to **Data Model** page
 3. Notice how the relationship appears in the visual diagram
+
+> Prefer to start from ready-made YAML? You can also import the example blueprints from `examples/blueprints/` (for example, `release-blueprint.yaml`, `service-blueprint.yaml`, and `team-blueprint.yaml`) to match the TechCorp model used throughout this workshop.
 
 ## Understanding Blueprint Relationships
 
@@ -180,6 +182,15 @@ You've successfully completed this module when you can:
 - [ ] Design blueprints for your organization's needs
 - [ ] Plan data model evolution and schema changes
 - [ ] Troubleshoot common blueprint configuration issues
+
+## End State & Further Reading
+
+By the end of this module, your Port instance should:
+- Contain a `GitHub Release` blueprint with the properties and relations described above
+- Show the `Service` ↔ `Release` relationship in the **Data Model** diagram
+- Give you confidence creating additional blueprints and relations for your own use cases
+
+To go deeper on data modeling, visit `https://docs.port.io` and search for **Blueprints** and **Data model** to see the latest best practices and reference material.
 
 
 
