@@ -53,6 +53,11 @@ Module 08 (AI) moves before Terraform so the workshop crescendos with AI-powered
   - Hands-on: scaffold, configure, deploy a custom widget
   - Reference the `port-plugin-dev` patterns
 
+### Module 09 — Terraform (light refresh)
+- Update provider version references and any deprecated resource syntax
+- Validate example `.tf` files against current `port-labs/port` Terraform provider
+- No structural changes; Builder-only designation stays
+
 ### Module 07 — Scorecards
 - Full rewrite of the Scorecards section to reflect the Scorecards-as-Blueprints model
 - Scorecards are now first-class blueprints with entities, properties, and relations
@@ -110,7 +115,7 @@ All refreshed modules are validated against current Port docs (docs.port.io) dur
 1. New branch `feature/workshop-refresh` off `main`
 2. `FUTURE.md` at repo root — documents User path as next step with context
 3. All 9 module `README.md` files updated (7 refreshed, 2 new)
-4. All 9 facilitator guide files updated/created
+4. All 9 facilitator guide files updated/created (includes renaming existing files to match new module numbers — e.g. `module-06-scorecards.md` → `module-07-scorecards.md`)
 5. `README.md` at repo root updated: module list (9 modules), learning paths (Builder only)
 6. Learning path files: remove `developer.md`, `manager.md`, `quick-start.md`; update `platform-engineer.md` → `builder.md`
 7. Navigation links updated across all modules
