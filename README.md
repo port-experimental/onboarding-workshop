@@ -6,44 +6,29 @@ A comprehensive, hands-on learning resource for Port - the internal developer po
 
 This workshop teaches you how to build and configure Port as your internal developer portal, covering everything from basic navigation to advanced infrastructure-as-code management. The workshop is structured as **modular, self-paced learning** with comprehensive exercises, assessments, and real-world examples.
 
-## Learning Paths
+## Learning Path
 
-Choose your learning path based on your role and experience level:
-
-### 🚀 [Quick Start Path](learning-paths/quick-start.md)
-*Perfect for experienced developers who want to get up and running quickly*
-- **Duration**: 2-3 hours
-- **Prerequisites**: Familiarity with APIs, YAML, and developer tools
-- **Focus**: Essential Port concepts with hands-on examples
-
-### 👩‍💻 [Developer Path](learning-paths/developer.md)
-*Ideal for developers who will use Port for day-to-day development tasks*
-- **Duration**: 4-6 hours
-- **Prerequisites**: Basic development experience
-- **Focus**: Using Port for self-service, dashboards, and development workflows
-
-### 🛠️ [Platform Engineer Path](learning-paths/platform-engineer.md)
-*Designed for platform engineers who will configure and manage Port*
-- **Duration**: 6-8 hours
+### 🏗️ [Builder Path](learning-paths/builder.md)
+*For platform engineers configuring and managing Port*
+- **Duration**: 8-10 hours
 - **Prerequisites**: Experience with infrastructure, APIs, and configuration management
-- **Focus**: Port configuration, integrations, infrastructure-as-code, and advanced features
+- **Covers**: All 9 modules — from blueprints to AI agents and Terraform
 
-### 📊 [Manager Path](learning-paths/manager.md)
-*High-level overview for managers and decision makers*
-- **Duration**: 1-2 hours
-- **Prerequisites**: None
-- **Focus**: Business value, capabilities overview, and strategic benefits
+---
+*A User path (for developers and managers) is planned. See [FUTURE.md](FUTURE.md).*
 
 ## Workshop Structure
 
 ### Core Modules
-1. **[Getting Started](modules/01-getting-started/)** - Port basics and navigation
-2. **[Blueprints](modules/02-blueprints/)** - Data modeling and entity management
-3. **[Data Sources](modules/03-data-sources/)** - Integrations and data ingestion
-4. **[Dashboards](modules/04-dashboards/)** - Visualization and widgets
-5. **[Actions](modules/05-actions/)** - Self-service automation
-6. **[Scorecards](modules/06-scorecards/)** - Quality tracking and metrics
-7. **[Terraform](modules/07-terraform/)** - Infrastructure-as-code management
+1. **[Getting Started](modules/01-getting-started/)** — Port basics and navigation
+2. **[Blueprints](modules/02-blueprints/)** — Data modeling and entity management
+3. **[Data Sources](modules/03-data-sources/)** — Integrations and data ingestion
+4. **[Dashboards](modules/04-dashboards/)** — Visualization, widgets, and custom plugins
+5. **[Actions](modules/05-actions/)** — Self-service automation
+6. **[Automations](modules/06-automations/)** — Event-driven workflows
+7. **[Scorecards](modules/07-scorecards/)** — Quality tracking and metrics
+8. **[AI Agents, MCP & Skills](modules/08-ai-agents/)** — AI-powered development
+9. **[Terraform](modules/09-terraform/)** — Infrastructure-as-code management
 
 ### Hands-On Practice
 - **[Examples](examples/)** - Ready-to-use templates and configurations
@@ -58,6 +43,8 @@ Choose your learning path based on your role and experience level:
 | Port Account | Workshop environment | [Sign up for trial](https://demo.getport.io/) |
 | Visual Studio Code | Development environment | [Download](https://code.visualstudio.com/) |
 | Terraform | Infrastructure management | [Install Guide](https://developer.hashicorp.com/terraform/install) |
+| Node.js 18+ | Custom widget development (Module 04) | [Download](https://nodejs.org/) |
+| Claude Code or MCP-capable AI tool | AI Agents module (Module 08, optional) | [Install Claude Code](https://claude.ai/code) |
 
 ### Setup Options
 
