@@ -109,6 +109,13 @@ An entity reaches a level when it passes **all rules at that level AND all lower
 | `contains` | String contains substring | `description contains "API"` |
 | `in` | Value is one of a set | `status in ["active", "healthy"]` |
 
+> **Coming from the old Scorecard model?** Before mid-2025, scorecards were configured as tabs inside each blueprint's settings — not as standalone blueprints. In the new model:
+> - Scorecards have their own entries in the Builder (as `Scorecard`, `Scorecard Rule`, `Scorecard Rule Result` blueprints)
+> - The `blueprint` field in the scorecard JSON specifies which blueprint is measured
+> - Score results are auto-generated `Scorecard Rule Result` entities you can query and visualize
+>
+> If your account is still on the old tab-based model, the Scorecards tab experience is the same but the underlying storage model differs. Check [docs.port.io/promote-scorecards/](https://docs.port.io/promote-scorecards/) for migration guidance.
+
 ---
 
 ## Hands-On Exercise: Production Readiness Scorecard
@@ -285,6 +292,8 @@ Example: the automation from Module 6 that notifies on a scorecard level drop:
 
 ```json
 {
+  "identifier": "notify_scorecard_drop",
+  "title": "Notify on Scorecard Level Drop",
   "trigger": {
     "type": "automation",
     "event": {
