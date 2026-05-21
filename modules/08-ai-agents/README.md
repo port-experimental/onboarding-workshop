@@ -115,16 +115,12 @@ This exercise connects Claude Code to your Port instance so it can read and writ
 In your terminal (with Claude Code installed):
 
 ```bash
-claude mcp add port \
-  --transport sse \
-  --url https://mcp.port.io/v1
+claude mcp add --transport sse port https://mcp.port.io/v1
 ```
 
 For the US region:
 ```bash
-claude mcp add port \
-  --transport sse \
-  --url https://mcp.us.port.io/v1
+claude mcp add --transport sse port https://mcp.us.port.io/v1
 ```
 
 Alternatively, add it manually to your Claude Code settings (usually `~/.claude/settings.json` or via the Claude Desktop config):
@@ -140,6 +136,8 @@ Alternatively, add it manually to your Claude Code settings (usually `~/.claude/
 }
 ```
 
+> For the US region, replace `https://mcp.port.io/v1` with `https://mcp.us.port.io/v1`.
+
 ### Step 2: Authenticate
 
 The first time you use Port via MCP, a browser window will open for OAuth login. Sign in with your Port account.
@@ -150,7 +148,13 @@ curl -X POST https://api.port.io/v1/auth/access_token \
   -H "Content-Type: application/json" \
   -d '{"clientId": "<YOUR_CLIENT_ID>", "clientSecret": "<YOUR_CLIENT_SECRET>"}'
 ```
-Then use the token in the MCP header.
+
+Use the token in the MCP connection header:
+
+```bash
+claude mcp add --transport sse port https://mcp.port.io/v1 \
+  --header "Authorization: Bearer <ACCESS_TOKEN>"
+```
 
 ### Step 3: Verify the connection
 
