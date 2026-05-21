@@ -2,9 +2,9 @@
 
 ## 🧭 Navigation
 
-**Previous**: [Module 4: Dashboards](../04-dashboards/) | **Next**: [Module 6: Scorecards](../06-scorecards/)
+**Previous**: [Module 4: Dashboards](../04-dashboards/) | **Next**: [Module 6: Automations](../06-automations/)
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 4](../04-dashboards/) completed
 
-**Progress**: Module 5 of 7 | **Completion**: 71% of core modules
+**Progress**: Module 5 of 9 | **Completion**: 56% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -47,11 +47,13 @@ User Input → Port Action → Backend System → Result
 
 ### Backend Types
 Port supports various backend systems:
-- **GitHub Actions**: Trigger workflows in GitHub repositories
-- **Webhooks**: Send HTTP requests to any API endpoint
-- **GitLab/Azure Pipelines**: Trigger CI/CD pipelines
-- **Kafka**: Send messages to Kafka topics
-- **Port Entities**: Create/update entities directly in Port
+- **`WEBHOOK`**: HTTP POST/PUT/DELETE/PATCH to external URL (sync or async)
+- **`GITHUB`**: Trigger GitHub Actions workflow
+- **`GITLAB`**: Trigger GitLab CI/CD pipeline
+- **`AZURE_DEVOPS`**: Invoke Azure DevOps pipeline
+- **`KAFKA`**: Publish to Kafka topic
+- **`UPSERT_ENTITY`**: Create/update entity directly in catalog (no external workflow needed)
+- **`INTEGRATION_ACTION`**: GitHub via Ocean integration with machine tokens
 
 ## Hands-On Exercise: Create Service Deployment Action
 
@@ -174,8 +176,12 @@ Use Jinja2-style templating to access data:
 |----------|-------------|----------------|
 | `{{ .inputs.field_name }}` | User input value | `"staging"` |
 | `{{ .trigger.by.user.email }}` | User's email | `"user@company.com"` |
+| `{{ .trigger.by.user.firstName }}` | User's first name | `"Jane"` |
+| `{{ .trigger.by.user.lastName }}` | User's last name | `"Developer"` |
+| `{{ .trigger.at }}` | Timestamp of trigger | `"2024-01-15T10:30:00Z"` |
 | `{{ .run.id }}` | Unique run ID | `"run_12345"` |
-| `{{ .inputs.entity.identifier }}` | Entity identifier | `"ecommerce-api"` |
+| `{{ .inputs.entity_field.identifier }}` | Entity identifier | `"ecommerce-api"` |
+| `{{ .inputs.entity_field.title }}` | Entity title | `"E-commerce API"` |
 
 ## Exercise: Create Environment Setup Action
 
@@ -338,8 +344,8 @@ To learn more about self-service actions and backends, visit `https://docs.port.
 
 ## Next Steps
 
-With self-service actions working, you can add quality tracking:
-- **[Module 6: Scorecards](../06-scorecards/)** - Implement quality metrics and compliance tracking
+With self-service actions working, you can add event-driven automation:
+- **[Module 6: Automations](../06-automations/)** — react to entity changes automatically without user input
 
 ## Quick Reference
 
@@ -357,17 +363,20 @@ With self-service actions working, you can add quality tracking:
 ```
 
 ### Input Type Reference
-- **String**: Single-line text input
-- **Text Area**: Multi-line text input
-- **Number**: Numeric input with validation
-- **Boolean**: Checkbox (true/false)
-- **Select**: Dropdown with predefined options
-- **Multi-Select**: Multiple selection from options
-- **Entity**: Select from Port entities
-- **Date**: Date picker
-- **Email**: Email input with validation
-- **URL**: URL input with validation
+- **`text`**: Single-line text input
+- **`number`**: Numeric input with validation
+- **`boolean`** / **`toggle`**: Checkbox (true/false)
+- **`object`**: JSON object input
+- **`array`**: JSON array input
+- **`datetime`**: Date and time picker
+- **`email`**: Email input with validation
+- **`url`**: URL input with validation
+- **`entity`**: Select from Port entities
+- **`team`**: Select a Port team
+- **`user`**: Select a Port user
+- **`secret`**: Encrypted value, Port-managed or custom key
+- **`yaml`**: YAML content input
 
 ---
 
-**Completed Module 5?** Continue to [Module 6: Scorecards](../06-scorecards/) to learn about quality tracking and metrics.
+**Completed Module 5?** Continue to [Module 6: Automations](../06-automations/) to learn about event-driven automation.
