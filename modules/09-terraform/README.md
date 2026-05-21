@@ -1,10 +1,10 @@
-# Module 7: Terraform - Infrastructure as Code for Port
+# Module 9: Terraform - Infrastructure as Code for Port
 
 ## 🧭 Navigation
 
-**Previous**: [Module 6: Scorecards](../06-scorecards/) | **Next**: [Challenges](../../challenges/)
+**Previous**: [Module 8: AI Agents](../08-ai-agents/) | **Next**: [Challenges](../../challenges/)
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 6](../06-scorecards/) completed
 
-**Progress**: Module 7 of 7 | **Completion**: 100% of core modules 🎉
+**Progress**: Module 9 of 9 | **Completion**: 100% of core modules 🎉
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -75,7 +75,7 @@ terraform {
   required_providers {
     port = {
       source  = "port-labs/port-labs"
-      version = "~> 2.0"
+      version = "~> 2.21"
     }
   }
 }
@@ -517,7 +517,7 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 
 
 ### 🎉 Workshop Completion
-**Congratulations!** You've completed all 7 modules of the Port workshop. You now have the skills to:
+**Congratulations!** You've completed all 9 modules of the Port workshop. You now have the skills to:
 - Navigate and configure Port effectively
 - Design data models with blueprints
 - Set up integrations and data sources
@@ -574,4 +574,4 @@ terraform state show    # Show resource details
 
 ---
 
-**Completed Module 7?** You've finished the Port workshop! Check out the [challenges](../../challenges/) to practice your new skills.
+**Completed Module 9?** You've finished the Port workshop! Check out the [challenges](../../challenges/) to practice your new skills.
