@@ -217,6 +217,7 @@ Trigger a webhook notification when a service drops below Gold scorecard level. 
 {
   "identifier": "notify_scorecard_drop",
   "title": "Notify on Scorecard Level Drop",
+  "description": "Notify when a service drops below Gold scorecard level",
   "trigger": {
     "type": "automation",
     "event": {
@@ -291,6 +292,9 @@ See the [Automations documentation](https://docs.port.io/actions-and-automations
 **Problem**: Trigger fires unexpectedly  
 **Solution**: Remember `ANY_ENTITY_CHANGE` fires on create, update, AND delete. Use a more specific trigger type (`ENTITY_CREATED`, `ENTITY_UPDATED`, `ENTITY_DELETED`) if you only want one event type.
 
+**Problem**: Body template uses `.diff.*` path but gets null  
+**Solution**: JQ conditions and body templates use different root paths. In JQ conditions, the diff is at the root: `.diff.after.properties.field`. In webhook/action body templates, the event is the root: `{{ .event.diff.after.properties.field }}`. Use `.diff.*` in `condition.expressions`; use `{{ .event.diff.* }}` in body template strings.
+
 **Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
 
 ## Next Steps
@@ -309,6 +313,17 @@ With event-driven automation in place, you can add quality tracking:
 | New relation value | `.diff.after.relations.relation_name` |
 | Entity identifier | `.event.context.entityIdentifier` |
 | Blueprint identifier | `.event.context.blueprintIdentifier` |
+
+### Body template paths (webhook/action bodies)
+
+| What you're accessing | Template expression |
+|----------------------|---------------------|
+| New value of a property | `{{ .event.diff.after.properties.field_name }}` |
+| Old value of a property | `{{ .event.diff.before.properties.field_name }}` |
+| Entity identifier | `{{ .event.context.entityIdentifier }}` |
+| Blueprint identifier | `{{ .event.context.blueprintIdentifier }}` |
+
+> Note: `.diff.before.*` is `null` for `ENTITY_CREATED` triggers — only use it with `ENTITY_UPDATED`.
 
 ---
 

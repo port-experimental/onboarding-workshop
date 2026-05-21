@@ -39,3 +39,26 @@
 **If the automation fires but UPSERT_ENTITY fails with 404**: Usually means the `blueprintIdentifier` in the mapping doesn't match. Walk them through checking Builder → Data Model to confirm the exact identifier (case-sensitive).
 
 **On chaining automations**: Mention this as a power-user pattern but don't spend time on it — it can cause infinite loops if designed carelessly.
+
+## Demonstration Flow
+
+If you want to demo before attendees try:
+1. Open Builder → Automations in the Port UI
+2. Show an existing automation (or create a minimal one live)
+3. Point out the three parts: trigger, condition, invocationMethod
+4. Show the Runs log so attendees know where to verify execution
+
+## Handling JQ Path Confusion
+
+When an attendee's condition doesn't match:
+1. Ask them to show you the condition expression
+2. Check: are they using `.properties.field` (wrong) or `.diff.after.properties.field` (correct)?
+3. Quick fix: prefix every `.properties` with `.diff.after.` for ENTITY_CREATED/UPDATED triggers
+
+When a webhook body template returns null:
+1. Check if they used `.diff.after.*` (wrong in a template) vs `{{ .event.diff.after.* }}` (correct)
+2. JQ conditions use bare `.diff.*`; templates use `{{ .event.diff.* }}`
+
+## Permissions Prerequisites
+
+Attendees need **Builder access** (admin or editor role) to create automations. If an attendee can't see the Automations section in Builder, they likely have viewer-only access — ask your Port admin to grant editor permissions before the session.
