@@ -10,7 +10,7 @@
 
 ## 📍 Module Overview
 
-⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 6](../06-scorecards/) completed
+⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 7](../07-scorecards/) completed
 
 **Progress**: Module 9 of 9 | **Completion**: 100% of core modules 🎉
 
@@ -23,7 +23,7 @@ By the end of this module, you will be able to:
 - Follow best practices for Port infrastructure management
 
 ## Prerequisites
-- Completed [Module 6: Scorecards](../06-scorecards/)
+- Completed [Module 7: Scorecards](../07-scorecards/)
 - Terraform installed and basic familiarity
 - Understanding of infrastructure-as-code concepts
 - Access to Port API credentials
