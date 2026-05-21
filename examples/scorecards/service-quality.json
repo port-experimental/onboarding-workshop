@@ -15,16 +15,20 @@
     },
     "levels": [
         {
-            "color": "red",
+            "color": "paleBlue",
             "title": "Basic"
         },
         {
-            "color": "yellow", 
-            "title": "Good"
+            "color": "bronze",
+            "title": "Bronze"
         },
         {
-            "color": "green",
-            "title": "Excellent"
+            "color": "silver",
+            "title": "Silver"
+        },
+        {
+            "color": "gold",
+            "title": "Gold"
         }
     ],
     "rules": [
@@ -32,7 +36,7 @@
             "identifier": "has_readme",
             "title": "Has README Documentation",
             "description": "Service has comprehensive README documentation",
-            "level": "Good",
+            "level": "Bronze",
             "query": {
                 "combinator": "and",
                 "conditions": [
@@ -47,7 +51,7 @@
             "identifier": "uses_supported_language",
             "title": "Uses Supported Language",
             "description": "Service uses one of the organization's supported programming languages",
-            "level": "Good", 
+            "level": "Bronze",
             "query": {
                 "combinator": "or",
                 "conditions": [
@@ -58,7 +62,7 @@
                     },
                     {
                         "operator": "=",
-                        "property": "language", 
+                        "property": "language",
                         "value": "JavaScript"
                     },
                     {
@@ -83,7 +87,7 @@
             "identifier": "has_team_ownership",
             "title": "Has Team Ownership",
             "description": "Service has a clearly defined owning team",
-            "level": "Excellent",
+            "level": "Silver",
             "query": {
                 "combinator": "and",
                 "conditions": [
@@ -98,7 +102,7 @@
             "identifier": "production_ready",
             "title": "Production Ready",
             "description": "Service is deployed to production environment",
-            "level": "Excellent",
+            "level": "Gold",
             "query": {
                 "combinator": "and",
                 "conditions": [
