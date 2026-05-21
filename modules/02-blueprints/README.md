@@ -4,7 +4,7 @@
 
 **Previous**: [Module 1: Getting Started](../01-getting-started/) | **Next**: [Module 3: Data Sources](../03-data-sources/)
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 45-60 minutes | 📋 **Prerequisites**: [Module 1](../01-getting-started/) completed
 
-**Progress**: Module 2 of 7 | **Completion**: 29% of core modules
+**Progress**: Module 2 of 9 | **Completion**: 22% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -190,7 +190,7 @@ By the end of this module, your Port instance should:
 - Show the `Service` ↔ `Release` relationship in the **Data Model** diagram
 - Give you confidence creating additional blueprints and relations for your own use cases
 
-To go deeper on data modeling, visit `https://docs.port.io` and search for **Blueprints** and **Data model** to see the latest best practices and reference material.
+To deepen your understanding, see the [Blueprints documentation](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/).
 
 
 
@@ -215,8 +215,8 @@ Try creating a blueprint for **Environment** with these properties:
 
 ## Next Steps
 
-Now that you understand blueprints, you're ready to learn how Port gets data:
-- **[Module 3: Data Sources](../03-data-sources/)** - Configure integrations to populate your blueprints
+With blueprints defined, you're ready to bring in real data:
+- **[Module 3: Data Sources](../03-data-sources/)** — connect external systems to populate your catalog
 
 ## Quick Reference
 
