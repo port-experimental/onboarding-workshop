@@ -141,7 +141,7 @@ Port CLI (`github.com/port-experimental/port-cli`) is ideal when you want to com
 ### Install
 
 ```bash
-npm install -g @port-labs/port-cli
+npm install -g @port-experimental/port-cli
 ```
 
 ### Configure organizations
@@ -149,22 +149,26 @@ npm install -g @port-labs/port-cli
 Create `~/.port/config.yaml` with named organizations:
 
 ```yaml
+default_org: prod
+
 organizations:
   staging:
-    clientId: "staging_client_id"
-    clientSecret: "staging_client_secret"
+    client_id: "staging_client_id"
+    client_secret: "staging_client_secret"
+    api_url: https://api.getport.io/v1
   prod:
-    clientId: "prod_client_id"
-    clientSecret: "prod_client_secret"
+    client_id: "prod_client_id"
+    client_secret: "prod_client_secret"
+    api_url: https://api.getport.io/v1
 ```
 
 ### Export configuration from prod
 
 ```bash
-port export --org prod --output ./port-export-prod
+port export --org prod --output port-export-prod.tar.gz
 ```
 
-This creates JSON files for blueprints, actions, scorecards, automations, pages, and integrations.
+This creates a tarball backup of all resources.
 
 ### Compare staging vs prod
 
@@ -187,7 +191,7 @@ Returns exit code 1 if any difference is found — causes the CI job to fail and
 ### Import prod config into staging
 
 ```bash
-port import --from ./port-export-prod --org staging
+port import --input port-export-prod.tar.gz --org staging
 ```
 
 ### Hands-On: Compare Two Environments
@@ -197,7 +201,7 @@ If you have access to two Port workspaces:
 1. Configure both in `~/.port/config.yaml`
 2. Run: `port compare --source prod --target staging`
 3. Identify at least one difference (a blueprint property that exists in prod but not staging)
-4. Export from prod and import to staging: `port import --from ./port-export-prod --org staging`
+4. Export from prod and import to staging: `port import --input port-export-prod.tar.gz --org staging`
 5. Re-run the compare — the diff should be gone
 
 If you only have one workspace: run `port export --org prod --output ./port-export` and inspect the output files to understand the export format.
@@ -249,6 +253,8 @@ If the plan shows changes, your `.tf` definition doesn't match the actual state.
 ---
 
 ## Section 4: Integration Health & Observability
+
+> **Note:** The `_integration` blueprint and `_action_run` blueprint used in this section are internal Port blueprints. If they are not visible in your Builder, they may not be enabled for your Port plan. Check with your Port admin or account manager.
 
 ### Where to check integration health
 
@@ -316,7 +322,7 @@ Add a rule to your Production Readiness scorecard:
 {
   "identifier": "recently_synced",
   "title": "Recently Synced",
-  "description": "Entity was updated in the last 90 days",
+  "description": "Entity was updated in the last 30 days",
   "level": "Bronze",
   "query": {
     "combinator": "and",
@@ -332,6 +338,8 @@ Add a rule to your Production Readiness scorecard:
   }
 }
 ```
+
+> **Note:** The `preset` value syntax in scorecard conditions should be verified against the [Port scorecard documentation](https://docs.port.io/promote-scorecards/) before use — syntax may vary by Port version.
 
 ### Blueprint design principles for large catalogs
 
@@ -370,10 +378,7 @@ See the [Port CLI repository](https://github.com/port-experimental/port-cli) and
 **Solution**: Your `.tf` resource block has fields that don't match Port's current state. Common mismatches: property ordering, enum values, `required` flags. Adjust the `.tf` file to match the API export exactly.
 
 **Problem**: Port CLI `port compare` shows false positives  
-**Solution**: Some properties (like `createdAt`, `updatedAt`) will always differ between environments. Use `--ignore-fields` flag if available, or filter the compare output to focus on schema-level differences.
-
-**Problem**: `_integration` blueprint not found in automation trigger  
-**Solution**: The integration health automation uses the internal `_integration` blueprint. If it's not visible in Builder, it may not be enabled for your plan. Check with your Port admin.
+**Solution**: Some properties (like `createdAt`, `updatedAt`) may always differ between environments. Use `--include` to filter by resource type (e.g. `--include blueprints`) to focus the comparison on what matters.
 
 **Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support).
 
@@ -400,10 +405,10 @@ terraform import port_blueprint.<name> <identifier>
 
 ### Port CLI commands
 ```bash
-port export --org prod --output ./export
+port export --org prod --output export.tar.gz
 port compare --source prod --target staging
 port compare --source prod --target staging --fail-on-diff
-port import --from ./export --org staging
+port import --input export.tar.gz --org staging
 ```
 
 ---
