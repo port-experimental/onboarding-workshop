@@ -54,6 +54,60 @@ You've successfully completed this challenge when:
 - [ ] Blueprint appears in the Data Model view
 - [ ] You can navigate to the blueprint configuration and see all properties
 
+---
+
+## Part 2: Create the Service Blueprint
+
+Now create the **Service** blueprint — this is the core entity in TechCorp's catalog and is required for all subsequent challenges.
+
+### Blueprint Configuration
+- **Title**: `Service`
+- **Icon**: `Microservice`
+- **Identifier**: `service`
+
+### Required Properties
+
+| Property | Type | Details |
+|----------|------|---------|
+| `description` | String | Service description (required) |
+| `language` | String | Enum: Python, JavaScript, Java, Go, C#, TypeScript, Ruby (required) |
+| `team` | String | Enum: Frontend Team, Backend Team, DevOps Team, QA Team, Data Team (required) |
+| `environment` | String | Enum: Production, Staging, Development, QA (required) |
+| `url` | URL | Repository URL |
+| `readme` | String (Markdown format) | Service README content |
+| `archived` | Boolean | Default: false (required) |
+| `default_branch` | String | Default: main (required) |
+
+### Step-by-Step: Create the Service Blueprint
+
+1. Navigate to **Builder → Data Model**
+2. Click **"+ Blueprint"**
+3. Set **Title** to `Service`, **Icon** to `Microservice`, **Identifier** to `service`
+4. Add each property from the table above with the correct type and settings
+5. For `language`, `team`, and `environment`: set **Type** to String and enable **Enum**, then add the enum values listed
+6. For `archived`: set **Type** to Boolean and **Default** to `false`
+7. Click **Save**
+
+### Add Sample Service Entities
+
+Create at least 3 sample services so your dashboards and scorecards have data to display:
+
+1. Navigate to **Catalog → Services**
+2. Click **"+ New Service"** and create:
+
+| Identifier | Description | Language | Team | Environment |
+|------------|-------------|----------|------|-------------|
+| `ecommerce-api` | Core e-commerce platform API | Python | Backend Team | Production |
+| `mobile-app` | Customer mobile application | JavaScript | Frontend Team | Production |
+| `analytics-service` | Real-time analytics | Java | Data Team | Staging |
+
+### Part 2 Success Criteria
+
+- [ ] Service blueprint created with all 8 properties configured
+- [ ] `language`, `team`, and `environment` properties have enum values set
+- [ ] At least 3 Service entities created with different teams and languages
+- [ ] Service entities appear in the Catalog under Services
+
 ## Bonus Challenges
 
 ### Bonus 1: Add Validation
@@ -98,8 +152,8 @@ You've successfully completed this challenge when:
 ## Next Steps
 
 After completing this challenge:
-- Try [Create Your First Dashboard](first-dashboard.md)
-- Or move on to [Intermediate: Team-Service Relationships](../intermediate/team-service-relationships.md)
+- Continue to [Create Your First Dashboard](first-dashboard.md) — your Service entities will populate the widgets
+- Or move on to [Create Your First Action](first-action.md)
 
 ## Learning Notes
 
