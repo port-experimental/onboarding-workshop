@@ -83,16 +83,23 @@ Now create the **Service** blueprint — this is the core entity in TechCorp's c
 1. Navigate to **Builder → Data Model**
 2. Click **"+ Blueprint"**
 3. Set **Title** to `Service`, **Icon** to `Microservice`, **Identifier** to `service`
-4. Add each property from the table above with the correct type and settings
-5. For `language`, `team`, and `environment`: set **Type** to String and enable **Enum**, then add the enum values listed
-6. For `archived`: set **Type** to Boolean and **Default** to `false`
-7. Click **Save**
+4. Add each property from the table above:
+   - Click **+ Add Property**
+   - Enter the property **Title** and **Identifier** (Port auto-fills the identifier from the title)
+   - Set the **Type** as listed in the table
+   - For String properties with enum values (`language`, `team`, `environment`): enable **Enum** and add each value from the list
+   - For `archived`: set **Type** to Boolean and **Default** to `false`
+   - For `default_branch`: set **Type** to String and **Default** to `main`
+   - For `url`: set **Type** to URL
+   - For `readme`: set **Type** to String and **Format** to Markdown
+   - Click **Save** after each property
+5. Click **Save** on the blueprint when all properties are added
 
 ### Add Sample Service Entities
 
 Create at least 3 sample services so your dashboards and scorecards have data to display:
 
-1. Navigate to **Catalog → Services**
+1. Navigate to **Catalog** in the left sidebar — after saving the Service blueprint, a **Services** entry appears automatically in the catalog menu
 2. Click **"+ New Service"** and create:
 
 | Identifier | Description | Language | Team | Environment |
