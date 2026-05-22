@@ -223,7 +223,7 @@ Create an automation rule that fires on any entity change and POSTs to your SIEM
       "entity": "{{ .event.context.entityIdentifier }}",
       "blueprint": "{{ .event.context.blueprintIdentifier }}",
       "timestamp": "{{ .event.createdAt }}",
-      "triggered_by": "{{ .event.trigger.by.user.email }}"
+      "triggered_by": "{{ .trigger.by.user.email }}"
     }
   },
   "publish": true
