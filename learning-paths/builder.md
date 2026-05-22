@@ -4,13 +4,13 @@
 
 ## Overview
 
-**Duration**: 8-10 hours  
+**Duration**: 12-14 hours (Modules 1-9: 8-10 hours | Advanced Modules 10-12: ~4 hours)  
 **Prerequisites**: Experience with infrastructure, APIs, and configuration management  
 **Focus**: Full Port configuration — blueprints, integrations, dashboards, actions, automations, scorecards, AI, and Terraform
 
 ## Your Learning Journey
 
-Work through these 9 modules in order. Each builds on the previous.
+Work through these 12 modules in order. Each builds on the previous.
 
 | Module | Topic | Duration |
 |--------|-------|----------|
@@ -23,6 +23,9 @@ Work through these 9 modules in order. Each builds on the previous.
 | [07 Scorecards](../modules/07-scorecards/) | Quality tracking as blueprints | 60-75 min |
 | [08 AI Agents](../modules/08-ai-agents/) | AI agents, MCP, skills | 75 min |
 | [09 Terraform](../modules/09-terraform/) | Infrastructure-as-code for Port | 90-120 min |
+| [10 Governance & RBAC](../modules/10-governance/) | Permissions, teams, and audit | 60-75 min |
+| [11 Custom Integrations](../modules/11-custom-integrations/) | REST API, webhooks, and Ocean framework | 90 min |
+| [12 Scale & Ops](../modules/12-scale-ops/) | Multi-environment management and catalog hygiene | 75 min |
 
 ## Prerequisites
 
