@@ -10,9 +10,9 @@ This workshop teaches you how to build and configure Port as your internal devel
 
 ### 🏗️ [Builder Path](learning-paths/builder.md)
 *For platform engineers configuring and managing Port*
-- **Duration**: 8-10 hours
+- **Duration**: 12-14 hours (core 0→1: 8-10 hours | advanced 1→production: ~4 hours)
 - **Prerequisites**: Experience with infrastructure, APIs, and configuration management
-- **Covers**: All 9 modules — from blueprints to AI agents and Terraform
+- **Covers**: All 12 modules — from blueprints to AI agents and Terraform
 
 ---
 *A User path (for developers and managers) is planned. See [FUTURE.md](FUTURE.md).*
@@ -29,6 +29,9 @@ This workshop teaches you how to build and configure Port as your internal devel
 7. **[Scorecards](modules/07-scorecards/)** — Quality tracking and metrics
 8. **[AI Agents, MCP & Skills](modules/08-ai-agents/)** — AI-powered development
 9. **[Terraform](modules/09-terraform/)** — Infrastructure-as-code management
+10. **[Governance & RBAC](modules/10-governance/)** — Permissions, teams, and audit
+11. **[Custom Integrations](modules/11-custom-integrations/)** — REST API, webhooks, and Ocean framework
+12. **[Scale & Ops](modules/12-scale-ops/)** — Multi-environment management and catalog hygiene
 
 ### Hands-On Practice
 - **[Examples](examples/)** - Ready-to-use templates and configurations
