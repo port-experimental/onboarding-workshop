@@ -256,13 +256,13 @@ In JSON:
       "target": "incident",
       "calculationSpec": {
         "func": "count",
-        "calculationBy": "entities",
-        "filter": {
-          "combinator": "and",
-          "conditions": [
-            { "operator": "=", "property": "status", "value": "open" }
-          ]
-        }
+        "calculationBy": "entities"
+      },
+      "query": {
+        "combinator": "and",
+        "rules": [
+          { "operator": "=", "property": "status", "value": "open" }
+        ]
       }
     }
   }
