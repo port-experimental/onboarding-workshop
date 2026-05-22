@@ -202,6 +202,83 @@ Try creating a blueprint for **Environment** with these properties:
 - **Status** (String, required): Current status ("healthy", "degraded", "down")
 - **Service** (Relation to Service, many-to-one): Which service this environment runs
 
+## Advanced Blueprint Features
+
+### Mirror Properties
+
+Mirror properties pull a value from a **related entity** onto the current entity — without duplicating data. They stay in sync automatically when the source value changes.
+
+**Use case:** Show the owning team's Slack channel on every Service entity, so developers can find the right channel without navigating to the team.
+
+To add a mirror property in the UI:
+1. Open **Builder → Data Model → Service blueprint → Properties**
+2. Click **+ Add Property → Mirror Property**
+3. Set **Relation**: `team`
+4. Set **Mirror Property**: `slack_channel` (the property on the Team blueprint)
+5. Give it a title: `Team Slack Channel`
+
+The Service entity will now display the team's Slack channel automatically.
+
+In JSON (for Terraform or API-based blueprint management):
+
+```json
+{
+  "mirrorProperties": {
+    "team_slack_channel": {
+      "title": "Team Slack Channel",
+      "path": "team.slack_channel"
+    }
+  }
+}
+```
+
+### Aggregation Properties
+
+Aggregation properties compute a value **across all related entities** — counts, sums, averages, and min/max. They update automatically as related entities change.
+
+**Use case:** Show the number of open incidents on each Service entity so engineers see severity at a glance in the catalog.
+
+To add an aggregation property in the UI:
+1. Open **Builder → Data Model → Service blueprint → Properties**
+2. Click **+ Add Property → Aggregation Property**
+3. Set **Relation**: the relation to aggregate across (e.g., `incidents`)
+4. Set **Function**: `count`
+5. Optionally add a **Filter**: only count incidents where `status = "open"`
+6. Give it a title: `Open Incidents`
+
+In JSON:
+
+```json
+{
+  "aggregationProperties": {
+    "open_incident_count": {
+      "title": "Open Incidents",
+      "target": "incident",
+      "calculationSpec": {
+        "func": "count",
+        "calculationBy": "entities",
+        "filter": {
+          "combinator": "and",
+          "conditions": [
+            { "operator": "=", "property": "status", "value": "open" }
+          ]
+        }
+      }
+    }
+  }
+}
+```
+
+### When to use each
+
+| Need | Use |
+|------|-----|
+| Show a field from a related entity without duplicating it | Mirror property |
+| Count, sum, or average values across related entities | Aggregation property |
+| Compute a value from the entity's own fields | Calculation property (formula) |
+
+See the [Mirror properties docs](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/mirror-property) and [Aggregation properties docs](https://docs.port.io/build-your-software-catalog/customize-integrations/configure-data-model/setup-blueprint/properties/aggregation-property) for the full reference.
+
 ## Common Issues & Solutions
 
 **Problem**: Can't see my blueprint in the catalog  
