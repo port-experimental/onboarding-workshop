@@ -248,6 +248,8 @@ After creating the webhook, configure the mapping YAML to transform incoming Pag
 ```yaml
 resources:
   - kind: webhook
+    selector:
+      query: 'true'
     port:
       entity:
         mappings:
