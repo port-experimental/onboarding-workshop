@@ -2,7 +2,7 @@
 
 ## 🧭 Navigation
 
-**Previous**: [Module 8: AI Agents](../08-ai-agents/) | **Next**: [Challenges](../../challenges/)
+**Previous**: [Module 8: AI Agents](../08-ai-agents/) | **Next**: [Module 10: Governance & RBAC](../10-governance/)
 
 **Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 7](../07-scorecards/) completed
 
-**Progress**: Module 9 of 9 | **Completion**: 100% of core modules 🎉
+**Progress**: Module 9 of 12 | **Completion**: 75% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -526,7 +526,7 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 - Implement quality tracking with scorecards
 - Manage Port configurations as infrastructure-as-code
 
-**Next Steps**: Explore the [challenges](../../challenges/) to practice your skills or start implementing Port in your organization!
+**Next Steps**: Continue to [Module 10: Governance & RBAC](../10-governance/) to set up permissions and audit trails for your Port instance.
 
 ## Common Issues & Solutions
 
