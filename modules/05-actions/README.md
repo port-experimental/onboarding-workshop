@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 4](../04-dashboards/) completed
 
-**Progress**: Module 5 of 9 | **Completion**: 56% of core modules
+**Progress**: Module 5 of 12 | **Completion**: 42% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

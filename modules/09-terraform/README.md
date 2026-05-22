@@ -516,8 +516,8 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 
 
 
-### 🎉 Workshop Completion
-**Congratulations!** You've completed all 9 modules of the Port workshop. You now have the skills to:
+### ✅ Core Modules Complete
+**Well done!** You've completed the core Port workshop modules (1-9). You now have the skills to:
 - Navigate and configure Port effectively
 - Design data models with blueprints
 - Set up integrations and data sources
@@ -546,11 +546,7 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 
 ## Next Steps
 
-Congratulations! You've completed all Port workshop modules. Consider:
-- Implementing Port in your organization
-- Contributing to the Port community
-- Exploring advanced Port features
-- Building custom integrations
+Continue to [Module 10: Governance & RBAC](../10-governance/) to learn how to govern access, set up approval chains, and audit your Port instance for production readiness.
 
 ## Quick Reference
 

@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 60 minutes | 📋 **Prerequisites**: [Module 5](../05-actions/) completed
 
-**Progress**: Module 6 of 9 | **Completion**: 67% of core modules
+**Progress**: Module 6 of 12 | **Completion**: 50% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

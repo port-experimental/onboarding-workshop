@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 30-45 minutes | 📋 **Prerequisites**: None
 
-**Progress**: Module 1 of 9 | **Completion**: 11% of core modules
+**Progress**: Module 1 of 12 | **Completion**: 8% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

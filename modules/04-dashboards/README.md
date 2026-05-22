@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 60-75 minutes | 📋 **Prerequisites**: [Module 3](../03-data-sources/) completed
 
-**Progress**: Module 4 of 9 | **Completion**: 44% of core modules
+**Progress**: Module 4 of 12 | **Completion**: 33% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

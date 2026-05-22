@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 45-60 minutes | 📋 **Prerequisites**: [Module 1](../01-getting-started/) completed
 
-**Progress**: Module 2 of 9 | **Completion**: 22% of core modules
+**Progress**: Module 2 of 12 | **Completion**: 17% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

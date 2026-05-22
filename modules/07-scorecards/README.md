@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 60-75 minutes | 📋 **Prerequisites**: [Module 6](../06-automations/) completed
 
-**Progress**: Module 7 of 9 | **Completion**: 78% of core modules
+**Progress**: Module 7 of 12 | **Completion**: 58% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 60-90 minutes | 📋 **Prerequisites**: [Module 2](../02-blueprints/) completed
 
-**Progress**: Module 3 of 9 | **Completion**: 33% of core modules
+**Progress**: Module 3 of 12 | **Completion**: 25% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:

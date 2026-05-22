@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 75 minutes | 📋 **Prerequisites**: [Module 7](../07-scorecards/) completed
 
-**Progress**: Module 8 of 9 | **Completion**: 89% of core modules
+**Progress**: Module 8 of 12 | **Completion**: 67% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
