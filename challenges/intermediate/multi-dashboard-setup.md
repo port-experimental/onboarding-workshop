@@ -129,13 +129,13 @@ TechCorp has different stakeholders who need different views of the same data. D
 
 ### Required Widgets
 
-#### Widget 1: Team Performance Overview (Number Cards)
-- **Metrics**: 
-  - Total Services
-  - Active Deployments This Week
-  - Average Service Health Score
-  - Team Velocity
-- **Purpose**: Key performance indicators
+#### Widget 1: Service Portfolio Overview (Number Cards)
+- **Metrics**:
+  - Total Services: Count of all Service entities where `archived = false`
+  - Production Services: Count of Service entities where `environment = "Production"`
+  - Total Teams: Count of Team entities
+  - Archived Services: Count of Service entities where `archived = true`
+- **Purpose**: Key portfolio statistics at a glance
 
 #### Widget 2: Service Distribution by Team (Pie Chart)
 - **Data Source**: Service entities
@@ -148,10 +148,10 @@ TechCorp has different stakeholders who need different views of the same data. D
 - **Stack By**: Programming Language
 - **Purpose**: Technology diversity and standardization insights
 
-#### Widget 4: Team Health Matrix (Table)
-- **Data Source**: Team entities with calculated metrics
-- **Columns**: Team, Service Count, Avg Health Score, Last Deploy, Issues
-- **Purpose**: Quick team health assessment
+#### Widget 4: Team Overview (Table)
+- **Data Source**: Team entities
+- **Columns**: Team Name, Slack Channel, Team Lead, On-Call Rotation
+- **Purpose**: Team contacts and responsibilities at a glance
 
 #### Widget 5: Deployment Frequency (Line Chart)
 - **Data Source**: Action runs (deploy actions)
@@ -166,12 +166,12 @@ TechCorp has different stakeholders who need different views of the same data. D
    - **Title**: `Engineering Management Overview`
    - **Description**: `Team performance metrics and high-level insights`
 
-#### Step 2: Add Performance Numbers
+#### Step 2: Add Portfolio Overview Numbers
 1. Add **Number Widget** for each metric:
-   - Total Services: Count of Service entities
-   - Active Deployments: Count of deploy actions this week
-   - Average Health Score: Average of service health scores
-   - Team Count: Count of Team entities
+   - **Total Services**: Source = Service blueprint, Filter = `archived = false`
+   - **Production Services**: Source = Service blueprint, Filter = `environment = "Production"`
+   - **Total Teams**: Source = Team blueprint
+   - **Archived Services**: Source = Service blueprint, Filter = `archived = true`
 
 #### Step 3: Add Team Distribution Chart
 1. Add **Pie Chart Widget**:
@@ -186,11 +186,11 @@ TechCorp has different stakeholders who need different views of the same data. D
    - **Stack By**: language
    - **Title**: `Technology Stack by Team`
 
-#### Step 5: Add Team Health Table
+#### Step 5: Add Team Overview Table
 1. Add **Table Widget**:
    - **Entity**: Team
-   - **Columns**: title, service_count, avg_health_score, last_deploy
-   - **Title**: `Team Health Overview`
+   - **Columns**: title, slack_channel, team_lead, on_call_rotation
+   - **Title**: `Team Directory`
 
 ## Dashboard 3: Platform Engineer Dashboard
 
@@ -201,33 +201,29 @@ TechCorp has different stakeholders who need different views of the same data. D
 
 ### Required Widgets
 
-#### Widget 1: Infrastructure Health (Status Grid)
+#### Widget 1: Services by Environment (Pie Chart)
 - **Data Source**: Service entities
-- **Display**: Service status, environment, health checks
-- **Color Coding**: Green (healthy), Yellow (warning), Red (critical)
-- **Purpose**: Quick infrastructure health overview
+- **Group By**: `environment`
+- **Purpose**: Distribution of services across Production, Staging, Development, QA
 
-#### Widget 2: Compliance Dashboard (Table)
-- **Data Source**: Service entities with scorecard data
-- **Columns**: Service, Security Score, Performance Score, Compliance Status
-- **Filters**: Non-compliant services highlighted
-- **Purpose**: Track compliance across services
+#### Widget 2: Services by Language (Bar Chart)
+- **Data Source**: Service entities
+- **Group By**: `language`
+- **Filter**: `archived = false`
+- **Purpose**: Technology stack distribution across the org
 
-#### Widget 3: Deployment Pipeline Status (Kanban/Table)
-- **Data Source**: Action runs
-- **Stages**: Pending, In Progress, Success, Failed
-- **Filter**: Deployment actions only
-- **Purpose**: Monitor deployment pipeline health
+#### Widget 3: Service Inventory (Table)
+- **Data Source**: Service entities
+- **Columns**: Service Name, Language, Team, Environment, Repository URL
+- **Filter**: `archived = false`
+- **Sort**: Team, then name
+- **Purpose**: Full service inventory for platform audits
 
-#### Widget 4: Resource Utilization (Charts)
-- **Data Source**: Service entities with resource metrics
-- **Charts**: CPU usage, Memory usage, Storage usage
-- **Purpose**: Infrastructure capacity planning
-
-#### Widget 5: Alert Summary (List)
-- **Data Source**: Recent alerts and incidents
-- **Display**: Alert type, service, severity, status
-- **Purpose**: Incident response and monitoring
+#### Widget 4: Recent Action Runs (Table)
+- **Data Source**: Action Runs
+- **Columns**: Action, Entity, Status, Triggered By, Timestamp
+- **Sort**: Most recent first
+- **Purpose**: Monitor self-service activity across the org
 
 ### Step-by-Step Setup
 
@@ -236,29 +232,29 @@ TechCorp has different stakeholders who need different views of the same data. D
    - **Title**: `Platform Engineering Console`
    - **Description**: `Infrastructure health, compliance, and system metrics`
 
-#### Step 2: Add Infrastructure Health Grid
-1. Add **Table Widget** with status indicators:
+#### Step 2: Add Environment Distribution Chart
+1. Add **Pie Chart Widget**:
    - **Entity**: Service
-   - **Columns**: title, environment, health_status, last_deploy
-   - **Conditional Formatting**: Color-code by health status
+   - **Group By**: `environment`
+   - **Title**: `Services by Environment`
 
-#### Step 3: Add Compliance Table
+#### Step 3: Add Language Distribution Chart
+1. Add **Bar Chart Widget**:
+   - **Entity**: Service
+   - **Group By**: `language`
+   - **Title**: `Language Distribution`
+
+#### Step 4: Add Service Inventory Table
 1. Add **Table Widget**:
    - **Entity**: Service
-   - **Columns**: title, security_score, performance_score, compliance_status
-   - **Filters**: Show non-compliant services first
+   - **Columns**: `title`, `language`, `team`, `environment`, `url`
+   - **Title**: `Service Inventory`
 
-#### Step 4: Add Deployment Pipeline
-1. Add **Table Widget** for action runs:
+#### Step 5: Add Action Runs Table
+1. Add **Table Widget**:
    - **Entity**: Action Runs
-   - **Filter**: Deployment actions
-   - **Columns**: action, service, status, timestamp, duration
-
-#### Step 5: Add Resource Charts
-1. Add **Bar Chart** or **Line Chart**:
-   - **Entity**: Service
-   - **Metrics**: Resource utilization (if available)
-   - **Group By**: Environment or Team
+   - **Title**: `Recent Actions`
+   - **Sort**: Timestamp descending
 
 ## Success Criteria
 
@@ -277,11 +273,10 @@ TechCorp has different stakeholders who need different views of the same data. D
 - [ ] Team health indicators are clear
 
 ### Platform Dashboard
-- [ ] Infrastructure health is clearly visible
-- [ ] Compliance status is tracked and highlighted
-- [ ] Deployment pipeline status is monitored
-- [ ] Resource utilization data supports capacity planning
-- [ ] Alert information enables quick response
+- [ ] Environment distribution pie chart displays correctly
+- [ ] Language bar chart shows service technology breakdown
+- [ ] Service inventory table lists all non-archived services with correct columns
+- [ ] Action runs table shows recent self-service activity
 
 ## Validation Steps
 
@@ -349,8 +344,8 @@ Document what you learned:
 ## Next Steps
 
 After completing this challenge:
-- Try [Multi-Step Actions](multi-step-actions.md)
-- Or move on to [Advanced: Custom Widget Development](../advanced/custom-widget-development.md)
+- Move on to [Enterprise Scorecard System](../advanced/enterprise-scorecard-system.md) — add quality tracking to your dashboards
+- Or try [Governance Setup](../advanced/governance-setup.md) — control who sees which dashboards
 
 ---
 
