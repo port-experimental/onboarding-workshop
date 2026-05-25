@@ -19,6 +19,7 @@ This directory contains progressive challenges designed to build Port expertise 
 
 - **[Team-Service Relationships](intermediate/team-service-relationships.md)** - Connect data models with integrations
 - **[Multi-Dashboard Setup](intermediate/multi-dashboard-setup.md)** - Create role-based dashboard views
+- **[Automate Service Lifecycle](intermediate/automate-service-lifecycle.md)** - React to catalog changes with automations
 
 **Estimated Time**: 45-70 minutes each  
 **Prerequisites**: Complete beginner challenges
@@ -26,10 +27,13 @@ This directory contains progressive challenges designed to build Port expertise 
 ### 🔴 Advanced Challenges
 **Focus**: Complex real-world scenarios with minimal guidance
 
-- **[Enterprise Scorecard System](advanced/enterprise-scorecard-system.md)** - Design comprehensive quality measurement system
+- **[Enterprise Scorecard System](advanced/enterprise-scorecard-system.md)** - Build a two-scorecard quality system with Bronze/Silver/Gold levels
+- **[Terraform Port Management](advanced/terraform-port-management.md)** - Manage Port blueprints and scorecards as infrastructure-as-code
+- **[Governance Setup](advanced/governance-setup.md)** - Configure RBAC, action approvals, and page visibility
+- **[Custom Integration Development](advanced/custom-integration-development.md)** - Build a REST API integration using the Ocean framework
 
-**Estimated Time**: 90-120 minutes each  
-**Prerequisites**: Complete intermediate challenges
+**Estimated Time**: 45-120 minutes each (varies by challenge)  
+**Prerequisites**: Complete intermediate challenges and relevant advanced modules
 
 ## Getting Started
 
@@ -74,17 +78,27 @@ Each challenge includes detailed validation steps you can follow manually.
 ```mermaid
 graph TD
     A[First Blueprint] --> B[First Dashboard]
-    B --> C[First Action]
-    C --> D[Team-Service Relationships]
+    A --> C[First Action]
+    B --> D[Team-Service Relationships]
+    C --> D
     D --> E[Multi-Dashboard Setup]
+    D --> G[Automate Service Lifecycle]
     E --> F[Enterprise Scorecard System]
-    
+    G --> F
+    F --> H[Terraform Port Management]
+    F --> I[Governance Setup]
+    F --> J[Custom Integration Development]
+
     style A fill:#90EE90
-    style B fill:#90EE90  
+    style B fill:#90EE90
     style C fill:#90EE90
     style D fill:#FFD700
     style E fill:#FFD700
+    style G fill:#FFD700
     style F fill:#FF6B6B
+    style H fill:#FF6B6B
+    style I fill:#FF6B6B
+    style J fill:#FF6B6B
 ```
 
 ## Learning Objectives
