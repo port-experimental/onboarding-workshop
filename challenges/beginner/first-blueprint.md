@@ -24,9 +24,10 @@ Create a blueprint to model **Teams** in your organization, including all the pr
    - Team's primary Slack channel
    - Example: "#backend-team", "#mobile-dev"
 
-3. **Team Lead** (String, optional)
+3. **Team Lead** (String, optional) — use identifier `lead`
    - Name or email of the team lead
    - Example: "jane.doe@company.com"
+   - Note: Port auto-fills the identifier as `team_lead`. Change it to `lead` to match later challenges.
 
 ### Optional Properties (Choose 2-3)
 4. **Team Size** (Number)

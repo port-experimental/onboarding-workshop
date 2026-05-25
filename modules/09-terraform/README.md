@@ -10,7 +10,7 @@
 
 ## 📍 Module Overview
 
-⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 7](../07-scorecards/) completed
+⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 8](../08-ai-agents/) completed
 
 **Progress**: Module 9 of 12 | **Completion**: 75% of core modules
 
@@ -23,7 +23,7 @@ By the end of this module, you will be able to:
 - Follow best practices for Port infrastructure management
 
 ## Prerequisites
-- Completed [Module 7: Scorecards](../07-scorecards/)
+- Completed [Module 8: AI Agents](../08-ai-agents/)
 - Terraform installed and basic familiarity
 - Understanding of infrastructure-as-code concepts
 - Access to Port API credentials
@@ -213,51 +213,20 @@ resource "port_blueprint" "team" {
   }
 }
 
-# Add relationship from Service to Team
-resource "port_blueprint" "service_with_team" {
-  depends_on = [port_blueprint.service, port_blueprint.team]
-  
-  title      = "Service"
-  icon       = "Service"
-  identifier = "service"
-  
-  properties = {
-    # ... (previous properties)
-    
-    string_props = {
-      "name" = {
-        title    = "Name"
-        required = true
-      }
-      "description" = {
-        title    = "Description"
-        required = false
-      }
-      "language" = {
-        title    = "Programming Language"
-        required = true
-        enum     = ["Python", "JavaScript", "Java", "Go", "TypeScript"]
-      }
-    }
-    
-    boolean_props = {
-      "archived" = {
-        title    = "Archived"
-        required = true
-        default  = false
-      }
-    }
-  }
-  
-  relations = {
-    "team" = {
-      title    = "Team"
-      target   = "team"
-      required = false
-      many     = false
-    }
-  }
-}
+# Add a relations block to your existing port_blueprint.service resource:
+# Update port_blueprint.service (defined above) to include:
+#
+#   relations = {
+#     "team" = {
+#       title    = "Team"
+#       target   = "team"
+#       required = false
+#       many     = false
+#     }
+#   }
+#
+# Do NOT create a second resource with identifier = "service" — Terraform will
+# fail with a duplicate resource conflict. Modify the existing resource instead.
 ```
 
 ### Step 9: Apply Configuration
@@ -517,7 +486,7 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 
 
 ### ✅ Core Modules Complete
-**Well done!** You've completed the core Port workshop modules (1-9). You now have the skills to:
+**Well done!** You've completed Module 9. You now have the skills to:
 - Navigate and configure Port effectively
 - Design data models with blueprints
 - Set up integrations and data sources
@@ -570,4 +539,4 @@ terraform state show    # Show resource details
 
 ---
 
-**Completed Module 9?** You've finished the Port workshop! Check out the [challenges](../../challenges/) to practice your new skills.
+**Completed Module 9?** Continue to [Module 10: Governance & RBAC](../10-governance/) to set up permissions and audit trails for your Port instance.

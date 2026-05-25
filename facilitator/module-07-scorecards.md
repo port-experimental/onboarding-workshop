@@ -2,7 +2,7 @@
 
 ## Overview
 **Duration**: 60-75 minutes  
-**Module**: 7 of 9  
+**Module**: 7 of 12  
 **Prerequisites**: Module 6 (Automations) completed
 
 ## Key Teaching Points

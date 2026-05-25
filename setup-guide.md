@@ -192,7 +192,7 @@ node environment-check.js https://app.port.io
 Test connectivity to required services:
 ```bash
 # Test Port API access
-curl -I https://api.port.io
+curl -I https://api.getport.io
 
 # Test GitHub API access
 curl -I https://api.github.com

@@ -59,21 +59,6 @@ Choose one of these Port environment options:
 
 📋 **Detailed Setup Instructions**: See our comprehensive [Setup Guide](setup-guide.md) for step-by-step instructions, troubleshooting, and environment validation.
 
-### Quick Environment Check
-
-Before starting, validate your setup:
-
-```bash
-# Download and run validation script
-chmod +x validation/validate-environment.sh
-./validation/validate-environment.sh https://app.port.io
-```
-
-Or use Node.js:
-```bash
-node validation/environment-check.js https://app.port.io
-```
-
 ### Key Concepts
 
 | Concept | Description |
@@ -90,7 +75,7 @@ node validation/environment-check.js https://app.port.io
 - ✅ **Self-Assessment** - Built-in knowledge checks and skill validation in each module
 - ✅ **Generic Examples** - Uses TechCorp scenarios that work for everyone
 - ✅ **Progressive Challenges** - Beginner to advanced hands-on exercises
-- ✅ **Multiple Learning Paths** - Tailored content for different roles
+- ✅ **Builder Learning Path** - Tailored for platform engineers configuring Port
 - ✅ **Self-Contained** - No specific organizational setup required
 - ✅ **Practical Focus** - Real-world scenarios and best practices
 - ✅ **Facilitator Support** - Comprehensive teaching notes and guidance
@@ -105,7 +90,7 @@ node validation/environment-check.js https://app.port.io
 
 ### Quick References
 - **[Setup Guide](setup-guide.md)** - Environment setup and validation
-- **[Validation Tools](validation/)** - Automated environment checking scripts
+- **[Best Practices Guide](resources/best-practices.md)** - Configuration patterns and recommendations
 
 ## Support
 
@@ -130,4 +115,4 @@ This workshop is designed to be continuously improved. If you find issues or hav
 
 ---
 
-**Ready to start?** Choose your [learning path](#learning-paths) above and begin your Port journey!
+**Ready to start?** Choose your [learning path](#learning-path) above and begin your Port journey!

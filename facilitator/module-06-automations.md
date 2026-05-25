@@ -2,7 +2,7 @@
 
 ## Overview
 **Duration**: 60 minutes  
-**Module**: 6 of 9  
+**Module**: 6 of 12  
 **Prerequisites**: Module 5 (Actions) completed
 
 ## Key Teaching Points

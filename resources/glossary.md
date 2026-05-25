@@ -1,6 +1,6 @@
 # Port Glossary and Concept Reference
 
-> Quick navigation: [Workshop Home](../README.md) · [Setup Guide](../setup-guide.md) · [Learning Paths](../README.md#learning-paths) · [Troubleshooting Guide](../troubleshooting.md)
+> Quick navigation: [Workshop Home](../README.md) · [Setup Guide](../setup-guide.md) · [Learning Path](../README.md#learning-path) · [Troubleshooting Guide](../troubleshooting.md)
 
 ## Core Concepts
 

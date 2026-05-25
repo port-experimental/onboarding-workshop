@@ -1,7 +1,8 @@
-# Advanced Challenge: Custom Integration Development
+# Challenge: Custom Integration Development
 
-**Difficulty**: 🔴 Advanced | **Estimated Time**: 90-120 minutes  
-**Prerequisites**: Module 11 completed
+**Difficulty**: 🔴 Advanced  
+**Estimated Time**: 90-120 minutes  
+**Prerequisites**: Completed [Module 11: Custom Integrations](../../modules/11-custom-integrations/)
 
 ---
 

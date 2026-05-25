@@ -189,7 +189,7 @@ TechCorp has different stakeholders who need different views of the same data. D
 #### Step 5: Add Team Overview Table
 1. Add **Table Widget**:
    - **Entity**: Team
-   - **Columns**: title, slack_channel, team_lead, on_call_rotation
+   - **Columns**: title, slack_channel, lead, on_call_rotation
    - **Title**: `Team Directory`
 
 ## Dashboard 3: Platform Engineer Dashboard

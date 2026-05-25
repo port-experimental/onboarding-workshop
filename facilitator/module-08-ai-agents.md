@@ -2,7 +2,7 @@
 
 ## Overview
 **Duration**: 75 minutes  
-**Module**: 8 of 9  
+**Module**: 8 of 12  
 **Prerequisites**: Module 7 (Scorecards) completed
 
 ## Key Teaching Points

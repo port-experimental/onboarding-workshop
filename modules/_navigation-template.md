@@ -4,14 +4,11 @@
 
 ### Module Progress Bar
 ```
-[✅ 01] → [✅ 02] → [✅ 03] → [🔄 04] → [ 05] → [ 06] → [ 07] → [ 08] → [ 09]
+[✅ 01] → [✅ 02] → [✅ 03] → [🔄 04] → [ 05] → [ 06] → [ 07] → [ 08] → [ 09] → [ 10] → [ 11] → [ 12]
 ```
 
 ### Learning Path Progress
-**Developer Path**: Module X of 9 (XX% complete)
-**Platform Engineer Path**: Module X of 9 (XX% complete)
-**Manager Path**: Module X of 9 (XX% complete)
-**Quick Start Path**: Module X of 9 (XX% complete)
+**Builder Path**: Module X of 12 (XX% complete)
 
 ## Navigation Links
 
