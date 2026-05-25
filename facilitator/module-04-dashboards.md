@@ -122,3 +122,10 @@ Ensure participants can demonstrate:
    - Monthly review cadence
 3. **Deliverable**: Sketch or describe 3-4 key widgets
 4. **Discussion**: Compare approaches and rationale
+
+## Custom Widgets / Plugins (added 2026-05)
+- Requires Node.js 18+ on attendee machines
+- `@port-labs/port-plugins-cli` is a public npm package — no special access needed
+- Plugin must compile to a single self-contained HTML file (all assets inlined, max 10 MB)
+- Common issue: CORS errors when widget fetches external APIs — advise using Port's proxied fetch or pre-fetching data server-side
+- If attendees can't clone the sample repo, pre-build a demo HTML file to show the upload flow

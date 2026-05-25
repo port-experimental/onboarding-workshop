@@ -4,7 +4,7 @@
 
 **Previous**: [Module 3: Data Sources](../03-data-sources/) | **Next**: [Module 5: Actions](../05-actions/)
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 60-75 minutes | 📋 **Prerequisites**: [Module 3](../03-data-sources/) completed
 
-**Progress**: Module 4 of 7 | **Completion**: 57% of core modules
+**Progress**: Module 4 of 12 | **Completion**: 33% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -48,6 +48,8 @@ By the end of this module, you will be able to:
 | **Line Chart** | Trends over time | Deployment frequency |
 | **Markdown** | Documentation | Team guidelines |
 | **IFrame** | External content | Grafana dashboards |
+| **Custom Widget** | Custom React/TypeScript visualizations | Embedded Grafana panel, custom metrics view, external data |
+| **AI Agent** | Embedded AI chat interface | AI assistant scoped to a service or team |
 
 ### Widget Visual Examples
 
@@ -80,6 +82,79 @@ Here are examples of what each widget type looks like in Port:
 #### Action Card Widget
 ![Action Card Widget](../../resources/Widget.Action.Card.png)
 *Action card widgets provide quick access to self-service actions directly from dashboards.*
+
+## Custom Widgets (Plugins)
+
+Custom widgets are self-contained HTML applications (built in React/TypeScript) embedded as iframes in dashboards and entity pages. Use them when built-in widgets can't express what you need.
+
+### When to use custom widgets vs built-in widgets
+- **Built-in widget**: your data is already in Port (tables, charts, counts, entity data)
+- **Custom widget**: you need external data, custom visualizations, or interactive UI not available in built-in widgets
+
+### Development workflow
+
+Prerequisites: Node.js 18+, the `@port-labs/port-plugins-cli` package.
+
+```bash
+npm install -g @port-labs/port-plugins-cli
+```
+
+The workflow is:
+1. Clone the Port plugin sample repo as your starting point: `https://github.com/port-labs/port-plugin-sample`
+2. Build your plugin — the output must be a **single self-contained HTML file** (all JS/CSS inlined, max 10 MB)
+3. Upload via the CLI
+
+### Plugin structure
+
+The sample repo uses React + `@port-labs/plugins-sdk`. Your main component receives Port entity context:
+
+```typescript
+// src/App.tsx
+import { useEffect, useState } from 'react'
+
+interface PortContext {
+  entity: { identifier: string; title: string; properties: Record<string, unknown> }
+  blueprintIdentifier: string
+}
+
+export default function App() {
+  const [context, setContext] = useState<PortContext | null>(null)
+
+  useEffect(() => {
+    // Port injects context via the plugins SDK
+    // Use @port-labs/plugins-sdk for the official context API
+  }, [])
+
+  if (!context) return <div>Loading...</div>
+
+  return (
+    <div>
+      <h2>{context.entity.title}</h2>
+      <pre>{JSON.stringify(context.entity.properties, null, 2)}</pre>
+    </div>
+  )
+}
+```
+
+### Upload and deploy
+
+```bash
+# Authenticate first — requires Port admin credentials
+port-plugins-cli upload --file dist/index.html --name my-widget
+
+# Or use environment variables
+PORT_CLIENT_ID=xxx PORT_CLIENT_SECRET=yyy port-plugins-cli upload --file dist/index.html --name my-widget
+```
+
+After upload, your plugin appears in **Plugins Manager** in Port. Add it to any dashboard: **+ Widget → Custom Widget → select your plugin**.
+
+### Hands-on exercise
+
+1. Clone `https://github.com/port-labs/port-plugin-sample`
+2. Modify the component to display `status` and `language` from the entity context
+3. Build: `npm run build` (ensure output is a single HTML file)
+4. Upload via `port-plugins-cli`
+5. Add the plugin to the TechCorp Services dashboard
 
 ## Hands-On Exercise: Create TechCorp Engineering Dashboard
 
@@ -341,8 +416,8 @@ To explore more advanced dashboard capabilities, visit `https://docs.port.io` an
 
 ## Next Steps
 
-With dashboards displaying your data effectively, you're ready to add interactivity:
-- **[Module 5: Actions](../05-actions/)** - Create self-service workflows and automation
+With dashboards and visualizations in place, you can add self-service workflows:
+- **[Module 5: Actions](../05-actions/)** — let developers trigger automation from Port
 
 ## Quick Reference
 

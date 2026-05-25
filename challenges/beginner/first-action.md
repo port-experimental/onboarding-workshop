@@ -242,8 +242,8 @@ You've successfully completed this challenge when:
 ## Next Steps
 
 After completing this challenge:
-- Try [Create Your First Scorecard](first-scorecard.md)
-- Or move on to [Intermediate: Multi-Step Actions](../intermediate/multi-step-actions.md)
+- Try [First Dashboard](first-dashboard.md) — build a dashboard showing your services and action runs
+- Or move on to [Intermediate: Team-Service Relationships](../intermediate/team-service-relationships.md)
 
 ## Learning Notes
 

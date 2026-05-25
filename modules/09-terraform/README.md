@@ -1,18 +1,18 @@
-# Module 7: Terraform - Infrastructure as Code for Port
+# Module 9: Terraform - Infrastructure as Code for Port
 
 ## 🧭 Navigation
 
-**Previous**: [Module 6: Scorecards](../06-scorecards/) | **Next**: [Challenges](../../challenges/)
+**Previous**: [Module 8: AI Agents](../08-ai-agents/) | **Next**: [Module 10: Governance & RBAC](../10-governance/)
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
 ## 📍 Module Overview
 
-⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 6](../06-scorecards/) completed
+⏱️ **Duration**: 90-120 minutes | 📋 **Prerequisites**: [Module 8](../08-ai-agents/) completed
 
-**Progress**: Module 7 of 7 | **Completion**: 100% of core modules 🎉
+**Progress**: Module 9 of 12 | **Completion**: 75% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -23,7 +23,7 @@ By the end of this module, you will be able to:
 - Follow best practices for Port infrastructure management
 
 ## Prerequisites
-- Completed [Module 6: Scorecards](../06-scorecards/)
+- Completed [Module 8: AI Agents](../08-ai-agents/)
 - Terraform installed and basic familiarity
 - Understanding of infrastructure-as-code concepts
 - Access to Port API credentials
@@ -75,7 +75,7 @@ terraform {
   required_providers {
     port = {
       source  = "port-labs/port-labs"
-      version = "~> 2.0"
+      version = "~> 2.21"
     }
   }
 }
@@ -213,51 +213,20 @@ resource "port_blueprint" "team" {
   }
 }
 
-# Add relationship from Service to Team
-resource "port_blueprint" "service_with_team" {
-  depends_on = [port_blueprint.service, port_blueprint.team]
-  
-  title      = "Service"
-  icon       = "Service"
-  identifier = "service"
-  
-  properties = {
-    # ... (previous properties)
-    
-    string_props = {
-      "name" = {
-        title    = "Name"
-        required = true
-      }
-      "description" = {
-        title    = "Description"
-        required = false
-      }
-      "language" = {
-        title    = "Programming Language"
-        required = true
-        enum     = ["Python", "JavaScript", "Java", "Go", "TypeScript"]
-      }
-    }
-    
-    boolean_props = {
-      "archived" = {
-        title    = "Archived"
-        required = true
-        default  = false
-      }
-    }
-  }
-  
-  relations = {
-    "team" = {
-      title    = "Team"
-      target   = "team"
-      required = false
-      many     = false
-    }
-  }
-}
+# Add a relations block to your existing port_blueprint.service resource:
+# Update port_blueprint.service (defined above) to include:
+#
+#   relations = {
+#     "team" = {
+#       title    = "Team"
+#       target   = "team"
+#       required = false
+#       many     = false
+#     }
+#   }
+#
+# Do NOT create a second resource with identifier = "service" — Terraform will
+# fail with a duplicate resource conflict. Modify the existing resource instead.
 ```
 
 ### Step 9: Apply Configuration
@@ -516,8 +485,8 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 
 
 
-### 🎉 Workshop Completion
-**Congratulations!** You've completed all 7 modules of the Port workshop. You now have the skills to:
+### ✅ Core Modules Complete
+**Well done!** You've completed Module 9. You now have the skills to:
 - Navigate and configure Port effectively
 - Design data models with blueprints
 - Set up integrations and data sources
@@ -526,7 +495,7 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 - Implement quality tracking with scorecards
 - Manage Port configurations as infrastructure-as-code
 
-**Next Steps**: Explore the [challenges](../../challenges/) to practice your skills or start implementing Port in your organization!
+**Next Steps**: Continue to [Module 10: Governance & RBAC](../10-governance/) to set up permissions and audit trails for your Port instance.
 
 ## Common Issues & Solutions
 
@@ -546,11 +515,7 @@ To explore the latest capabilities of the Port Terraform provider, visit `https:
 
 ## Next Steps
 
-Congratulations! You've completed all Port workshop modules. Consider:
-- Implementing Port in your organization
-- Contributing to the Port community
-- Exploring advanced Port features
-- Building custom integrations
+Continue to [Module 10: Governance & RBAC](../10-governance/) to learn how to govern access, set up approval chains, and audit your Port instance for production readiness.
 
 ## Quick Reference
 
@@ -574,4 +539,4 @@ terraform state show    # Show resource details
 
 ---
 
-**Completed Module 7?** You've finished the Port workshop! Check out the [challenges](../../challenges/) to practice your new skills.
+**Completed Module 9?** Continue to [Module 10: Governance & RBAC](../10-governance/) to set up permissions and audit trails for your Port instance.

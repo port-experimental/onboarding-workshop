@@ -1,9 +1,9 @@
-# Module 7: Terraform - Facilitator Notes
+# Module 9: Terraform - Facilitator Notes
 
 ## Workshop Delivery Guidance
 
 **Pre-Module Setup (15 minutes)**
-- Ensure participants have completed Module 6 (scorecards working)
+- Ensure participants have completed Module 8 (AI Agents working)
 - Verify Terraform is installed on participant machines
 - Test Port API credentials and provider setup beforehand
 - Have sample Terraform configurations ready for demonstration

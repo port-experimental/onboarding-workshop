@@ -4,7 +4,7 @@
 
 **Previous**: [Module 2: Blueprints](../02-blueprints/) | **Next**: [Module 4: Dashboards](../04-dashboards/)
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 60-90 minutes | 📋 **Prerequisites**: [Module 2](../02-blueprints/) completed
 
-**Progress**: Module 3 of 7 | **Completion**: 43% of core modules
+**Progress**: Module 3 of 12 | **Completion**: 25% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -299,7 +299,7 @@ By the end of this module, your Port instance should:
 - Show GitHub repositories and releases as entities in the **Catalog** (for the TechCorp example org or your own)
 - Include at least one working mapping configuration you understand and can modify confidently
 
-To learn more about integrations and data sources, visit `https://docs.port.io` and search for **Integrations** or **Data sources** for the most up-to-date provider and mapping documentation.
+See the [Data ingestion documentation](https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/) for the full integration reference.
 
 
 
@@ -332,8 +332,8 @@ To learn more about integrations and data sources, visit `https://docs.port.io` 
 
 ## Next Steps
 
-With data flowing into Port, you're ready to visualize it:
-- **[Module 4: Dashboards](../04-dashboards/)** - Create dashboards and widgets to display your data
+With data flowing into your catalog, you can visualize it:
+- **[Module 4: Dashboards](../04-dashboards/)** — build visualizations and custom widgets
 
 ## Quick Reference
 

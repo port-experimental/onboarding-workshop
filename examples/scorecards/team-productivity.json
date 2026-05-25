@@ -15,16 +15,20 @@
     },
     "levels": [
         {
-            "color": "red",
-            "title": "Needs Improvement"
+            "color": "paleBlue",
+            "title": "Basic"
         },
         {
-            "color": "yellow", 
-            "title": "Good"
+            "color": "bronze",
+            "title": "Bronze"
         },
         {
-            "color": "green",
-            "title": "Excellent"
+            "color": "silver",
+            "title": "Silver"
+        },
+        {
+            "color": "gold",
+            "title": "Gold"
         }
     ],
     "rules": [
@@ -32,7 +36,7 @@
             "identifier": "has_team_lead",
             "title": "Has Designated Team Lead",
             "description": "Team has a clearly identified team lead",
-            "level": "Good",
+            "level": "Bronze",
             "query": {
                 "combinator": "and",
                 "conditions": [
@@ -47,7 +51,7 @@
             "identifier": "has_contact_info",
             "title": "Has Contact Information",
             "description": "Team has email and Slack channel configured",
-            "level": "Good", 
+            "level": "Bronze",
             "query": {
                 "combinator": "and",
                 "conditions": [
@@ -63,10 +67,29 @@
             }
         },
         {
+            "identifier": "technology_focus",
+            "title": "Clear Technology Focus",
+            "description": "Team has defined technology stack and focus area",
+            "level": "Silver",
+            "query": {
+                "combinator": "and",
+                "conditions": [
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "focus_area"
+                    },
+                    {
+                        "operator": "isNotEmpty",
+                        "property": "technologies"
+                    }
+                ]
+            }
+        },
+        {
             "identifier": "optimal_team_size",
             "title": "Optimal Team Size",
             "description": "Team has an optimal size (3-8 members) for productivity",
-            "level": "Excellent",
+            "level": "Silver",
             "query": {
                 "combinator": "and",
                 "conditions": [
@@ -87,7 +110,7 @@
             "identifier": "owns_services",
             "title": "Owns Services",
             "description": "Team has ownership of at least one service",
-            "level": "Excellent",
+            "level": "Gold",
             "query": {
                 "combinator": "and",
                 "conditions": [
@@ -95,25 +118,6 @@
                         "operator": ">",
                         "property": "$count_relations.services",
                         "value": 0
-                    }
-                ]
-            }
-        },
-        {
-            "identifier": "technology_focus",
-            "title": "Clear Technology Focus",
-            "description": "Team has defined technology stack and focus area",
-            "level": "Good",
-            "query": {
-                "combinator": "and",
-                "conditions": [
-                    {
-                        "operator": "isNotEmpty",
-                        "property": "focus_area"
-                    },
-                    {
-                        "operator": "isNotEmpty",
-                        "property": "technologies"
                     }
                 ]
             }

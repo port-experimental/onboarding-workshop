@@ -2,7 +2,7 @@
 
 ## 🧭 Navigation
 
-**Learning Path**: [Choose Your Path](../../README.md#-choose-your-learning-path) | **Next**: [Module 2: Blueprints](../02-blueprints/)
+**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **Next**: [Module 2: Blueprints](../02-blueprints/)
 
 **All Modules**: [Workshop Home](../../README.md) | **Challenges**: [Beginner](../../challenges/beginner/) | [Intermediate](../../challenges/intermediate/) | [Advanced](../../challenges/advanced/)
 
@@ -12,7 +12,7 @@
 
 ⏱️ **Duration**: 30-45 minutes | 📋 **Prerequisites**: None
 
-**Progress**: Module 1 of 7 | **Completion**: 14% of core modules
+**Progress**: Module 1 of 12 | **Completion**: 8% of core modules
 
 ## Learning Objectives
 By the end of this module, you will be able to:
@@ -37,20 +37,6 @@ Before starting this module, ensure your environment is properly configured:
 1. **Port Access**: Can you access your Port instance URL?
 2. **Browser**: Using a modern browser (Chrome, Firefox, Safari, Edge)?
 3. **Permissions**: Do you have the necessary permissions for the workshop?
-
-### Automated Validation (Optional)
-Run our environment validation script to check your setup:
-
-```bash
-# Run the validation script (from workshop directory)
-chmod +x validation/validate-environment.sh
-./validation/validate-environment.sh https://app.port.io
-```
-
-Or use the Node.js version:
-```bash
-node validation/environment-check.js https://app.port.io
-```
 
 ### Manual Validation Checklist
 - [ ] Can access Port instance URL
@@ -206,8 +192,8 @@ To deepen your understanding of Port basics, see the general Port documentation 
 ## Next Steps
 
 Now that you're comfortable with Port navigation, you're ready to dive deeper into:
-- **[Module 2: Blueprints](../02-blueprints/)** - Learn how Port models your data
-- **[Module 3: Data Sources](../03-data-sources/)** - Understand how Port gets its data
+- **[Module 2: Blueprints](../02-blueprints/)** — learn how Port models your data
+- **[Module 3: Data Sources](../03-data-sources/)** — understand how Port gets its data
 
 ## Quick Reference
 
