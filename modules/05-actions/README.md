@@ -4,7 +4,7 @@
 
 **Previous**: [Module 4: Dashboards](../04-dashboards/) | **Next**: [Module 6: Automations](../06-automations/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -57,7 +57,7 @@ Port supports various backend systems:
 
 ## Hands-On Exercise: Create Service Deployment Action
 
-Let's create an action that allows developers to deploy TechCorp services.
+Let's create an action that allows developers to deploy TechCorp services.  
 
 ### Step 1: Plan the Action
 Our deployment action will:
@@ -67,12 +67,12 @@ Our deployment action will:
 - Trigger a GitHub Actions workflow
 
 ### Step 2: Create the Action
-1. Navigate to **Self-Service**
+1. Navigate to **Workflow Management -> Self service.** 
 2. Click **+ Action**
 3. Configure basic details:
    - **Title**: `Deploy Service`
    - **Icon**: `Rocket`
-   - **Operation**: `Day-2` (operational task)
+   - **Category**: `Day-2` (operational task)
    - **Description**: `Deploy a TechCorp service to specified environment`
 
 ### Step 3: Configure User Inputs
@@ -80,7 +80,7 @@ Click **Next** and add these inputs:
 
 #### Input 1: Service Selection
 - **Title**: `Service`
-- **Type**: `Entity`
+- **Type**: `Entity selection`
 - **Blueprint**: `Service`
 - **Required**: ✅ True
 - **Description**: `Select the service to deploy`
@@ -89,6 +89,8 @@ Click **Next** and add these inputs:
 - **Title**: `Target Environment`
 - **Type**: `Select`
 - **Options**: 
+-  Add "Staging", add "Production or. 
+
   Paste location: **Self-Service → Deploy Service action → Inputs step → “Target Environment” input → Options (JSON mode)** (use this array as the options definition):
   ```json
   [

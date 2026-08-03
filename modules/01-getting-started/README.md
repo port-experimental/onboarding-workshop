@@ -2,7 +2,7 @@
 
 ## 🧭 Navigation
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **Next**: [Module 2: Blueprints](../02-blueprints/)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **Next**: [Module 2: Blueprints](../02-blueprints/)
 
 **All Modules**: [Workshop Home](../../README.md) | **Challenges**: [Beginner](../../challenges/beginner/) | [Intermediate](../../challenges/intermediate/) | [Advanced](../../challenges/advanced/)
 
@@ -18,7 +18,7 @@
 By the end of this module, you will be able to:
 - Navigate the Port interface confidently
 - Understand Port's core concepts and terminology
-- Access different sections of Port (Home, Catalog, Self-Service, Builder)
+- Access different sections of Port (Home, Catalog, Self-Service, Context Lake)
 - Set up your Port environment for the workshop
 
 ## Prerequisites
@@ -99,6 +99,7 @@ The Catalog shows all entities in your software ecosystem:
 - `ecommerce-api` (Backend team, Python)
 - `mobile-app` (Frontend team, React Native)
 - `analytics-service` (Data team, Java)
+* added later
 
 ### Step 4: Check Self-Service Actions
 Self-Service is where developers can trigger automated workflows:
@@ -107,16 +108,16 @@ Self-Service is where developers can trigger automated workflows:
 2. Look for available actions (there might be none initially)
 3. Click `+ Action` to see the action creation form
 
-### Step 5: Explore the Builder
-The Builder is where Port administrators configure everything:
+### Step 5: Explore the Context Lake
+The Context Lake is where Port administrators configure everything:
 
-1. Click **Builder** in the top-right corner
+1. Click **Context Lake** in the top-right corner
 2. Explore the different sections:
    - **Data Model**: Blueprints and their relationships
    - **Data Sources**: Integrations with external systems
    - **Pages**: Catalog and dashboard page configurations
 
-**Important**: The `...` menu in Builder contains:
+**Important**: The `...` menu in Context Lake contains:
 - Credentials for API access
 - Data export tools
 - Useful documentation links
@@ -134,10 +135,10 @@ Rate your understanding (1-5 scale, where 1=No understanding, 5=Expert level):
 ### Skill Validation
 Check off the skills you can confidently demonstrate:
 
-- [ ] **Navigation Skills**: Can move between Home, Catalog, Self-Service, and Builder
+- [ ] **Navigation Skills**: Can move between Home, Catalog, Self-Service, and Context Lake
 - [ ] **Interface Recognition**: Can identify key features in each section
 - [ ] **Widget Management**: Can locate and understand widget creation
-- [ ] **Admin Access**: Can find Builder credentials and configuration areas
+- [ ] **Admin Access**: Can find Context Lake credentials and configuration areas
 
 ### Confidence Assessment
 How confident are you in applying what you learned?
@@ -169,8 +170,8 @@ You've successfully completed this module when you can:
 
 By the end of this module, your Port environment should:
 - Have a working instance you can log into (trial, demo, or existing)
-- Allow you to navigate between **Home**, **Catalog**, **Self-Service**, and **Builder** without getting lost
-- Expose the **Builder → ... → Credentials** area so you know where to get API access for later modules
+- Allow you to navigate between **Home**, **Catalog**, **Self-Service**, and **Context Lake** without getting lost
+- Expose the **Context Lake → ... → Credentials** area so you know where to get API access for later modules
 
 To deepen your understanding of Port basics, see the general Port documentation at `https://docs.port.io` and search for **Getting started** and **Overview** topics.
 
@@ -184,7 +185,7 @@ To deepen your understanding of Port basics, see the general Port documentation 
 **Problem**: Empty catalog or no data visible  
 **Solution**: This is normal for new instances - data will be populated as we configure integrations
 
-**Problem**: Missing permissions for Builder section  
+**Problem**: Missing permissions for Context Lake section  
 **Solution**: Ensure you have admin access or are using the correct workshop environment
 
 **Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.
@@ -201,7 +202,7 @@ Now that you're comfortable with Port navigation, you're ready to dive deeper in
 - **Home**: Personal dashboard with widgets
 - **Catalog**: Browse all entities and pages
 - **Self-Service**: Available actions and workflows
-- **Builder**: Administrative configuration interface
+- **Context Lake**: Administrative configuration interface
 
 ### Key Terminology
 - **Entity**: A specific instance (e.g., "user-service")

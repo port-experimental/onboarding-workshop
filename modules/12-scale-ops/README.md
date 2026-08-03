@@ -4,7 +4,7 @@
 
 **Previous**: [Module 11: Custom Integrations](../11-custom-integrations/) | **Next**: [Challenges](../../challenges/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -254,11 +254,11 @@ If the plan shows changes, your `.tf` definition doesn't match the actual state.
 
 ## Section 4: Integration Health & Observability
 
-> **Note:** The `_integration` blueprint and `_action_run` blueprint used in this section are internal Port blueprints. If they are not visible in your Builder, they may not be enabled for your Port plan. Check with your Port admin or account manager.
+> **Note:** The `_integration` blueprint and `_action_run` blueprint used in this section are internal Port blueprints. If they are not visible in your Context Lake, they may not be enabled for your Port plan. Check with your Port admin or account manager.
 
 ### Where to check integration health
 
-Navigate to **Builder → Data Sources** and click on any integration. The integration page shows:
+Navigate to **Context Lake → Data Sources** and click on any integration. The integration page shows:
 - **Last sync time**: when Port last pulled data
 - **Sync status**: success / in-progress / failed
 - **Error log**: details of any mapping or connection errors
@@ -384,7 +384,7 @@ See the [Port CLI repository](https://github.com/port-experimental/port-cli) and
 
 ## Next Steps
 
-🎉 **Congratulations — you've completed the full Port builder workshop.**
+🎉 **Congratulations — you've completed the full Port Context Lake workshop.**
 
 You now have the skills to:
 - Build and configure a complete Port developer portal (Modules 1-9)

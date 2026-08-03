@@ -4,7 +4,7 @@
 
 **Previous**: [Module 10: Governance & RBAC](../10-governance/) | **Next**: [Module 12: Scale & Ops](../12-scale-ops/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -23,7 +23,7 @@ By the end of this module, you will be able to:
 
 ## Prerequisites
 - Completed [Module 10: Governance & RBAC](../10-governance/)
-- Port API credentials (Client ID and Client Secret from Builder → ... → Credentials)
+- Port API credentials (Client ID and Client Secret from Context Lake → ... → Credentials)
 - Python 3.11+ installed (for Ocean exercise)
 - `curl` or Postman available
 
@@ -191,7 +191,7 @@ Use Port's inbound webhook to receive events from any system that can send HTTP 
 
 ### Set up an inbound webhook
 
-1. Navigate to **Builder → Data Sources → + Add Data Source → Webhook**
+1. Navigate to **Context Lake → Data Sources → + Add Data Source → Webhook**
 2. Configure:
    - **Title**: `PagerDuty Incidents`
    - **Blueprint**: `incident` (create this blueprint first if it doesn't exist — see below)
@@ -199,7 +199,7 @@ Use Port's inbound webhook to receive events from any system that can send HTTP 
 
 ### Create an Incident blueprint
 
-Before the webhook can map data, create the target blueprint. In **Builder → Data Model → + Blueprint**:
+Before the webhook can map data, create the target blueprint. In **Context Lake → Data Model → + Blueprint**:
 
 ```json
 {
@@ -391,7 +391,7 @@ See the [Ocean documentation](https://docs.port.io/build-your-software-catalog/c
 
 By the end of this module:
 - At least 3 services exist in Port that were created via the REST API (not the UI)
-- A webhook data source is configured in Builder → Data Sources
+- A webhook data source is configured in Context Lake → Data Sources
 - You can explain the integration decision tree from memory
 
 See the [Port API reference](https://docs.port.io/api-reference/port-api) and [Ocean documentation](https://docs.port.io/build-your-software-catalog/custom-integration/ocean-custom-integration/overview).
@@ -402,7 +402,7 @@ See the [Port API reference](https://docs.port.io/api-reference/port-api) and [O
 **Solution**: Access tokens expire after 1 hour. Re-run the auth call to get a fresh token.
 
 **Problem**: Upsert succeeds but entity doesn't appear in catalog  
-**Solution**: Check that the `blueprint` identifier in your request matches exactly (case-sensitive). Verify the blueprint exists in **Builder → Data Model**.
+**Solution**: Check that the `blueprint` identifier in your request matches exactly (case-sensitive). Verify the blueprint exists in **Context Lake → Data Model**.
 
 **Problem**: Webhook payload mapping produces no entities  
 **Solution**: Use the **Test** tab in the webhook editor to paste a sample payload and see what entities would be generated. Fix JQ expressions iteratively.

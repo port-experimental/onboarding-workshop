@@ -4,7 +4,7 @@
 
 **Previous**: [Module 7: Scorecards](../07-scorecards/) | **Next**: [Module 9: Terraform](../09-terraform/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -40,7 +40,7 @@ Port offers several AI interfaces under the **Port AI** umbrella:
 | Interface | Access | Use Case |
 |-----------|--------|----------|
 | **Port AI Assistant** | Built into Port UI — zero config | Ask questions about your catalog, generate configs |
-| **AI Agents** | Builder → AI Agents | Domain-specific agents that run autonomously |
+| **AI Agents** | Context Lake → AI Agents | Domain-specific agents that run autonomously |
 | **MCP Server** | External AI tool setup | Connect your AI coding tool to Port as a data source |
 | **AI Workflows** | Automations + AI | Trigger AI agents as part of automation rules |
 
@@ -102,7 +102,7 @@ The assistant reads your live catalog and returns accurate results.
 
 Try: *"Create a Port blueprint for a Kubernetes Namespace with these properties: cluster (string), environment (select with options dev, staging, prod), and a relation to the Service blueprint."*
 
-The assistant generates a JSON blueprint definition. Review it, then paste it into **Builder → Data Model → + Blueprint → JSON editor**.
+The assistant generates a JSON blueprint definition. Review it, then paste it into **Context Lake → Data Model → + Blueprint → JSON editor**.
 
 ---
 
@@ -189,7 +189,7 @@ One of the highest-leverage uses of Port AI is configuring Port itself. Here are
 
 > *"Create a Port blueprint for a Kubernetes Namespace with properties: cluster (string), environment (select: dev/staging/prod), resource_quota_cpu (number), resource_quota_memory (string), and a relation to the Service blueprint."*
 
-The AI generates a complete JSON blueprint. Paste it into **Builder → Data Model → + Blueprint → JSON editor**.
+The AI generates a complete JSON blueprint. Paste it into **Context Lake → Data Model → + Blueprint → JSON editor**.
 
 ### Generate an automation rule
 
@@ -209,7 +209,7 @@ Each of these prompts takes minutes instead of hours. Review the generated JSON 
 
 ### Step 1: Create an AI Agent blueprint entry
 
-Navigate to **Builder → AI Agents** and click **New AI Agent**. Configure:
+Navigate to **Context Lake → AI Agents** and click **New AI Agent**. Configure:
 
 | Field | Value |
 |-------|-------|
@@ -282,9 +282,9 @@ See the [Port AI Interfaces documentation](https://docs.port.io/ai-interfaces/ov
 **Solution**: Try the OAuth flow again — open a new session and let the browser login complete fully. Verify you're using the correct regional URL (EU: `mcp.port.io`, US: `mcp.us.port.io`).
 
 **Problem**: AI-generated JSON is rejected by Port  
-**Solution**: The AI may have used an unsupported field or wrong value type. Compare against the blueprint schema in **Builder → Data Model** and remove or correct unknown fields. This is expected — iterate.
+**Solution**: The AI may have used an unsupported field or wrong value type. Compare against the blueprint schema in **Context Lake → Data Model** and remove or correct unknown fields. This is expected — iterate.
 
-**Problem**: "I don't see AI Agents in my Builder"  
+**Problem**: "I don't see AI Agents in my Context Lake"  
 **Solution**: AI Agents may not be enabled on your Port plan. Check with your Port admin or account manager.
 
 **Still stuck or think you've found a bug?** See [Bug Reporting & Support](../../README.md#bug-reporting--support) for how to report workshop issues or Port product behavior.

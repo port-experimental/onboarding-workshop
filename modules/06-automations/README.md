@@ -4,7 +4,7 @@
 
 **Previous**: [Module 5: Actions](../05-actions/) | **Next**: [Module 7: Scorecards](../07-scorecards/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -38,7 +38,7 @@ By the end of this module, you will be able to:
 | **Triggered by** | A user clicking a button | An entity event (create/update/delete) or a timer |
 | **Use case** | Self-service: "deploy my service" | Reactive: "when a service is created, tag it" |
 | **Approval** | Can require approval | Runs automatically |
-| **Configuration** | Self-Service section | Builder → Automations |
+| **Configuration** | Self-Service section | Context Lake → Automations |
 
 ### Anatomy of an Automation Rule
 
@@ -116,7 +116,7 @@ When a new `Service` entity is created without a team assigned, automatically se
 
 ### Step 1: Open Automations
 
-Navigate to **Builder** → **Automations** → **+ Automation**.
+Navigate to **Context Lake** → **Automations** → **+ Automation**.
 
 ### Step 2: Configure the trigger
 
@@ -206,7 +206,7 @@ Paste this into the automation JSON editor and save:
 
 1. Navigate to **Catalog → Services**
 2. Create a new Service entity — leave the team relation empty
-3. Navigate to **Builder → Automations → Runs** to see the execution log
+3. Navigate to **Context Lake → Automations → Runs** to see the execution log
 4. Check the newly created entity — the `status` property should now be `"unowned"`
 
 ## Example: Notify on Scorecard Level Drop
@@ -267,13 +267,13 @@ Automations can trigger other automations — `UPSERT_ENTITY` changes will fire 
 ### Success Indicators
 - [ ] Can explain the difference between Actions (user-triggered) and Automations (event-driven)
 - [ ] Built the auto-tag automation rule with trigger, condition, and `UPSERT_ENTITY` action
-- [ ] Verified the rule fired by checking **Builder → Automations → Runs**
+- [ ] Verified the rule fired by checking **Context Lake → Automations → Runs**
 - [ ] Can describe at least two real-world use cases for automations in your organization
 
 ## End State & Further Reading
 
 By the end of this module, your Port instance should have:
-- At least one working automation rule visible in **Builder → Automations**
+- At least one working automation rule visible in **Context Lake → Automations**
 - A run log showing the automation fired when you created a new service
 
 See the [Automations documentation](https://docs.port.io/actions-and-automations/define-automations/) for the full trigger, condition, and action type reference.

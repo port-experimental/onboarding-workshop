@@ -4,7 +4,7 @@
 
 **Previous**: [Module 1: Getting Started](../01-getting-started/) | **Next**: [Module 3: Data Sources](../03-data-sources/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -53,7 +53,7 @@ Think of blueprints as templates or schemas that describe your software ecosyste
 Let's create a blueprint to track software releases for TechCorp's services.
 
 ### Step 1: Access Blueprint Creation
-1. Navigate to **Builder** → **Data Model**
+1. Navigate to **Context Lake** → **Data Model**
 2. Click **+ Blueprint** in the upper left
 3. You'll see the blueprint creation form
 
@@ -65,6 +65,7 @@ Fill out the blueprint form:
 
 ### Step 3: Add Properties
 We'll add properties based on what GitHub provides for releases:
+- On the Github Releases Blueprint, click + New Property
 
 #### Property 1: Tag Name
 - **Type**: String
@@ -81,7 +82,7 @@ We'll add properties based on what GitHub provides for releases:
 - **Description**: `Detailed notes about what's included in this release`
 
 #### Property 3: Release Date
-- **Type**: Date
+- **Type**: Date & time
 - **Title**: `Release Date`
 - **Identifier**: `release_date`
 - **Required**: ❌ False
@@ -211,11 +212,12 @@ Mirror properties pull a value from a **related entity** onto the current entity
 **Use case:** Show the owning team's Slack channel on every Service entity, so developers can find the right channel without navigating to the team.
 
 To add a mirror property in the UI:
-1. Open **Builder → Data Model → Service blueprint → Properties**
+1. Open **Context Lake → Data Model → Service blueprint → Properties**
 2. Click **+ Add Property → Mirror Property**
-3. Set **Relation**: `team`
-4. Set **Mirror Property**: `slack_channel` (the property on the Team blueprint)
-5. Give it a title: `Team Slack Channel`
+3. Give it a title: `Team Slack Channel`
+4. Set **Mirror From**: `Team`
+5. Set **Mirror Property**: `slack_channel` (the property on the Team blueprint)
+* requires Slack to have been configured. 
 
 The Service entity will now display the team's Slack channel automatically.
 
@@ -239,7 +241,7 @@ Aggregation properties compute a value **across all related entities** — count
 **Use case:** Show the number of open incidents on each Service entity so engineers see severity at a glance in the catalog.
 
 To add an aggregation property in the UI:
-1. Open **Builder → Data Model → Service blueprint → Properties**
+1. Open **Context Lake → Data Model → Service blueprint → Properties**
 2. Click **+ Add Property → Aggregation Property**
 3. Set **Relation**: the relation to aggregate across (e.g., `incidents`)
 4. Set **Function**: `count`

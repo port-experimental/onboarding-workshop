@@ -8,7 +8,7 @@
 ```
 
 ### Learning Path Progress
-**Builder Path**: Module X of 12 (XX% complete)
+**Context Lake Path**: Module X of 12 (XX% complete)
 
 ## Navigation Links
 
@@ -20,7 +20,7 @@
 
 **Previous**: [Module X: Title](../0X-module-name/) | **Next**: [Module X: Title](../0X-module-name/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 ```

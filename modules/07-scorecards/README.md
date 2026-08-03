@@ -4,7 +4,7 @@
 
 **Previous**: [Module 6: Automations](../06-automations/) | **Next**: [Module 8: AI Agents](../08-ai-agents/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -110,7 +110,7 @@ An entity reaches a level when it passes **all rules at that level AND all lower
 | `in` | Value is one of a set | `status in ["active", "healthy"]` |
 
 > **Coming from the old Scorecard model?** Before mid-2025, scorecards were configured as tabs inside each blueprint's settings — not as standalone blueprints. In the new model:
-> - Scorecards have their own entries in the Builder (as `Scorecard`, `Scorecard Rule`, `Scorecard Rule Result` blueprints)
+> - Scorecards have their own entries in the Context Lake (as `Scorecard`, `Scorecard Rule`, `Scorecard Rule Result` blueprints)
 > - The `blueprint` field in the scorecard JSON specifies which blueprint is measured
 > - Score results are auto-generated `Scorecard Rule Result` entities you can query and visualize
 >
@@ -124,7 +124,7 @@ Let's create a Production Readiness scorecard for TechCorp services.
 
 ### Step 1: Access the Scorecards configuration
 
-1. Navigate to **Builder** → **Data Model**
+1. Navigate to **Context Lake** → **Data Model**
 2. Find the **Service** blueprint
 3. Click on the **Scorecards** tab
 4. Click **+ New scorecard**
@@ -135,53 +135,83 @@ Paste this JSON into the scorecard editor:
 
 ```json
 {
-  "identifier": "production_readiness",
-  "title": "Production Readiness",
-  "blueprint": "service",
-  "levels": [
-    { "color": "paleBlue", "title": "Basic" },
-    { "color": "bronze", "title": "Bronze" },
-    { "color": "silver", "title": "Silver" },
-    { "color": "gold", "title": "Gold" }
-  ],
+  "identifier": "production_readiness_scorecard",
+  "title": "Production Readiness scorecard",
   "rules": [
     {
       "identifier": "has_description",
-      "title": "Has Description",
-      "description": "Service has a non-empty description",
       "level": "Bronze",
       "query": {
         "combinator": "and",
         "conditions": [
-          { "operator": "isNotEmpty", "property": "description" }
+          {
+            "operator": "isNotEmpty",
+            "property": "github_description"
+          }
         ]
-      }
+      },
+      "description": "Service has a non-empty description",
+      "title": "has description"
     },
     {
       "identifier": "uses_supported_language",
-      "title": "Uses Supported Language",
-      "description": "Service uses a language on the approved list",
       "level": "Silver",
       "query": {
         "combinator": "or",
         "conditions": [
-          { "operator": "=", "property": "language", "value": "Python" },
-          { "operator": "=", "property": "language", "value": "JavaScript" },
-          { "operator": "=", "property": "language", "value": "Java" }
+          {
+            "operator": "=",
+            "property": "github_language",
+            "value": "Python"
+          },
+          {
+            "operator": "=",
+            "property": "github_language",
+            "value": "JavaScript"
+          },
+          {
+            "operator": "=",
+            "property": "github_language",
+            "value": "Java"
+          }
         ]
-      }
+      },
+      "description": "Service uses a language on the approved list",
+      "title": "Uses Supported Language"
     },
     {
       "identifier": "is_active",
-      "title": "Not Archived",
-      "description": "Service is not in an archived state",
       "level": "Gold",
       "query": {
         "combinator": "and",
         "conditions": [
-          { "operator": "=", "property": "archived", "value": false }
+          {
+            "operator": "=",
+            "property": "github_visibility",
+            "value": "true"
+          }
         ]
-      }
+      },
+      "description": "Service is not in an archived state",
+      "title": "Not Archived"
+    }
+  ],
+  "levels": [
+    {
+      "color": "paleBlue",
+      "title": "Basic"
+    },
+    {
+      "color": "bronze",
+      "title": "Bronze"
+    },
+    {
+      "color": "silver",
+      "title": "Silver"
+    },
+    {
+      "color": "gold",
+      "title": "Gold"
     }
   ]
 }
@@ -190,9 +220,10 @@ Paste this JSON into the scorecard editor:
 ### Step 3: Save and verify
 
 After saving:
-1. Navigate to **Catalog → Services**
+1. Navigate to **Interface → Services**
 2. Each service should now display a scorecard level badge (Basic, Bronze, Silver, or Gold)
 3. Click a service to see which rules it passes and fails
+4. Look for the Production Readiness scorecard
 
 ### Step 4: Understand a service's level
 
@@ -213,49 +244,70 @@ Create a second scorecard to track security compliance:
 {
   "identifier": "security_compliance",
   "title": "Security Compliance",
-  "blueprint": "service",
-  "levels": [
-    { "color": "red", "title": "Non-Compliant" },
-    { "color": "yellow", "title": "Basic" },
-    { "color": "green", "title": "Compliant" },
-    { "color": "darkGreen", "title": "Secure" }
-  ],
   "rules": [
     {
-      "identifier": "has_team",
-      "title": "Has Security Contact",
-      "description": "Service has a designated team (security contact)",
-      "level": "Basic",
-      "query": {
-        "combinator": "and",
-        "conditions": [
-          { "operator": "isNotEmpty", "property": "$team" }
-        ]
-      }
-    },
-    {
       "identifier": "has_documentation",
-      "title": "Has Documentation",
-      "description": "Service has a non-empty description",
       "level": "Compliant",
       "query": {
         "combinator": "and",
         "conditions": [
-          { "operator": "isNotEmpty", "property": "description" }
+          {
+            "operator": "isNotEmpty",
+            "property": "github_description"
+          }
         ]
-      }
+      },
+      "description": "Service has a non-empty description",
+      "title": "Has Documentation"
     },
     {
       "identifier": "active_service",
-      "title": "Active Service",
-      "description": "Service is not archived",
       "level": "Secure",
       "query": {
         "combinator": "and",
         "conditions": [
-          { "operator": "=", "property": "archived", "value": false }
+          {
+            "value": "true",
+            "operator": "=",
+            "property": "github_visibility"
+          }
         ]
-      }
+      },
+      "description": "Service is not archived",
+      "title": "Active Service"
+    },
+    {
+      "identifier": "has_security_contact",
+      "level": "Basic",
+      "query": {
+        "combinator": "and",
+        "conditions": [
+          {
+            "operator": "isNotEmpty",
+            "property": "$team"
+          }
+        ]
+      },
+      "description": "Service has a designated team (security contact)",
+      "title": "Has Security Contact"
+    }
+  ],
+  "levels": [
+    {
+      "color": "red",
+      "title": "Non-Compliant"
+    },
+    {
+      "color": "green",
+      "title": "Compliant"
+    },
+    {
+      "color": "olive",
+      "title": "Secure"
+    },
+    {
+      "color": "yellow",
+      "title": "Basic"
     }
   ]
 }
@@ -359,13 +411,13 @@ See the [Scorecards documentation](https://docs.port.io/promote-scorecards/) for
 ## Common Issues & Solutions
 
 **Problem**: All services show "Basic" level even after saving the scorecard  
-**Solution**: Check that the rule's `property` identifier matches the blueprint property exactly (case-sensitive). Use Builder → Data Model → Service to verify property identifiers.
+**Solution**: Check that the rule's `property` identifier matches the blueprint property exactly (case-sensitive). Use Context Lake → Data Model → Service to verify property identifiers.
 
 **Problem**: Rule evaluates incorrectly for boolean properties  
 **Solution**: Use `{ "operator": "=", "value": false }` not `{ "operator": "isEmpty" }` for boolean properties — `isEmpty` checks for null/undefined, not `false`.
 
 **Problem**: Scorecard doesn't appear in the Catalog  
-**Solution**: The Scorecards-as-Blueprints rollout is gradual. If you don't see the Scorecard blueprint in Builder, the feature may not yet be enabled for your account. Check [docs.port.io/promote-scorecards/](https://docs.port.io/promote-scorecards/) for rollout status.
+**Solution**: The Scorecards-as-Blueprints rollout is gradual. If you don't see the Scorecard blueprint in Context Lake, the feature may not yet be enabled for your account. Check [docs.port.io/promote-scorecards/](https://docs.port.io/promote-scorecards/) for rollout status.
 
 **Problem**: `filter` field causes no entities to be evaluated  
 **Solution**: Verify your filter condition is correct. An overly restrictive filter (e.g., checking a property that no entity has set) will exclude all entities.

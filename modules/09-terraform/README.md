@@ -4,7 +4,7 @@
 
 **Previous**: [Module 8: AI Agents](../08-ai-agents/) | **Next**: [Module 10: Governance & RBAC](../10-governance/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -52,7 +52,7 @@ The Port Terraform provider supports:
 ## Hands-On Exercise: Set Up Terraform for Port
 
 ### Step 1: Get Port API Credentials
-1. Navigate to **Builder** → **...** menu → **Credentials**
+1. Navigate to **Context Lake** → **...** menu → **Credentials**
 2. Copy your **Client ID** and **Client Secret**
 3. Note your Port **Base URL** (e.g., `https://api.getport.io`)
 
