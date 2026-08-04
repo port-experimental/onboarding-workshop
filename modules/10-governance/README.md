@@ -4,7 +4,7 @@
 
 **Previous**: [Module 9: Terraform](../09-terraform/) | **Next**: [Module 11: Custom Integrations](../11-custom-integrations/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -72,10 +72,11 @@ Currently any member can create, edit, or delete any entity. Let's lock down the
 
 ### Step 1: Open Blueprint Permissions
 
-1. Navigate to **Builder → Data Model**
+1. Navigate to **Context Lake → Data Model**
 2. Click on the **Service** blueprint
-3. Click the **Permissions** tab
-4. You'll see the current permissions configuration (likely open to all members)
+3. Click on the "..." 
+4. Click the **Permissions**
+5. You'll see the current permissions configuration (likely open to all members)
 
 ### Step 2: Configure Entity Creation
 
@@ -192,7 +193,7 @@ Port logs every significant event:
 
 ### Accessing the audit log
 
-Navigate to **Builder → Audit Log**. Filter by:
+Navigate to **Context Lake → Audit Log**. Filter by:
 - **Time range**: last 24h, 7d, 30d, or custom
 - **Event type**: entity changes, action runs, blueprint changes, permission changes
 - **Blueprint**: filter to a specific blueprint
@@ -297,7 +298,7 @@ See the [Port permissions documentation](https://docs.port.io/sso-rbac/rbac/) fo
 **Solution**: Permissions are evaluated at request time. Clear your browser cache or try an incognito window as the test user.
 
 **Problem**: Team members can't see pages they should have access to  
-**Solution**: Verify the user is actually a member of the Port team (not just the external IdP group). Check **Builder → Teams** to confirm membership.
+**Solution**: Verify the user is actually a member of the Port team (not just the external IdP group). Check **Context Lake → Teams** to confirm membership.
 
 **Problem**: `port_blueprint_permissions` Terraform resource fails  
 **Solution**: Verify the blueprint identifier is exact (case-sensitive). The `register`/`update`/`unregister` keys must all be present — omitting one is a validation error.

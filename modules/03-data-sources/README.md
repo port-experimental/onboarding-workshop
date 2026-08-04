@@ -4,7 +4,7 @@
 
 **Previous**: [Module 2: Blueprints](../02-blueprints/) | **Next**: [Module 4: Dashboards](../04-dashboards/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -55,7 +55,7 @@ For our workshop, TechCorp uses:
 Let's configure the GitHub integration to populate our GitHub Release blueprint.
 
 ### Step 1: Access Data Sources
-1. Navigate to **Builder** → **Data Sources**
+1. Navigate to **Context Lake** → **Data Sources**
 2. Look for existing integrations (you might see GitHub already configured)
 3. Click the **...** menu on a GitHub integration and select **Edit**
 
@@ -78,7 +78,7 @@ The integration editor has three sections:
 
 ### Step 3: Add Release Mapping
 
-Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (existing mapping; add this block under the existing `resources:` list, do **not** add another `resources:` key).
+Paste location: **Context Lake → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (existing mapping; add this block under the existing `resources:` list, do **not** add another `resources:` key).
 
 ```yaml
 - kind: release
@@ -100,7 +100,7 @@ Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Ma
 
 If your mapping panel is completely empty, you can use this minimal configuration instead.
 
-Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (empty mapping; start with this root `resources:` key):
+Paste location: **Context Lake → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (empty mapping; start with this root `resources:` key):
 ```yaml
 resources:
   - kind: release
@@ -204,7 +204,7 @@ Update the GitHub integration to include:
 
 ### Updated Mapping Configuration
 
-Paste location: **Builder → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (existing mapping; update or replace the `- kind: repository` block with the one below):
+Paste location: **Context Lake → Data Sources → &lt;GitHub integration&gt; → Mapping configuration** (existing mapping; update or replace the `- kind: repository` block with the one below):
 ```yaml
 - kind: repository
   selector:

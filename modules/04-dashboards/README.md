@@ -4,7 +4,7 @@
 
 **Previous**: [Module 3: Data Sources](../03-data-sources/) | **Next**: [Module 5: Actions](../05-actions/)
 
-**Learning Path**: [Builder Path](../../learning-paths/builder.md) | **All Modules**: [Workshop Home](../../README.md)
+**Learning Path**: [Context Lake Path](../../learning-paths/Context Lake.md) | **All Modules**: [Workshop Home](../../README.md)
 
 ---
 
@@ -165,7 +165,7 @@ Let's create a comprehensive dashboard for TechCorp's engineering teams.
 2. Click **+ New** in the left sidebar
 3. Select **Dashboard Page**
 4. Configure:
-   - **Title**: `TechCorp Engineering Dashboard`
+   - **Title**: `TechCorp Engineering`
    - **Icon**: `Dashboard`
    - **Description**: `Overview of TechCorp's engineering metrics and services`
 
@@ -177,12 +177,16 @@ Our first widget will show all active services:
 3. Configure the table:
    - **Title**: `Active Services`
    - **Blueprint**: `Service`
-   - **Description**: `All non-archived TechCorp services`
+   - **Description**: `All non-archived TechCorp services`.  
+   Save the widget
+
+next, click the three dots at the top of the table, then customize table. Then look for the Manage Properties button.  
 
 4. Customize visible properties:
-   - Show: `Title`, `Language`, `Team`, `URL`
+   - Show: `Title`, `Programming Language`, `Owning Teams`, `URL`
    - Hide: `Last Updated`, `Entity Creation Date`
-   - Reorder: `Title` → `Language` → `Team` → `URL`
+   - Reorder: `Title` → `Language` → `Team` → `URL`   
+   close
 
 5. Add filters to show only active services:
    Paste location: **Catalog → &lt;Your dashboard&gt; → Edit “Active Services” widget → Filters → JSON editor** (start from an empty filter and paste this JSON):
@@ -206,7 +210,7 @@ Show the distribution of programming languages:
 2. Configure:
    - **Title**: `Programming Languages`
    - **Blueprint**: `Service`
-   - **Property**: `language`
+   - **Property**: `Programming Language`
    - **Description**: `Distribution of programming languages across services`
 
 3. Apply the same filter to exclude archived services
@@ -217,8 +221,11 @@ Display the total number of active services:
 1. Add a **Number Chart** widget
 2. Configure:
    - **Title**: `Total Active Services`
+   - **Chart Type**: `Count entities`
    - **Blueprint**: `Service`
    - **Description**: `Count of all active services`
+`
+
 
 3. Apply archived filter again
 
